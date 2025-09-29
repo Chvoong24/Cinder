@@ -9,10 +9,11 @@ def Walking(stepsAmnt):
         rightFood()
 ```
 ## Naming Variables & Functions
-    We are using nouns for variables and verbs for functions as well as camelCase
+    We are using nouns for variables and verbs for functions as well as camelCase. We will also use fully capitalized names for global variables.
 
 ### Example
 ```python
+MAXPROB = 100
 daysSinceLastRainFall = 4
 def calculateRainProbabilityInPercent(daysSinceLastRain):
     # some fancy stastical analysis
