@@ -198,6 +198,18 @@ def main():
 	print("\n✅ 📂 All downloads complete!\n")
 	
 
+def viewGrib():
+	'''
+	Function grabs one of the downloaded forecast hours and prints the header values contained within.
+	Manaually edit to make sure it is pulling the right file.
+	'''
+	grbs = pygrib.open(r'hrefDownloads\t_12_z\href.t12z.conus.prob.f01.grib2')
+	grbs.seek(0)
+	for grb in grbs:
+		print(grb)
+	return None
+
+
 # -------------------------
 # ------ Run Script -------
 # -------------------------
@@ -212,4 +224,9 @@ else:
 	forecast_hours = list(range(1, 49))
 
 if __name__ == "__main__":
-    main()
+	main()
+	viewGrib()
+
+
+
+
