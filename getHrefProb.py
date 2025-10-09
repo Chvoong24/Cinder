@@ -3,7 +3,7 @@ import time
 import requests
 import logging
 import pygrib
-from datetime import datetime, timedelta
+from datetime import datetime, timezone
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -52,7 +52,7 @@ manual_mode = False  # ⚡ Set to True for manual download and adjust date/time 
 # -----------------------------------------
 
 def determine_href_run():
-	now = datetime.utcnow()
+	now = datetime.now(timezone.utc)
 	
 	if now.hour >= 20:
 		run_hour = 18
