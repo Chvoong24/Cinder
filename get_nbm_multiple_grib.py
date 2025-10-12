@@ -5,11 +5,24 @@ import pathlib
 import requests
 from logging.handlers import TimedRotatingFileHandler
 
-# =========================
-# User settings (MANUAL ONLY)
-# =========================
-MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20250929/18/qmd/blend.t18z.qmd.f051.co.grib2"
-OUTDIR     = pathlib.Path("./nbm_mulit_download")
+MANUAL_SINGLE = False
+MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251009/18/qmd/blend.t18z.qmd.f051.co.grib2"
+MANUAL_OUTDIR = pathlib.Path("./nbm_download")
+
+MANUAL_FIELDS = ["REFC"] # Not entirely sure what it means
+
+DATE  = "20251011"      # UTC YYYYMMDD
+CYCLE = "00"
+F_START = 0
+F_END = 48
+
+MEMBERS = [f"m{n:03d}" for n in range(1, 6)]
+
+FIELD_PATTERNS = [
+    r":REFC:",                       # composite reflectivity (entire atmosphere)
+    r":UGRD:10 m above ground:",     # U @ 10 m AGL
+    r":VGRD:10 m above ground:",     # V @ 10 m AGL
+]
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
 # Examples:
@@ -17,20 +30,32 @@ OUTDIR     = pathlib.Path("./nbm_mulit_download")
 #   r":TMP:2 m above ground:.*72 hour fcst"    -> 2 m temp with 72h fcst
 #   r":TMP:2 m above ground:.*prob >305\.372:" -> specific probability threshold (escape dot)
 #   r":APCP:surface:.*:6 hour acc"             -> 6-hr precip accumulation
+
 MANUAL_PATTERNS = [
     # r":TMP:2 m above ground:51 hour fcst:prob >305\.372:",
     r":APTMP:2 m above ground:51 hour fcst:prob >310\.928:",
 ]
 
-# =========================
-# Logging
-# =========================
-LOGDIR = pathlib.Path("./nbm_logs")
-LOGDIR.mkdir(parents=True, exist_ok=True)
-LOGFILE = LOGDIR / "nbm_manual_slice.log"
-LOG_LEVEL = logging.INFO
+PRODUCTS = ["prslev"]
 
-logger = logging.getLogger("nbm_manual")
+COMBINE_ONE_FILE = True
+
+BUCKET = "https://nomads.ncep.noaa.gov"
+
+OUTDIR = pathlib.Path("./NBM_download")
+LOGDIR = pathlib.Path("./NBM_logs")
+OUTDIR.mkdir(parents=True, exist_ok=True)
+LOGDIR.mkdir(parents=True, exist_ok=True)
+
+LOGFILE = LOGDIR / "NBM_pull.log"
+LOG_LEVEL = logging.INFO
+MAX_RETRIES = 5
+TIMEOUT = 60
+BACKOFF = 1.6
+
+IDX_RE = re.compile(r"^\s*(\d+):(\d+):(.*)$")
+
+logger = logging.getLogger("NBM")
 logger.setLevel(LOG_LEVEL)
 logger.handlers.clear()
 
@@ -40,19 +65,18 @@ ch.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
 logger.addHandler(ch)
 
 fh = TimedRotatingFileHandler(
-    filename=str(LOGFILE), when="midnight", backupCount=7, encoding="utf-8"
+    filename=str(LOGFILE),
+    when="midnight",
+    backupCount=7,
+    encoding="utf-8",
 )
 fh.setLevel(LOG_LEVEL)
 fh.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
 logger.addHandler(fh)
 
 # =========================
-# HTTP (retry) helpers
+# HTTP helpers with retry
 # =========================
-MAX_RETRIES = 5
-TIMEOUT = 60
-BACKOFF = 1.6
-
 def http_get(url, headers=None, stream=False):
     for a in range(1, MAX_RETRIES + 1):
         try:
@@ -78,11 +102,15 @@ def http_head(url):
     raise RuntimeError(f"Failed HEAD {url}")
 
 def http_get_range(url, start: int, end: int):
+    """
+    Ranged GET that forces identity (no gzip) and validates 206 + Content-Range.
+    Returns a streaming response.
+    """
     hdrs = {
         "Range": f"bytes={start}-{end}",
         "Accept-Encoding": "identity",
         "Connection": "close",
-        "User-Agent": "nbm-manual-slicer/1.0",
+        "User-Agent": "refs-puller/1.0",
     }
     for a in range(1, MAX_RETRIES + 1):
         try:
@@ -98,134 +126,69 @@ def http_get_range(url, start: int, end: int):
         time.sleep(BACKOFF ** a)
     raise RuntimeError(f"Failed RANGE GET {url} bytes={start}-{end}")
 
-# =========================
-# .idx parsing & range builder
-# =========================
-IDX_RE = re.compile(r"^\s*(\d+):(\d+):(.*)$")
+# ==================================
+# Helper for Manual Request Only
+# ==================================
 
-def parse_idx(text_lines):
+def patterns_for(names: list[str]) -> list[str]:
     """
-    Return list of dicts: {'msg':int, 'offset':int, 'desc':str}, sorted by msg#
+    Map simple names to the regex patterns you already use.
+    Supported keys: 'REFC', 'U10', 'V10'
     """
-    out = []
-    for line in text_lines:
-        m = IDX_RE.match(line)
-        if m:
-            out.append({"msg": int(m.group(1)), "offset": int(m.group(2)), "desc": m.group(3)})
-    out.sort(key=lambda d: d["msg"])
-    return out
+    mapping = {
+        "REFC": r":REFC:",
+        "U10":  r":UGRD:10 m above ground:",
+        "V10":  r":VGRD:10 m above ground:",
+    }
+    pats = []
+    for n in names:
+        key = n.strip().upper()
+        if key in mapping:
+            pats.append(mapping[key])
+        else:
+            raise ValueError(f"Unknown field name: {n} (choose from REFC, U10, V10)")
+    return pats
 
-def build_ranges(filtered_entries, full_entries, total_size):
-    """
-    For each selected message, compute [start,end] byte range to slice that message.
-    """
-    off = {e["msg"]: e["offset"] for e in full_entries}
-    all_msgs = [e["msg"] for e in full_entries]
-    ranges = []
-    for e in filtered_entries:
-        i = all_msgs.index(e["msg"])
-        start = off[e["msg"]]
-        end = (off[all_msgs[i + 1]] - 1) if i < len(all_msgs) - 1 else (total_size - 1)
-        ranges.append((start, end, e["desc"]))
-    return ranges
+# ==================================
+# HTTP Request for Manual Mode Only
+# ==================================
 
-# =========================
-# Core manual slicer
-# =========================
-def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str]) -> pathlib.Path:
+def fetch_single_url(grib_url: str, outdir: pathlib.Path, field_names: list[str]) -> pathlib.Path:
     """
-    Slice a single NBM GRIB into a compact GRIB containing only messages whose
-    .idx 'desc' matches ANY of the provided regex patterns.
+    Download ONLY the requested fields from an arbitrary GRIB2 URL that has a .idx file.
+    Example grib_url: https://.../refs.t12z.conus.pmmn.f10.grib2
     """
-    if not idx_patterns:
-        raise ValueError("No MANUAL_PATTERNS specified.")
-
     outdir.mkdir(parents=True, exist_ok=True)
     idx_url = grib_url + ".idx"
 
-    logger.info(f"Using index -> {idx_url}")
+    # Probe index + size
+    logger.info(f"Manual: using index -> {idx_url}")
     idx_lines = http_get(idx_url).text.splitlines()
     entries = parse_idx(idx_lines)
     if not entries:
-        raise RuntimeError("Empty/invalid .idx")
+        raise RuntimeError("Manual: empty/invalid .idx")
 
     head = http_head(grib_url)
     total_size = int(head.headers.get("Content-Length", "0"))
     if total_size <= 0:
-        raise RuntimeError("Missing Content-Length on GRIB")
+        raise RuntimeError("Manual: missing Content-Length on GRIB")
 
-    # Compile regexes
-    regexes = [re.compile(p) for p in idx_patterns]
+    # Select fields
+    pats = patterns_for(field_names)
+    downloads = []
+    for pat in pats:
+        rx = re.compile(pat)
+        filtered = [e for e in entries if rx.search(e["desc"])]
+        if not filtered:
+            logger.warning(f"Manual: no matches for {pat} in index (skipping)")
+            continue
+        ranges = build_ranges(filtered, entries, total_size)
+        downloads.extend((grib_url, start, end, desc) for (start, end, desc) in ranges)
 
-    # Find matches
-    matched = []
-    for e in entries:
-        if any(rx.search(e["desc"]) for rx in regexes):
-            matched.append(e)
+    if not downloads:
+        raise RuntimeError("Manual: no matching fields found in index")
 
-    if not matched:
-        logger.info("No index lines matched your MANUAL_PATTERNS. Nothing to do.")
-        return None
+    downloads.sort(key=lambda t: t[1])  # by start byte
 
-    # Log which lines matched for transparency
-    logger.info("Matched .idx lines:")
-    for e in matched:
-        logger.info(f"  msg={e['msg']:>4} off={e['offset']:>10} :: {e['desc']}")
-
-    # Build byte ranges
-    downloads = build_ranges(matched, entries, total_size)
-    downloads.sort(key=lambda t: t[0])  # by start offset
-
-    # Output filename (derive from URL and a hash of patterns)
-    m = re.search(r"\.t(\d{2})z.*?\.f(\d{2,3})", grib_url)
-    if m:
-        cy, fff = m.group(1), int(m.group(2))
-        stem = f"nbm_t{cy}z_f{fff:03d}_custom"
-    else:
-        # fallback to URL basename
-        stem = re.sub(r"[^A-Za-z0-9_.-]+", "_", pathlib.Path(grib_url).name) + "_custom"
-
-    outfile = outdir / (stem + ".grib2")
-    tmp = outfile.with_suffix(outfile.suffix + ".part")
-
-    # Fetch & write compact GRIB
-    logger.info(f"Writing -> {outfile}")
-    with open(tmp, "wb") as out:
-        for (start, end, desc) in downloads:
-            logger.info(f"  GET bytes={start}-{end} :: {desc}")
-            r = http_get_range(grib_url, start, end)
-            expected = end - start + 1
-            got = 0
-            for chunk in r.iter_content(chunk_size=1024 * 1024):
-                if chunk:
-                    out.write(chunk)
-                    got += len(chunk)
-            if got != expected:
-                raise RuntimeError(
-                    f"Range size mismatch [{start}-{end}] expected {expected}, got {got}"
-                )
-
-    if outfile.exists():
-        outfile.unlink(missing_ok=True)
-    tmp.replace(outfile)
-    sz_mb = outfile.stat().st_size / (1024 * 1024)
-    logger.info(f"Done. Size = {sz_mb:.1f} MB")
-    return outfile
-
-# =========================
-# Main
-# =========================
-def main():
-    try:
-        t0 = time.time()
-        out = fetch_single_url(MANUAL_URL, OUTDIR, MANUAL_PATTERNS)
-        dt = time.time() - t0
-        if out:
-            logger.info(f"? Finished manual slice -> {out} in {dt:.1f}s")
-        else:
-            logger.info(f"? Nothing matched; finished in {dt:.1f}s")
-    except Exception as e:
-        logger.exception(f"Manual fetch failed: {e}")
-
-if __name__ == "__main__":
-    main()
+    #output filename
+    m = re.search(r"(NBM|)")
