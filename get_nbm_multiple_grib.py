@@ -8,8 +8,8 @@ from logging.handlers import TimedRotatingFileHandler
 # =========================
 # User settings (MANUAL ONLY)
 # =========================
-MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251009/18/qmd/blend.t18z.qmd.f051.co.grib2"
-OUTDIR     = pathlib.Path("./nbm_download")
+MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20250929/18/qmd/blend.t18z.qmd.f051.co.grib2"
+OUTDIR     = pathlib.Path("./nbm_mulit_download")
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
 # Examples:
