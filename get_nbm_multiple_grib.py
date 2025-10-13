@@ -8,8 +8,8 @@ from logging.handlers import TimedRotatingFileHandler
 # =========================
 # User settings (MANUAL ONLY)
 # =========================
-MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20250929/18/qmd/blend.t18z.qmd.f051.co.grib2"
-OUTDIR     = pathlib.Path("./nbm_mulit_download")
+MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251012/18/qmd/blend.t18z.qmd.f051.co.grib2"
+OUTDIR     = pathlib.Path("./nbm_multi_download")
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
 # Examples:
@@ -20,7 +20,24 @@ OUTDIR     = pathlib.Path("./nbm_mulit_download")
 MANUAL_PATTERNS = [
     # r":TMP:2 m above ground:51 hour fcst:prob >305\.372:",
     r":APTMP:2 m above ground:51 hour fcst:prob >310\.928:",
+    r":TMP:2 m above ground:",                  # -> any 2 m temperature messages
+    r":TMP:2 m above ground:.*72 hour fcst",    # ->  2 m temp with 72h fcst
+    r":TMP:2 m above ground:.*prob >305\.372:", # ->  specific probability threshold (escape dot)
+    r":APCP:surface:.*:6 hour acc",             # -> 6-hr precip accumulation
 ]
+
+DATE = "20251013"
+CYCLE = "00"
+F_START = 0
+F_END = 23
+
+BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
+
+# Output locations
+OUTDIR = pathlib.Path("./nbm_download")
+LOGDIR = pathlib.Path("./nbm_logs")
+OUTDIR.mkdir(parents=True, exist_ok=True)
+LOGDIR.mkdir(parents=True, exist_ok=True)
 
 # =========================
 # Logging
@@ -114,6 +131,32 @@ def parse_idx(text_lines):
             out.append({"msg": int(m.group(1)), "offset": int(m.group(2)), "desc": m.group(3)})
     out.sort(key=lambda d: d["msg"])
     return out
+
+# =========================
+# URL candidates (ENSEMBLE)
+# =========================
+def candidate_urls(product: str, date: str, cycle: str, fxx: int):
+    """
+    member: 'm001'..'m005'
+    """
+    fff = f"{fxx:03d}"
+    if product == "qmd":
+        return [
+            f"{BUCKET}/blend.{date}/{cycle}/qmd/blend.t{cycle}z.qmd.f{fff}.co.grib2"
+        ]
+    return []
+
+def pick_grib_url(product: str, date: str, cycle: str, fxx: int):
+    for url in candidate_urls(product, date, cycle, fxx):
+        idx_url = f"{url}.idx"
+        try:
+            r = http_head(idx_url)
+            if r.status_code == 200:
+                return url, idx_url
+        except Exception:
+            continue
+    return None, None
+
 
 def build_ranges(filtered_entries, full_entries, total_size):
     """
@@ -216,14 +259,22 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 # Main
 # =========================
 def main():
+
     try:
         t0 = time.time()
-        out = fetch_single_url(MANUAL_URL, OUTDIR, MANUAL_PATTERNS)
-        dt = time.time() - t0
-        if out:
-            logger.info(f"? Finished manual slice -> {out} in {dt:.1f}s")
-        else:
-            logger.info(f"? Nothing matched; finished in {dt:.1f}s")
+        for cycle in ["00", "06", "12", "18"]:
+            for fxx in range(F_START+1, F_END +1):
+                # pick_grib_url returns a tuple (grib_url, idx_url) or (None, None)
+                grib_url, idx_url = pick_grib_url('qmd', DATE, cycle, fxx)
+                if not grib_url:
+                    logger.info(f"No candidate GRIB URL for {DATE} t{cycle}z f{fxx:03d} (skip)")
+                    continue
+                out = fetch_single_url(grib_url, OUTDIR, MANUAL_PATTERNS)
+                dt = time.time() - t0
+                if out:
+                    logger.info(f"? Finished manual slice -> {out} in {dt:.1f}s")
+                else:
+                    logger.info(f"? Nothing matched; finished in {dt:.1f}s")
     except Exception as e:
         logger.exception(f"Manual fetch failed: {e}")
 
