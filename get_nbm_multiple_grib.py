@@ -4,6 +4,7 @@ import logging
 import pathlib
 import requests
 from logging.handlers import TimedRotatingFileHandler
+from concurrent.futures import ThreadPoolExecutor
 
 # =========================
 # User settings (MANUAL ONLY)
@@ -25,6 +26,8 @@ MANUAL_PATTERNS = [
     r":TMP:2 m above ground:.*prob >305\.372:", # ->  specific probability threshold (escape dot)
     r":APCP:surface:.*:6 hour acc",             # -> 6-hr precip accumulation
 ]
+
+MAX_THREADS = 10
 
 DATE = "20251013"
 CYCLE = "00"
@@ -259,24 +262,38 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 # Main
 # =========================
 def main():
-
     try:
         t0 = time.time()
-        for cycle in ["00", "06", "12", "18"]:
-            for fxx in range(F_START+1, F_END +1):
-                # pick_grib_url returns a tuple (grib_url, idx_url) or (None, None)
-                grib_url, idx_url = pick_grib_url('qmd', DATE, cycle, fxx)
-                if not grib_url:
-                    logger.info(f"No candidate GRIB URL for {DATE} t{cycle}z f{fxx:03d} (skip)")
-                    continue
-                out = fetch_single_url(grib_url, OUTDIR, MANUAL_PATTERNS)
-                dt = time.time() - t0
-                if out:
-                    logger.info(f"? Finished manual slice -> {out} in {dt:.1f}s")
-                else:
-                    logger.info(f"? Nothing matched; finished in {dt:.1f}s")
+        futures = []
+
+        with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+            for cycle in ["00", "06", "12", "18"]:
+                for fxx in range(F_START + 1, F_END + 1):
+                    grib_url, idx_url = pick_grib_url('qmd', DATE, cycle, fxx)
+                    if not grib_url:
+                        logger.info(f"No candidate GRIB URL for {DATE} t{cycle}z f{fxx:03d} (skip)")
+                        continue
+
+                    # Submit the download task to the thread pool
+                    futures.append(
+                        executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
+                    )
+
+            # Wait for all threads to complete and log results
+            for f in futures:
+                try:
+                    out = f.result()
+                    dt = time.time() - t0
+                    if out:
+                        logger.info(f"✅ Finished manual slice -> {out} in {dt:.1f}s")
+                    else:
+                        logger.info(f"ℹ️  Nothing matched; finished in {dt:.1f}s")
+                except Exception as e:
+                    logger.exception(f"❌ Manual fetch failed in one thread: {e}")
+
     except Exception as e:
-        logger.exception(f"Manual fetch failed: {e}")
+        logger.exception(f"❌ Main thread failed: {e}")
+
 
 if __name__ == "__main__":
     main()
