@@ -198,7 +198,7 @@ def main():
 	print("\n✅ 📂 All downloads complete!\n")
 	
 
-def viewGrib():
+def view_grib():
 	'''
 	Function grabs one of the downloaded forecast hours and prints the header values contained within.
 	Manaually edit to make sure it is pulling the right file.
