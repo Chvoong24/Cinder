@@ -33,12 +33,12 @@ Implied line continuation should align wrapped elements vertically, or use a han
 
 ### Example
 ```python
-foo = makeALongFunctionName(varOne, varTwo,
+foo = make_a_long_lunction_name(varOne, varTwo,
                             varThree, varFour)
 meal = (spam,
         beans)
 
-foo = makeALongFunctionName(
+foo = make_a_long_lunction_name(
           varOne, varTwo,
           varThree, varFour
           )
@@ -55,13 +55,13 @@ Follow standard typographic rules for the use of spaces around punctuation.
 
 
 ### Naming Variables & Functions
-We are using nouns for variables and verbs for functions as well as camelCase. We will also use fully capitalized names for global variables.
+We are using nouns for variables and verbs for functions. We will make use of snake case for functions and variables. We will also use fully capitalized names for global variables (with snake case where appropriate).
 
 ### Example
 ```python
 MAXPROB = 100
 daysSinceLastRainFall = 4
-def calculateRainProbabilityInPercent(daysSinceLastRain):
+def calculate_rain_probability_in_percent(daysSinceLastRain):
     # some fancy stastical analysis
     rainProbPercent = 15
     return rainProbPercent
@@ -91,7 +91,7 @@ def add(int1: int, int2: int) -> int:
 ### Remove extraneous print statements when finished debugging
 
 ### Branching
-When branching, use short but descriptive noming clature, use snake_case for naming.
+When branching, use short but descriptive noming clature, use snake_case for naming files and branches.
 Always branch when making new features, work on small features.
 
 #### Example
