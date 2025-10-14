@@ -45,9 +45,7 @@ LOGDIR.mkdir(parents=True, exist_ok=True)
 # =========================
 # Logging
 # =========================
-LOGDIR = pathlib.Path("./nbm_logs")
-LOGDIR.mkdir(parents=True, exist_ok=True)
-LOGFILE = LOGDIR / "nbm_manual_slice.log"
+LOGFILE = LOGDIR / "nbm_pull.log"
 LOG_LEVEL = logging.INFO
 
 logger = logging.getLogger("nbm_manual")

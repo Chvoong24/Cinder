@@ -3,6 +3,8 @@ import time
 import requests
 import logging
 import pygrib
+import pathlib
+from pathlib import Path
 from datetime import datetime, timezone
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -11,35 +13,41 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # ------------ Constants ------------------
 # -----------------------------------------
 
-LOG_DIR = 'hrefDownloads'
-LOG_FILENAME = 'hrefDownloader.log'
+# Output locations
+OUTDIR = pathlib.Path("./href_download")
+LOGDIR = pathlib.Path("./href_logs")
+OUTDIR.mkdir(parents=True, exist_ok=True)
+LOGDIR.mkdir(parents=True, exist_ok=True)
+
+
+# Multi Threading
 MAX_THREADS = 10    # Parallel download threads
 MAX_RETRIES = 10     # Retry attempts allowed before fail
 RETRY_DELAY = 10    # Delay (secs) between retry attempts
 MIN_FILE_SIZE = 1 * 1024    # Min file size check
 
-def ensure_log_dir():
-	os.makedirs(LOG_DIR, exist_ok = True)
-
 # -----------------------------------------
 # ------- Logging Configuration -----------
 # -----------------------------------------
 
-def setup_logger():
-	ensure_log_dir()
-	logger = logging.getLogger(__name__)
-	logger.setLevel(logging.INFO)
-	
-	log_path = os.path.join(LOG_DIR, LOG_FILENAME)
-	file_handler = TimedRotatingFileHandler(log_path, when = 'midnight', interval = 1, backupCount = 7)
-	file_handler.setLevel(logging.INFO)
-	fmt = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s', datefmt = '%Y-%m-%d %H:%M:%S')
-	file_handler.setFormatter(fmt)
-	logger.addHandler(file_handler)
-	
-	return logger
-	
-logger = setup_logger()
+LOGFILE = LOGDIR / "href_pull.log"
+LOG_LEVEL = logging.INFO
+
+logger = logging.getLogger("href_manual")
+logger.setLevel(LOG_LEVEL)
+logger.handlers.clear()
+
+ch = logging.StreamHandler()
+ch.setLevel(LOG_LEVEL)
+ch.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+logger.addHandler(ch)
+
+fh = TimedRotatingFileHandler(
+    filename=str(LOGFILE), when="midnight", backupCount=7, encoding="utf-8"
+)
+fh.setLevel(LOG_LEVEL)
+fh.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+logger.addHandler(fh)
 
 # ----------------------------------------------
 # --- Manual Override Settings (for Testing) ---
@@ -168,15 +176,12 @@ def main():
 	
 	success_list, fail_list = [], []
 	
-	output_dir = os.path.join(LOG_DIR, f't_{run_hour_str}_z')
-	os.makedirs(output_dir, exist_ok = True)
-	
 	print(f"🚀 Starting parallel downloads with {MAX_THREADS} threads...\n")
 	
 	logger.info(f'Starting downloads with {MAX_THREADS} threads...')
 	
 	with ThreadPoolExecutor(max_workers = MAX_THREADS) as executor:
-		future_to_url = {executor.submit(download_file, url, output_dir): url for url in urls}
+		future_to_url = {executor.submit(download_file, url, OUTDIR): url for url in urls}
 		for future in as_completed(future_to_url):
 			url = future_to_url[future]
 			if future.result():
@@ -200,14 +205,21 @@ def main():
 
 def view_grib():
 	'''
-	Function grabs one of the downloaded forecast hours and prints the header values contained within.
-	Manaually edit to make sure it is pulling the right file.
+	Function grabs the first of the downloaded forecast hours and prints
+	the header values contained within.
 	'''
-	grbs = pygrib.open(r'hrefDownloads\t_12_z\href.t12z.conus.prob.f01.grib2')
-	grbs.seek(0)
-	for grb in grbs:
-		print(grb)
-	return None
+	folder = Path(__file__).parent / "href_download"
+
+	if not folder.exists():
+		raise FileNotFoundError(f"Folder not found: {folder}")
+
+	file_path = next(folder.iterdir())
+	print(f"Opening GRIB file: {file_path}")
+
+	with pygrib.open(str(file_path)) as grbs:
+		grbs.seek(0)
+		for grb in grbs:
+			print(grb)
 
 
 # -------------------------
@@ -225,7 +237,12 @@ else:
 
 if __name__ == "__main__":
 	main()
-	viewGrib()
+	try: 
+		view_grib()
+	except Exception as e:
+		print(f'Failed to view grib contents with exception: {e}')
+		
+
 
 
 
