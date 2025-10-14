@@ -12,9 +12,10 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
     - [Branching](#branching)
 - [How To Use](#how-to-use)
 ## How To Use
-1. Go to specfic model you want to download
+1. Go to the **fetch_all.py** file
 2. Run file
-3. Files appear in (modelName_download)
+3. Wait for completion checks in IDE terminal (may take a while)
+4. Files appear in (modelName_download)
 
 ## Style Guide
 ### Tabs
