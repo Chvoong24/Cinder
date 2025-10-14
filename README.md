@@ -59,12 +59,12 @@ We are using nouns for variables and verbs for functions. We will make use of sn
 
 ### Example
 ```python
-MAXPROB = 100
-daysSinceLastRainFall = 4
-def calculate_rain_probability_in_percent(daysSinceLastRain):
+MAX_PROB = 100
+days_since_last_rainFall = 4
+def calculate_rain_probability_in_percent(days_since_last_rainFall):
     # some fancy stastical analysis
-    rainProbPercent = 15
-    return rainProbPercent
+    rain_prob_percent = 15
+    return rain_prob_percent
 ```
 
 ###  Docstrings For Documentation
