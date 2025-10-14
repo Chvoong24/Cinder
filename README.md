@@ -33,12 +33,12 @@ Implied line continuation should align wrapped elements vertically, or use a han
 
 ### Example
 ```python
-foo = make_a_long_lunction_name(varOne, varTwo,
+foo = make_a_long_function_name(varOne, varTwo,
                             varThree, varFour)
 meal = (spam,
         beans)
 
-foo = make_a_long_lunction_name(
+foo = make_a_long_function_name(
           varOne, varTwo,
           varThree, varFour
           )
