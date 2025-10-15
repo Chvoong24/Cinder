@@ -1,5 +1,5 @@
-import Fetch_Scripts.get_nbm_multiple_grib as get_nbm
-import Fetch_Scripts.getHrefProb as get_href
+import Fetch_Scripts.get_nbm as get_nbm
+import Fetch_Scripts.get_href as get_href
 import os
 from concurrent.futures import ThreadPoolExecutor
 
