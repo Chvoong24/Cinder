@@ -14,8 +14,16 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # -----------------------------------------
 
 # Output locations
-OUTDIR = pathlib.Path("./href_download")
-LOGDIR = pathlib.Path("./href_logs")
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+
+PARENT_DIR = SCRIPT_DIR.parent
+
+HREF_DATA_DIR = PARENT_DIR / "href_data"
+
+OUTDIR = HREF_DATA_DIR / "href_download"
+LOGDIR = HREF_DATA_DIR / "./href_logs"
+
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
 
