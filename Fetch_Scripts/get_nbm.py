@@ -5,6 +5,7 @@ import pathlib
 import requests
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 # =========================
 # User settings (MANUAL ONLY)
@@ -37,8 +38,16 @@ F_END = 23
 BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
 
 # Output locations
-OUTDIR = pathlib.Path("./nbm_download")
-LOGDIR = pathlib.Path("./nbm_logs")
+
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+
+PARENT_DIR = SCRIPT_DIR.parent
+
+NBM_DATA_DIR = PARENT_DIR / "nbm_data"
+
+OUTDIR = NBM_DATA_DIR / "nbm_download"
+LOGDIR = NBM_DATA_DIR / "./nbm_logs"
+
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
 
@@ -116,9 +125,8 @@ def http_get_range(url, start: int, end: int):
         time.sleep(BACKOFF ** a)
     raise RuntimeError(f"Failed RANGE GET {url} bytes={start}-{end}")
 
-# =========================
 # .idx parsing & range builder
-# =========================
+
 IDX_RE = re.compile(r"^\s*(\d+):(\d+):(.*)$")
 
 def parse_idx(text_lines):
@@ -133,9 +141,9 @@ def parse_idx(text_lines):
     out.sort(key=lambda d: d["msg"])
     return out
 
-# =========================
+
 # URL candidates (ENSEMBLE)
-# =========================
+
 def candidate_urls(product: str, date: str, cycle: str, fxx: int):
     """
     member: 'm001'..'m005'
@@ -173,9 +181,9 @@ def build_ranges(filtered_entries, full_entries, total_size):
         ranges.append((start, end, e["desc"]))
     return ranges
 
-# =========================
+
 # Core manual slicer
-# =========================
+
 def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str]) -> pathlib.Path:
     """
     Slice a single NBM GRIB into a compact GRIB containing only messages whose
