@@ -10,16 +10,16 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
 # Table Of Contents
 - [StyleGuide](#style-guide)
     - [Branching](#branching)
-- [How To Use](#how-to-fetch-data)
+- [How To Use](#how-to-interrupt-data-fetch--end)
 
 ## How To Fetch Data
 1. Go to the **fetch_all.py** file
-2. Run file
-3. Wait for completion checks in IDE terminal (may take a while)
-4. Files appear in ```<model>_download```. Logs appear in ```<model>_log``` folder
+0. Run file
+0. Files appear in ```<model>_data```. In ```<model>_data``` download files appear in ```<model>_download``` folder. Logs appear in ```<model>_log``` folder.
+0. Wait for completion checks in IDE terminal (may take a while)
 
 
-## How To Interrupt Data Fetch
+## How To Interrupt Data Fetch / End
 1. For VSCode: Press ```Ctrl``` + ``` C ``` until terminal stops printing
 
 ## Style Guide

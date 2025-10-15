@@ -11,7 +11,6 @@ from pathlib import Path
 # User settings (MANUAL ONLY)
 # =========================
 MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251012/18/qmd/blend.t18z.qmd.f051.co.grib2"
-OUTDIR     = pathlib.Path("./nbm_multi_download")
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
 # Examples:
@@ -30,10 +29,9 @@ MANUAL_PATTERNS = [
 
 MAX_THREADS = 10
 
-DATE = "20251013"
-CYCLE = "00"
+DATE = "20251015" # YYYYMMDD
 F_START = 0
-F_END = 23
+F_END = 276
 
 BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
 
