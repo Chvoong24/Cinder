@@ -40,22 +40,26 @@ def get_all_readable_data(filename, lat, lon):
             limit = "less than"
             val = grb.lowerLimit
 
+        if grb.forecastTime == grb.endStep:
+            time = grb.forecastTime
+        else:
+            time = f"{grb.forecastTime} to {grb.endStep}"
 
         data, lats, lons = grb.data()
 
         
         value = get_value_from_latlon(lat, lon, lats, lons, data)
 
-        print(f"Probability of {limit} {val} {grb.units} {grb.name} at {grb.forecastTime} hours from {grb.analDate} is {value} at {LAT},{LON}")
+        print(f"Probability of {limit} {val} {grb.units} {grb.name} at {time} hours from {grb.analDate} is {value} at {LAT},{LON}")
 
 
-FILE_NAME = 'href_download/href.t12z.conus.prob.f12.grib2'
+FILE_NAME = 'href.t12z.conus.prob.f42.grib2'
 LAT = 24.02619
 LON = -107.421197
 get_all_readable_data(FILE_NAME, LAT, LON)
 
 
-grbs = pygrib.open('href_download/href.t12z.conus.prob.f12.grib2')
+grbs = pygrib.open(FILE_NAME)
 for grb in grbs:
     print(grb)
 
