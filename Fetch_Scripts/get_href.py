@@ -64,13 +64,13 @@ logger.addHandler(fh)
 manual_mode = False  # ⚡ Set to True for manual download and adjust date/time at bottom of script.
 
 # -----------------------------------------
-# --- Determine HREF Run (00/06/12/18) ----
+# --- Determine Model Run (00/06/12/18) ----
 # -----------------------------------------
 
-def determine_href_run():
+def determine_model_run():
 	now = datetime.now(timezone.utc)
 	
-	if now.hour >= 20:
+	if now.hour >= 19:
 		run_hour = 18
 		
 	elif now.hour >= 12:
@@ -240,7 +240,7 @@ if manual_mode:
 	forecast_hours = list(range(1, 49))  # Example: f00 to f18 or 19, 49 for f19 to f48
 	
 else:
-	pull_date, run_hour_str = determine_href_run()
+	pull_date, run_hour_str = determine_model_run()
 	forecast_hours = list(range(1, 49))
 
 if __name__ == "__main__":

@@ -42,13 +42,13 @@ COMBINE_ONE_FILE = True
 BUCKET = "https://noaa-rrfs-pds.s3.amazonaws.com"
 
 # Output locations
-OUTDIR = pathlib.Path("./refs_download")
-LOGDIR = pathlib.Path("./refs_logs")
+OUTDIR = pathlib.Path("./rrfs_download")
+LOGDIR = pathlib.Path("./rrfs_logs")
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
 
 # Logging
-LOGFILE = LOGDIR / "refs_pull.log"
+LOGFILE = LOGDIR / "rrfs_pull.log"
 LOG_LEVEL = logging.INFO
 MAX_RETRIES = 5
 TIMEOUT = 60

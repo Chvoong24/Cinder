@@ -3,6 +3,7 @@ import time
 import logging
 import pathlib
 import requests
+from datetime import datetime, timezone, timedelta
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -28,8 +29,6 @@ MANUAL_PATTERNS = [
 ]
 
 MAX_THREADS = 10
-
-DATE = "20251015" # YYYYMMDD
 F_START = 0
 F_END = 276
 
@@ -41,13 +40,36 @@ SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 
 PARENT_DIR = SCRIPT_DIR.parent
 
-NBM_DATA_DIR = PARENT_DIR / "nbm_data"
-
-OUTDIR = NBM_DATA_DIR / "nbm_download"
-LOGDIR = NBM_DATA_DIR / "./nbm_logs"
+OUTDIR = PARENT_DIR / "nbm_download"
+LOGDIR = PARENT_DIR / "./nbm_logs"
 
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
+
+# =========================
+# Determine Model Run
+# =========================
+
+def determine_model_run():
+    now = datetime.now(timezone.utc)
+    rollback = now - timedelta(hours=1)
+    
+    if rollback.hour >= 19:
+        run_hour = 18
+
+    elif rollback.hour >= 12:
+        run_hour = 12
+
+    elif rollback.hour >= 6:
+        run_hour = 6
+
+    else:
+        run_hour = 0
+
+    pull_date = rollback.strftime('%Y%m%d')
+    run_hour_str = f"{run_hour:02d}"
+
+    return pull_date, run_hour_str
 
 # =========================
 # Logging
@@ -267,21 +289,22 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 # =========================
 def main():
     try:
+        pull_date, run_hour_str = determine_model_run()
+
         t0 = time.time()
         futures = []
 
         with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-            for cycle in ["00", "06", "12", "18"]:
-                for fxx in range(F_START + 1, F_END + 1):
-                    grib_url, idx_url = pick_grib_url('qmd', DATE, cycle, fxx)
-                    if not grib_url:
-                        logger.info(f"No candidate GRIB URL for {DATE} t{cycle}z f{fxx:03d} (skip)")
-                        continue
+            for fxx in range(F_START + 1, F_END + 1):
+                grib_url, idx_url = pick_grib_url('qmd', pull_date, run_hour_str, fxx)
+                if not grib_url:
+                    logger.info(f"No candidate GRIB URL for {pull_date} t{run_hour_str}z f{fxx:03d} (skip)")
+                    continue
 
-                    # Submit the download task to the thread pool
-                    futures.append(
-                        executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
-                    )
+                # Submit the download task to the thread pool
+                futures.append(
+                    executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
+                )
 
             # Wait for all threads to complete and log results
             for f in futures:
