@@ -9,6 +9,7 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
 
 # Table Of Contents
 - [How To Use](#how-to-fetch-data)
+- [How Do You Know It Works](#how-do-you-know-it-works-unit-tests)
 
 ## How To Fetch Data
 1. Go to the **fetch_all.py** file
@@ -19,3 +20,9 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
 
 ## How To Interrupt Data Fetch
 1. For VSCode: Press ```Ctrl``` + ``` C ``` until terminal stops printing
+
+## How Do You Know It Works? (Unit Tests)
+1. Run ```fetch_all.py```
+0. Go into repository directory
+0. *If* ```<model>_data``` exists and contains ```<model>_download``` and ```<model>_logs```, it passes unit test
+0. *If not*, it has failed
