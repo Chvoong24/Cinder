@@ -26,3 +26,6 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
 0. Go into repository directory
 0. *If* ```<model>_data``` exists and contains ```<model>_download``` and ```<model>_logs```, it passes unit test
 0. *If not*, it has failed
+
+## Documentation
+Documentation for all functions can be found at ```build/html/index.html```. It is still work in progress.
