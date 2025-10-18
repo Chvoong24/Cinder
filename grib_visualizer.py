@@ -71,13 +71,15 @@ def get_one_forecast(folder_name, upper_limit, short_name, start_time, requested
 
 
 # --- Configuration ---
-FOLDER_NAME = "href_data/href_download"
-LAT = 24.02619
-LON = -107.421197
-dt = datetime(year=2025, month=10, day=17, hour=14)
+
 
 # --- Run ---
-get_one_forecast(FOLDER_NAME, 12.7, "tp", dt, 1, LAT, LON)
+if __name__ == "__main__":
+    FOLDER_NAME = "href_data/href_download"
+    LAT = 24.02619
+    LON = -107.421197
+    dt = datetime(year=2025, month=10, day=17, hour=14)
+    get_one_forecast(FOLDER_NAME, 12.7, "tp", dt, 1, LAT, LON)
 
 
 
