@@ -51,25 +51,31 @@ LOGDIR.mkdir(parents=True, exist_ok=True)
 # =========================
 
 def determine_model_run():
+    """Determine most recent NBM cycle based on current UTC time."""
     now = datetime.now(timezone.utc)
-    rollback = now - timedelta(hours=1)
     
-    if rollback.hour >= 19:
-        run_hour = 18
+    hour = now.hour
+    if hour >= 0 and hour < 6:
+        cycle = 0
 
-    elif rollback.hour >= 12:
-        run_hour = 12
+    elif hour >= 6 and hour < 12:
+        cycle = 6
 
-    elif rollback.hour >= 6:
-        run_hour = 6
+    elif hour >= 12 and hour < 18:
+        cycle = 12
 
     else:
-        run_hour = 0
+        cycle = 18
 
-    pull_date = rollback.strftime('%Y%m%d')
-    run_hour_str = f"{run_hour:02d}"
+    ## Modify to include logic for rollback day if needed
 
-    return pull_date, run_hour_str
+    pull_date = now.strftime('%Y%m%d')
+    cycle_str = f"{cycle:02d}"
+
+    return pull_date, cycle_str
+
+def rollback_day():
+    """Fetch data from previous day in case of current day unavailability."""
 
 # =========================
 # Logging
@@ -96,7 +102,7 @@ logger.addHandler(fh)
 # =========================
 # HTTP (retry) helpers
 # =========================
-MAX_RETRIES = 5
+MAX_RETRIES = 2
 TIMEOUT = 60
 BACKOFF = 1.6
 
@@ -242,7 +248,7 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
     # Log which lines matched for transparency
     logger.info("Matched .idx lines:")
     for e in matched:
-        logger.info(f"  msg={e['msg']:>4} off={e['offset']:>10} :: {e['desc']}")
+        logger.info(f"  msg={e['msg']:>} off={e['offset']:>10} :: {e['desc']}")
 
     # Build byte ranges
     downloads = build_ranges(matched, entries, total_size)
