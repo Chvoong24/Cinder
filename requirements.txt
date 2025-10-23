@@ -1,0 +1,5 @@
+pygrib==2.1.5
+pymongo==4.10.1
+requests==2.32.3
+python-dotenv==1.0.1
+

@@ -1,0 +1,552 @@
+2025-10-23 11:34:51,186 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:34:52,862 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:34:55,489 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:34:59,693 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:06,346 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:16,839 | INFO | No candidate GRIB URL for 20251013 t00z f001 (skip)
+2025-10-23 11:35:16,916 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:18,618 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:21,250 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:25,451 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:32,095 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:42,587 | INFO | No candidate GRIB URL for 20251013 t00z f002 (skip)
+2025-10-23 11:35:42,748 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:44,429 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:47,065 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:51,237 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:35:57,880 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:08,373 | INFO | No candidate GRIB URL for 20251013 t00z f003 (skip)
+2025-10-23 11:36:08,456 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:10,128 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:12,781 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:17,002 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:23,643 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:34,134 | INFO | No candidate GRIB URL for 20251013 t00z f004 (skip)
+2025-10-23 11:36:34,223 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:35,911 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:38,576 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:42,764 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:49,415 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:36:59,910 | INFO | No candidate GRIB URL for 20251013 t00z f005 (skip)
+2025-10-23 11:37:00,004 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:01,692 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:04,336 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:08,636 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:15,271 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:25,778 | INFO | No candidate GRIB URL for 20251013 t00z f006 (skip)
+2025-10-23 11:37:25,879 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:27,564 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:30,211 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:34,384 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:41,045 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:51,532 | INFO | No candidate GRIB URL for 20251013 t00z f007 (skip)
+2025-10-23 11:37:51,601 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:53,262 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:37:55,887 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:00,100 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:06,732 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:17,220 | INFO | No candidate GRIB URL for 20251013 t00z f008 (skip)
+2025-10-23 11:38:17,312 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:18,992 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:21,637 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:25,812 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:32,486 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:42,978 | INFO | No candidate GRIB URL for 20251013 t00z f009 (skip)
+2025-10-23 11:38:43,062 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:44,738 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:47,382 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:51,557 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:38:58,212 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:08,704 | INFO | No candidate GRIB URL for 20251013 t00z f010 (skip)
+2025-10-23 11:39:08,784 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:10,462 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:13,107 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:17,302 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:23,934 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:34,426 | INFO | No candidate GRIB URL for 20251013 t00z f011 (skip)
+2025-10-23 11:39:34,497 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:36,169 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:38,802 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:43,004 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:39:49,648 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:00,155 | INFO | No candidate GRIB URL for 20251013 t00z f012 (skip)
+2025-10-23 11:40:00,278 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:01,950 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:04,590 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:08,776 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:15,396 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:25,888 | INFO | No candidate GRIB URL for 20251013 t00z f013 (skip)
+2025-10-23 11:40:25,960 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:27,645 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:30,307 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:34,489 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:41,122 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:51,618 | INFO | No candidate GRIB URL for 20251013 t00z f014 (skip)
+2025-10-23 11:40:51,729 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:40:53,424 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:41:38,764 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:41:42,947 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:41:49,587 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:47:47,322 | INFO | No candidate GRIB URL for 20251013 t00z f015 (skip)
+2025-10-23 11:47:47,463 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:47:49,171 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:47:51,935 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:47:56,154 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:03,010 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:13,502 | INFO | No candidate GRIB URL for 20251013 t00z f016 (skip)
+2025-10-23 11:48:13,577 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:15,247 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:17,900 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:22,090 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:28,719 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:39,211 | INFO | No candidate GRIB URL for 20251013 t00z f017 (skip)
+2025-10-23 11:48:39,289 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:40,952 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:43,584 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:47,782 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:48:54,452 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:04,945 | INFO | No candidate GRIB URL for 20251013 t00z f018 (skip)
+2025-10-23 11:49:05,022 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:06,710 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:09,354 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:13,558 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:20,192 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:30,683 | INFO | No candidate GRIB URL for 20251013 t00z f019 (skip)
+2025-10-23 11:49:30,760 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:32,448 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:35,075 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:39,264 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:45,940 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:56,432 | INFO | No candidate GRIB URL for 20251013 t00z f020 (skip)
+2025-10-23 11:49:56,769 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:49:58,444 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:01,181 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:05,357 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:11,990 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:22,482 | INFO | No candidate GRIB URL for 20251013 t00z f021 (skip)
+2025-10-23 11:50:22,594 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:24,285 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:26,939 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:31,115 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:37,772 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:48,264 | INFO | No candidate GRIB URL for 20251013 t00z f022 (skip)
+2025-10-23 11:50:48,340 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:50,011 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:52,646 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 11:50:56,822 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:03,456 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:13,946 | INFO | No candidate GRIB URL for 20251013 t00z f023 (skip)
+2025-10-23 11:51:14,034 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:15,705 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:18,355 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:22,597 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:29,264 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:39,752 | INFO | No candidate GRIB URL for 20251013 t06z f001 (skip)
+2025-10-23 11:51:39,824 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:41,498 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:44,130 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:48,302 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:51:54,946 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:05,438 | INFO | No candidate GRIB URL for 20251013 t06z f002 (skip)
+2025-10-23 11:52:05,545 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:07,245 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:09,911 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:14,092 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:20,738 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:31,230 | INFO | No candidate GRIB URL for 20251013 t06z f003 (skip)
+2025-10-23 11:52:31,302 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:32,981 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:35,622 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:39,797 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:46,442 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:56,935 | INFO | No candidate GRIB URL for 20251013 t06z f004 (skip)
+2025-10-23 11:52:57,016 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:52:58,691 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:01,359 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:05,533 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:12,188 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:22,677 | INFO | No candidate GRIB URL for 20251013 t06z f005 (skip)
+2025-10-23 11:53:22,756 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:24,431 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:27,131 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:31,309 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:37,949 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:48,438 | INFO | No candidate GRIB URL for 20251013 t06z f006 (skip)
+2025-10-23 11:53:48,505 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:50,200 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:52,858 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:53:57,058 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:03,688 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:14,176 | INFO | No candidate GRIB URL for 20251013 t06z f007 (skip)
+2025-10-23 11:54:14,312 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:15,994 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:18,646 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:22,841 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:29,509 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:40,009 | INFO | No candidate GRIB URL for 20251013 t06z f008 (skip)
+2025-10-23 11:54:40,086 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:41,762 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:44,459 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:48,641 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:54:55,273 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:05,773 | INFO | No candidate GRIB URL for 20251013 t06z f009 (skip)
+2025-10-23 11:55:05,861 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:07,567 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:10,207 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:14,421 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:21,073 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:31,566 | INFO | No candidate GRIB URL for 20251013 t06z f010 (skip)
+2025-10-23 11:55:31,632 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:33,311 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:35,962 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:40,131 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:46,762 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:57,255 | INFO | No candidate GRIB URL for 20251013 t06z f011 (skip)
+2025-10-23 11:55:57,642 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:55:59,424 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:02,059 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:06,257 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:12,908 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:23,400 | INFO | No candidate GRIB URL for 20251013 t06z f012 (skip)
+2025-10-23 11:56:23,477 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:25,150 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:27,782 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:31,959 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:38,584 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:49,076 | INFO | No candidate GRIB URL for 20251013 t06z f013 (skip)
+2025-10-23 11:56:49,187 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:50,869 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:53,504 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:56:57,679 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:04,342 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:14,834 | INFO | No candidate GRIB URL for 20251013 t06z f014 (skip)
+2025-10-23 11:57:14,915 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:16,593 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:19,219 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:23,400 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:30,043 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:40,537 | INFO | No candidate GRIB URL for 20251013 t06z f015 (skip)
+2025-10-23 11:57:40,624 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:42,305 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:44,949 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:49,132 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:57:55,819 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:06,313 | INFO | No candidate GRIB URL for 20251013 t06z f016 (skip)
+2025-10-23 11:58:06,397 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:08,077 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:10,712 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:14,884 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:21,553 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:32,049 | INFO | No candidate GRIB URL for 20251013 t06z f017 (skip)
+2025-10-23 11:58:32,121 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:33,800 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:36,445 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:40,628 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:47,288 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:57,780 | INFO | No candidate GRIB URL for 20251013 t06z f018 (skip)
+2025-10-23 11:58:57,850 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:58:59,530 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:02,166 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:06,336 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:12,960 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:23,452 | INFO | No candidate GRIB URL for 20251013 t06z f019 (skip)
+2025-10-23 11:59:23,541 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:25,232 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:27,880 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:32,055 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:38,716 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:49,208 | INFO | No candidate GRIB URL for 20251013 t06z f020 (skip)
+2025-10-23 11:59:49,281 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:50,990 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:53,638 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 11:59:57,834 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:04,465 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:14,958 | INFO | No candidate GRIB URL for 20251013 t06z f021 (skip)
+2025-10-23 12:00:15,041 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:16,738 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:19,377 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:23,562 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:30,210 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:40,707 | INFO | No candidate GRIB URL for 20251013 t06z f022 (skip)
+2025-10-23 12:00:40,782 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:42,466 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:45,170 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:49,354 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:00:56,143 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/06/qmd/blend.t06z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:06,637 | INFO | No candidate GRIB URL for 20251013 t06z f023 (skip)
+2025-10-23 12:01:06,732 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:08,428 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:11,049 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:15,268 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:21,937 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:32,427 | INFO | No candidate GRIB URL for 20251013 t12z f001 (skip)
+2025-10-23 12:01:32,500 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:34,186 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:36,827 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:41,011 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:47,645 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:58,134 | INFO | No candidate GRIB URL for 20251013 t12z f002 (skip)
+2025-10-23 12:01:58,225 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:01:59,890 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:02,537 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:06,702 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:13,330 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:23,819 | INFO | No candidate GRIB URL for 20251013 t12z f003 (skip)
+2025-10-23 12:02:23,908 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:25,597 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:28,227 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:32,399 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:39,043 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:49,533 | INFO | No candidate GRIB URL for 20251013 t12z f004 (skip)
+2025-10-23 12:02:49,604 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:51,281 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:53,916 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:02:59,468 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:06,093 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:16,580 | INFO | No candidate GRIB URL for 20251013 t12z f005 (skip)
+2025-10-23 12:03:16,667 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:18,329 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:20,968 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:25,166 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:31,798 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:42,286 | INFO | No candidate GRIB URL for 20251013 t12z f006 (skip)
+2025-10-23 12:03:42,380 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:44,059 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:46,700 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:50,877 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:03:57,512 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:08,018 | INFO | No candidate GRIB URL for 20251013 t12z f007 (skip)
+2025-10-23 12:04:08,139 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:09,810 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:12,456 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:16,645 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:23,299 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:33,791 | INFO | No candidate GRIB URL for 20251013 t12z f008 (skip)
+2025-10-23 12:04:33,868 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:35,548 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:38,191 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:42,371 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:49,008 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:04:59,502 | INFO | No candidate GRIB URL for 20251013 t12z f009 (skip)
+2025-10-23 12:04:59,592 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:01,260 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:03,898 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:08,083 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:14,762 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:25,255 | INFO | No candidate GRIB URL for 20251013 t12z f010 (skip)
+2025-10-23 12:05:25,332 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:27,024 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:29,666 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:33,855 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:40,495 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:50,983 | INFO | No candidate GRIB URL for 20251013 t12z f011 (skip)
+2025-10-23 12:05:51,077 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:52,759 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:55,399 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:05:59,561 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:06,289 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:16,780 | INFO | No candidate GRIB URL for 20251013 t12z f012 (skip)
+2025-10-23 12:06:16,852 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:18,590 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:21,226 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:25,400 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:32,027 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:42,515 | INFO | No candidate GRIB URL for 20251013 t12z f013 (skip)
+2025-10-23 12:06:42,594 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:44,270 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:46,905 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:51,084 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:06:57,757 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:08,244 | INFO | No candidate GRIB URL for 20251013 t12z f014 (skip)
+2025-10-23 12:07:08,315 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:09,987 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:12,619 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:16,793 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:23,430 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:33,926 | INFO | No candidate GRIB URL for 20251013 t12z f015 (skip)
+2025-10-23 12:07:34,051 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:35,735 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:38,372 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:42,538 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:49,222 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:07:59,711 | INFO | No candidate GRIB URL for 20251013 t12z f016 (skip)
+2025-10-23 12:07:59,798 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:01,486 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:04,133 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:08,306 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:14,995 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:25,484 | INFO | No candidate GRIB URL for 20251013 t12z f017 (skip)
+2025-10-23 12:08:25,559 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:27,256 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:29,893 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:34,067 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:40,701 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:51,190 | INFO | No candidate GRIB URL for 20251013 t12z f018 (skip)
+2025-10-23 12:08:51,306 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:52,998 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:55,635 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:08:59,849 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:06,506 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:16,997 | INFO | No candidate GRIB URL for 20251013 t12z f019 (skip)
+2025-10-23 12:09:17,069 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:18,742 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:21,383 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:25,552 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:32,188 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:42,677 | INFO | No candidate GRIB URL for 20251013 t12z f020 (skip)
+2025-10-23 12:09:42,770 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:44,455 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:47,098 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:51,270 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:09:57,910 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:08,402 | INFO | No candidate GRIB URL for 20251013 t12z f021 (skip)
+2025-10-23 12:10:08,555 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:10,228 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:12,864 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:17,074 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:23,708 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:34,195 | INFO | No candidate GRIB URL for 20251013 t12z f022 (skip)
+2025-10-23 12:10:34,277 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:35,957 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:38,608 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:42,789 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:49,449 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/12/qmd/blend.t12z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:10:59,941 | INFO | No candidate GRIB URL for 20251013 t12z f023 (skip)
+2025-10-23 12:11:00,073 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:01,754 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:04,394 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:08,570 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:15,200 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:25,688 | INFO | No candidate GRIB URL for 20251013 t18z f001 (skip)
+2025-10-23 12:11:25,775 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:27,495 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:30,253 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:34,430 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:41,059 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f002.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:51,548 | INFO | No candidate GRIB URL for 20251013 t18z f002 (skip)
+2025-10-23 12:11:51,622 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:53,299 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:11:55,942 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:00,117 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:06,779 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f003.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:17,271 | INFO | No candidate GRIB URL for 20251013 t18z f003 (skip)
+2025-10-23 12:12:17,333 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:19,012 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:21,659 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:25,841 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:32,526 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f004.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:43,019 | INFO | No candidate GRIB URL for 20251013 t18z f004 (skip)
+2025-10-23 12:12:43,116 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:44,801 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:47,439 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:51,622 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:12:58,284 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f005.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:08,775 | INFO | No candidate GRIB URL for 20251013 t18z f005 (skip)
+2025-10-23 12:13:08,853 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:10,534 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:13,165 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:17,333 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:23,963 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f006.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:34,455 | INFO | No candidate GRIB URL for 20251013 t18z f006 (skip)
+2025-10-23 12:13:34,549 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:36,221 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:38,867 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:43,057 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:13:49,746 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f007.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:00,244 | INFO | No candidate GRIB URL for 20251013 t18z f007 (skip)
+2025-10-23 12:14:00,317 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:02,023 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:04,685 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:08,867 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:15,554 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f008.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:26,042 | INFO | No candidate GRIB URL for 20251013 t18z f008 (skip)
+2025-10-23 12:14:26,120 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:27,804 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:30,455 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:34,640 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:41,287 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f009.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:51,779 | INFO | No candidate GRIB URL for 20251013 t18z f009 (skip)
+2025-10-23 12:14:51,857 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:53,535 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:14:56,164 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:00,331 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:06,968 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f010.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:17,457 | INFO | No candidate GRIB URL for 20251013 t18z f010 (skip)
+2025-10-23 12:15:17,528 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:19,197 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:21,836 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:26,002 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:32,728 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f011.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:43,222 | INFO | No candidate GRIB URL for 20251013 t18z f011 (skip)
+2025-10-23 12:15:43,301 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:44,996 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:47,632 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:51,914 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:15:58,544 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f012.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:09,035 | INFO | No candidate GRIB URL for 20251013 t18z f012 (skip)
+2025-10-23 12:16:09,117 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:10,793 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:13,438 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:17,608 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:24,349 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f013.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:34,838 | INFO | No candidate GRIB URL for 20251013 t18z f013 (skip)
+2025-10-23 12:16:34,918 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:36,615 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:39,258 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:43,439 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:16:50,081 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f014.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:00,573 | INFO | No candidate GRIB URL for 20251013 t18z f014 (skip)
+2025-10-23 12:17:00,672 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:02,356 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:05,008 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:09,193 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:15,819 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f015.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:26,312 | INFO | No candidate GRIB URL for 20251013 t18z f015 (skip)
+2025-10-23 12:17:26,390 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:28,072 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:30,699 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:34,877 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:41,544 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f016.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:52,032 | INFO | No candidate GRIB URL for 20251013 t18z f016 (skip)
+2025-10-23 12:17:52,108 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:53,798 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:17:56,442 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:00,624 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:07,256 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f017.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:17,750 | INFO | No candidate GRIB URL for 20251013 t18z f017 (skip)
+2025-10-23 12:18:17,825 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:19,514 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:22,143 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:26,611 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:33,258 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f018.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:43,750 | INFO | No candidate GRIB URL for 20251013 t18z f018 (skip)
+2025-10-23 12:18:43,828 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:45,507 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:48,150 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:52,311 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:18:58,975 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f019.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:09,468 | INFO | No candidate GRIB URL for 20251013 t18z f019 (skip)
+2025-10-23 12:19:09,545 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:11,241 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:13,876 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:18,053 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:24,691 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f020.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:35,184 | INFO | No candidate GRIB URL for 20251013 t18z f020 (skip)
+2025-10-23 12:19:35,269 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:36,941 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:39,574 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:43,750 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:19:50,384 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f021.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:00,872 | INFO | No candidate GRIB URL for 20251013 t18z f021 (skip)
+2025-10-23 12:20:00,949 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:02,639 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:05,292 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:09,458 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:16,083 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f022.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:26,571 | INFO | No candidate GRIB URL for 20251013 t18z f022 (skip)
+2025-10-23 12:20:26,643 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:28,303 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:30,955 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:35,128 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:41,754 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
+2025-10-23 12:20:52,248 | INFO | No candidate GRIB URL for 20251013 t18z f023 (skip)
