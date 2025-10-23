@@ -53,7 +53,7 @@ LOGDIR.mkdir(parents=True, exist_ok=True)
 def determine_model_run():
     """Determine most recent NBM cycle based on current UTC time."""
     now = datetime.now(timezone.utc)
-    
+
     hour = now.hour
     if hour >= 0 and hour < 6:
         cycle = 0
@@ -68,7 +68,6 @@ def determine_model_run():
         cycle = 18
 
     ## Modify to include logic for rollback day if needed
-
     pull_date = now.strftime('%Y%m%d')
     cycle_str = f"{cycle:02d}"
 
@@ -76,7 +75,29 @@ def determine_model_run():
 
 def rollback_day():
     """Fetch data from previous day in case of current day unavailability."""
+    dt = datetime.now(timezone.utc)
+    curr_day = dt.day()
 
+    prev_day = curr_day - timedelta(days=1)
+    pull_date = prev_day.strftime('%Y%m%d')
+
+    return pull_date
+
+def rollback_cycle(cycle_str):
+    """Adjust cycle to previous cycle in case of unavailability."""
+    cycle = int(cycle_str)
+    if cycle == 0:
+        # Rollback to previous day 18z
+        rollback_day()
+    elif cycle == 6:
+        rollback_cycle = 0
+    elif cycle == 12:
+        rollback_cycle = 6
+    elif cycle == 18:
+        rollback_cycle = 12
+    else:
+        rollback_cycle = 18
+    return rollback_cycle
 # =========================
 # Logging
 # =========================
@@ -295,16 +316,19 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 # =========================
 def main():
     try:
-        pull_date, run_hour_str = determine_model_run()
+        pull_date, cycle_str = determine_model_run()
 
         t0 = time.time()
         futures = []
 
         with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
             for fxx in range(F_START + 1, F_END + 1):
-                grib_url, idx_url = pick_grib_url('qmd', pull_date, run_hour_str, fxx)
+                grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
                 if not grib_url:
-                    logger.info(f"No candidate GRIB URL for {pull_date} t{run_hour_str}z f{fxx:03d} (skip)")
+                    logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rollingback Cycle)")
+
+                    rollback_cycle(cycle_str)
+
                     continue
 
                 # Submit the download task to the thread pool
@@ -329,3 +353,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
