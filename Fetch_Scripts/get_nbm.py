@@ -67,7 +67,8 @@ def determine_model_run():
     else:
         cycle = 18
 
-    ## Modify to include logic for rollback day if needed
+    ## Modify to include logic for rollback day if needed: NOT DONE YET!!!
+
     pull_date = now.strftime('%Y%m%d')
     cycle_str = f"{cycle:02d}"
 
@@ -90,13 +91,13 @@ def rollback_cycle(cycle_str):
         # Rollback to previous day 18z
         rollback_day()
     elif cycle == 6:
-        rollback_cycle = 0
+        rollback_cycle = '00'
     elif cycle == 12:
-        rollback_cycle = 6
+        rollback_cycle = '06'
     elif cycle == 18:
-        rollback_cycle = 12
+        rollback_cycle = '12'
     else:
-        rollback_cycle = 18
+        rollback_cycle = '18'
     return rollback_cycle
 # =========================
 # Logging
@@ -325,10 +326,10 @@ def main():
             for fxx in range(F_START + 1, F_END + 1):
                 grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
                 if not grib_url:
-                    logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rollingback Cycle)")
+                    logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)")
 
-                    rollback_cycle(cycle_str)
-
+                    cycle_str = rollback_cycle(cycle_str)
+                    fxx = 0
                     continue
 
                 # Submit the download task to the thread pool
