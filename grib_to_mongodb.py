@@ -5,7 +5,8 @@ This script reads downloaded GRIB2 files, parses weather data, and inserts into 
 
 import os
 import sys
-import pygrib
+import xarray as xr
+import numpy as np
 import logging
 from pathlib import Path
 from datetime import datetime, timezone
@@ -68,7 +69,7 @@ def kelvin_to_celsius(kelvin):
         return None
     return round(kelvin - 273.15, 2)
 
-def extract_location_from_filename(filename):
+def get_target_locations():
     locations = [
         {"type": "Point", "coordinates": [-72.6506, 41.5623], "name": "Hartford"},
         {"type": "Point", "coordinates": [-72.6508, 41.5623], "name": "Middletown"},
@@ -77,19 +78,14 @@ def extract_location_from_filename(filename):
     ]
     return locations
 
-def get_value_at_location(grb, lat, lon):
+def get_value_at_location(ds, var_name, lat, lon):
     try:
-        lats, lons = grb.latlons()
-        import numpy as np
-        # find nearest grid point to our location
-        lat_diff = np.abs(lats - lat)
-        lon_diff = np.abs(lons - lon)
-        distance = np.sqrt(lat_diff**2 + lon_diff**2)
-        min_idx = np.unravel_index(distance.argmin(), distance.shape)
-        value = grb.values[min_idx]
-        return float(value) if not np.isnan(value) else None
+        # use xarray's built-in nearest neighbor selection
+        point = ds[var_name].sel(latitude=lat, longitude=lon, method='nearest')
+        value = float(point.values)
+        return value if not np.isnan(value) else None
     except Exception as e:
-        logger.warning(f"Error extracting location-specific value: {e}")
+        logger.warning(f"Error extracting location-specific value for {var_name}: {e}")
         return None
 
 def parse_grib_file(grib_path, model_source="NBM"):
@@ -97,7 +93,7 @@ def parse_grib_file(grib_path, model_source="NBM"):
     
     try:
         logger.info(f"Parsing GRIB file: {grib_path}")
-        grbs = pygrib.open(str(grib_path))
+        ds = xr.open_dataset(str(grib_path), engine='cfgrib')
         
         filename = grib_path.name
         forecast_hour = 0
@@ -107,7 +103,7 @@ def parse_grib_file(grib_path, model_source="NBM"):
         if fh_match:
             forecast_hour = int(fh_match.group(1))
         
-        locations = extract_location_from_filename(filename)
+        locations = get_target_locations()
         # set up data storage for each city
         location_data = {}
         for loc in locations:
@@ -120,43 +116,46 @@ def parse_grib_file(grib_path, model_source="NBM"):
                 'pressure': {}
             }
         
-        # iterate through GRIB messages and extract data for each location
-        for grb in grbs:
-            param_name = grb.name
-            for loc_name, data in location_data.items():
-                lat = data['location']['coordinates'][1]
-                lon = data['location']['coordinates'][0]
-                
-                if "2 metre temperature" in param_name or "2-metre temperature" in param_name:
-                    temp_k = get_value_at_location(grb, lat, lon)
-                    if temp_k:
-                        data['temp']['current'] = kelvin_to_celsius(temp_k)
-                    
-                elif "Total Precipitation" in param_name or "precipitation" in param_name.lower():
-                    precip_val = get_value_at_location(grb, lat, lon)
-                    if precip_val is not None:
-                        data['precip']['amount'] = precip_val
-                        data['precip']['type'] = "rain"
-                    
-                elif "10 metre U wind component" in param_name or "u-component of wind" in param_name.lower():
-                    u_val = get_value_at_location(grb, lat, lon)
-                    if u_val is not None:
-                        data['wind']['u'] = u_val
-                    
-                elif "10 metre V wind component" in param_name or "v-component of wind" in param_name.lower():
-                    v_val = get_value_at_location(grb, lat, lon)
-                    if v_val is not None:
-                        data['wind']['v'] = v_val
-                    
-                elif "Relative humidity" in param_name or "relative humidity" in param_name.lower():
-                    humid_val = get_value_at_location(grb, lat, lon)
-                    if humid_val is not None:
-                        data['humidity']['value'] = humid_val
-                    
-                elif "Pressure" in param_name or "Mean sea level pressure" in param_name:
-                    press_val = get_value_at_location(grb, lat, lon)
-                    if press_val is not None:
-                        data['pressure']['value'] = press_val / 100  # Pa to hPa
+        # extract data for each location using xarray's built-in methods
+        for loc_name, data in location_data.items():
+            lat = data['location']['coordinates'][1]
+            lon = data['location']['coordinates'][0]
+            
+            # temperature
+            if 't2m' in ds:
+                temp_k = get_value_at_location(ds, 't2m', lat, lon)
+                if temp_k:
+                    data['temp']['current'] = kelvin_to_celsius(temp_k)
+            
+            # precipitation
+            if 'tp' in ds:
+                precip_val = get_value_at_location(ds, 'tp', lat, lon)
+                if precip_val is not None:
+                    data['precip']['amount'] = precip_val
+                    data['precip']['type'] = "rain"
+            
+            # wind components
+            if 'u10' in ds:
+                u_val = get_value_at_location(ds, 'u10', lat, lon)
+                if u_val is not None:
+                    data['wind']['u'] = u_val
+            
+            if 'v10' in ds:
+                v_val = get_value_at_location(ds, 'v10', lat, lon)
+                if v_val is not None:
+                    data['wind']['v'] = v_val
+            
+            # humidity
+            if 'r2' in ds:
+                humid_val = get_value_at_location(ds, 'r2', lat, lon)
+                if humid_val is not None:
+                    data['humidity']['value'] = humid_val
+            
+            # pressure
+            if 'msl' in ds:
+                press_val = get_value_at_location(ds, 'msl', lat, lon)
+                if press_val is not None:
+                    data['pressure']['value'] = press_val / 100  # Pa to hPa
         
         # calculate wind speed/direction from u and v components
         for loc_name, data in location_data.items():
@@ -167,7 +166,7 @@ def parse_grib_file(grib_path, model_source="NBM"):
                 data['wind']['speed'] = round(wind_speed, 2)
                 data['wind']['direction'] = round(wind_direction, 2)
         
-        grbs.close()
+        ds.close()
         timestamp = datetime.now(timezone.utc)
         # build final weather documents
         for loc_name, data in location_data.items():

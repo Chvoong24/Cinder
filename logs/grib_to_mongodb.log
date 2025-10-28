@@ -810,3 +810,425 @@
 2025-10-23 16:10:31,525 | INFO | ============================================================
 2025-10-23 16:10:31,525 | INFO | ✅ Sync complete! Total records inserted: 184
 2025-10-23 16:10:31,525 | INFO | ============================================================
+2025-10-28 11:51:40,671 | INFO | ============================================================
+2025-10-28 11:51:40,672 | INFO | Starting GRIB to MongoDB sync
+2025-10-28 11:51:40,672 | INFO | ============================================================
+2025-10-28 11:51:41,379 | INFO | Connected to MongoDB: cinder_weather
+2025-10-28 11:51:41,379 | INFO | 
+📊 Processing NBM data...
+2025-10-28 11:51:41,380 | INFO | No GRIB files found in /Users/duyhuynh/Desktop/project/Cinder/nbm_data/nbm_download
+2025-10-28 11:51:41,380 | INFO | 
+📊 Processing HREF data...
+2025-10-28 11:51:41,382 | INFO | Found 46 GRIB files in /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download
+2025-10-28 11:51:41,382 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f04.grib2
+2025-10-28 11:51:43,393 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f04.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,394 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f41.grib2
+2025-10-28 11:51:43,533 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f41.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,533 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f39.grib2
+2025-10-28 11:51:43,590 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f39.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,591 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f20.grib2
+2025-10-28 11:51:43,611 | ERROR | skipping corrupted Message
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 273, in itervalues
+    yield self.filestream.message_from_file(file, errors=errors)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 340, in message_from_file
+    return Message.from_file(file, offset, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 96, in from_file
+    codes_id = eccodes.codes_grib_new_from_file(file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 415, in grib_new_from_file
+    GRIB_CHECK(err)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 232, in GRIB_CHECK
+    errors.raise_grib_error(errid)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/errors.py", line 386, in raise_grib_error
+    raise ERROR_MAP[errid](errid)
+gribapi.errors.PrematureEndOfFileError: End of resource reached when reading message
+2025-10-28 11:51:43,618 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f20.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+2025-10-28 11:51:43,619 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f06.grib2
+2025-10-28 11:51:43,667 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f06.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,667 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f43.grib2
+2025-10-28 11:51:43,711 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f43.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,711 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f02.grib2
+2025-10-28 11:51:43,762 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f02.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,763 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f47.grib2
+2025-10-28 11:51:43,843 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f47.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,843 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f26.grib2
+2025-10-28 11:51:43,888 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f26.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:43,888 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f19.grib2
+2025-10-28 11:51:43,918 | ERROR | skipping corrupted Message
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 273, in itervalues
+    yield self.filestream.message_from_file(file, errors=errors)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 340, in message_from_file
+    return Message.from_file(file, offset, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 96, in from_file
+    codes_id = eccodes.codes_grib_new_from_file(file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 415, in grib_new_from_file
+    GRIB_CHECK(err)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 232, in GRIB_CHECK
+    errors.raise_grib_error(errid)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/errors.py", line 386, in raise_grib_error
+    raise ERROR_MAP[errid](errid)
+gribapi.errors.PrematureEndOfFileError: End of resource reached when reading message
+2025-10-28 11:51:43,927 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f19.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+2025-10-28 11:51:43,928 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f24.grib2
+2025-10-28 11:51:44,010 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f24.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,011 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f45.grib2
+2025-10-28 11:51:44,065 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f45.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,065 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f23.grib2
+2025-10-28 11:51:44,108 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f23.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,108 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f42.grib2
+2025-10-28 11:51:44,159 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f42.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,159 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f07.grib2
+2025-10-28 11:51:44,195 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f07.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,195 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f38.grib2
+2025-10-28 11:51:44,230 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f38.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,230 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f40.grib2
+2025-10-28 11:51:44,266 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f40.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,266 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f05.grib2
+2025-10-28 11:51:44,300 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f05.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,300 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f25.grib2
+2025-10-28 11:51:44,335 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f25.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,335 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f18.grib2
+2025-10-28 11:51:44,357 | ERROR | skipping corrupted Message
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 273, in itervalues
+    yield self.filestream.message_from_file(file, errors=errors)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 340, in message_from_file
+    return Message.from_file(file, offset, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 96, in from_file
+    codes_id = eccodes.codes_grib_new_from_file(file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 415, in grib_new_from_file
+    GRIB_CHECK(err)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 232, in GRIB_CHECK
+    errors.raise_grib_error(errid)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/errors.py", line 386, in raise_grib_error
+    raise ERROR_MAP[errid](errid)
+gribapi.errors.PrematureEndOfFileError: End of resource reached when reading message
+2025-10-28 11:51:44,404 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f18.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+2025-10-28 11:51:44,404 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f44.grib2
+2025-10-28 11:51:44,440 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f44.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,440 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f01.grib2
+2025-10-28 11:51:44,476 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f01.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,476 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f46.grib2
+2025-10-28 11:51:44,511 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f46.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,511 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f03.grib2
+2025-10-28 11:51:44,549 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f03.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,549 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f27.grib2
+2025-10-28 11:51:44,598 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f27.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,598 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f16.grib2
+2025-10-28 11:51:44,627 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f16.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,627 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f32.grib2
+2025-10-28 11:51:44,663 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f32.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,663 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f48.grib2
+2025-10-28 11:51:44,717 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f48.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,717 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f30.grib2
+2025-10-28 11:51:44,765 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f30.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,765 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f14.grib2
+2025-10-28 11:51:44,800 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f14.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,800 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f29.grib2
+2025-10-28 11:51:44,834 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f29.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,834 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f10.grib2
+2025-10-28 11:51:44,877 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f10.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,877 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f09.grib2
+2025-10-28 11:51:44,924 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f09.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,924 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f34.grib2
+2025-10-28 11:51:44,961 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f34.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:44,961 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f36.grib2
+2025-10-28 11:51:45,010 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f36.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:45,011 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f12.grib2
+2025-10-28 11:51:45,044 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f12.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+2025-10-28 11:51:45,044 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f31.grib2
+2025-10-28 11:51:45,079 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f31.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:45,079 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f28.grib2
+2025-10-28 11:51:45,117 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f28.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:45,117 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f15.grib2
+2025-10-28 11:51:45,121 | ERROR | skipping corrupted Message
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 273, in itervalues
+    yield self.filestream.message_from_file(file, errors=errors)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 340, in message_from_file
+    return Message.from_file(file, offset, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 96, in from_file
+    codes_id = eccodes.codes_grib_new_from_file(file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 415, in grib_new_from_file
+    GRIB_CHECK(err)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 232, in GRIB_CHECK
+    errors.raise_grib_error(errid)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/errors.py", line 386, in raise_grib_error
+    raise ERROR_MAP[errid](errid)
+gribapi.errors.PrematureEndOfFileError: End of resource reached when reading message
+2025-10-28 11:51:46,073 | INFO | Successfully parsed href.t12z.conus.prob.f15.grib2: 4 records for 4 locations
+2025-10-28 11:51:46,116 | INFO | ✅ Inserted record: 6900e692d2e8bdd0ec155b5a
+2025-10-28 11:51:46,136 | INFO | ✅ Inserted record: 6900e692d2e8bdd0ec155b5b
+2025-10-28 11:51:46,163 | INFO | ✅ Inserted record: 6900e692d2e8bdd0ec155b5c
+2025-10-28 11:51:46,184 | INFO | ✅ Inserted record: 6900e692d2e8bdd0ec155b5d
+2025-10-28 11:51:46,184 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f17.grib2
+2025-10-28 11:51:46,218 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f17.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+2025-10-28 11:51:46,218 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f33.grib2
+2025-10-28 11:51:46,267 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f33.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:46,267 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f37.grib2
+2025-10-28 11:51:46,303 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f37.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:46,303 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f13.grib2
+2025-10-28 11:51:46,333 | ERROR | skipping corrupted Message
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 273, in itervalues
+    yield self.filestream.message_from_file(file, errors=errors)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 340, in message_from_file
+    return Message.from_file(file, offset, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/cfgrib/messages.py", line 96, in from_file
+    codes_id = eccodes.codes_grib_new_from_file(file)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 415, in grib_new_from_file
+    GRIB_CHECK(err)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/gribapi.py", line 232, in GRIB_CHECK
+    errors.raise_grib_error(errid)
+  File "/opt/anaconda3/lib/python3.12/site-packages/gribapi/errors.py", line 386, in raise_grib_error
+    raise ERROR_MAP[errid](errid)
+gribapi.errors.PrematureEndOfFileError: End of resource reached when reading message
+2025-10-28 11:51:46,337 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f13.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:46,337 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f11.grib2
+2025-10-28 11:51:46,374 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f11.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:46,374 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f35.grib2
+2025-10-28 11:51:46,412 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f35.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:46,412 | INFO | Parsing GRIB file: /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f08.grib2
+2025-10-28 11:51:46,448 | ERROR | Error parsing GRIB file /Users/duyhuynh/Desktop/project/Cinder/href_data/href_download/href.t12z.conus.prob.f08.grib2: multiple values for unique key, try re-open the file with one of:
+    filter_by_keys={'typeOfLevel': 'surface'}
+    filter_by_keys={'typeOfLevel': 'atmosphereSingleLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'pressureFromGroundLayer'}
+    filter_by_keys={'typeOfLevel': 'heightAboveGround'}
+2025-10-28 11:51:46,448 | INFO | 
+📊 Processing REFS data...
+2025-10-28 11:51:46,448 | WARNING | Directory does not exist: /Users/duyhuynh/Desktop/project/Cinder/refs_data/refs_download
+2025-10-28 11:51:46,448 | INFO | ============================================================
+2025-10-28 11:51:46,448 | INFO | ✅ Sync complete! Total records inserted: 4
+2025-10-28 11:51:46,448 | INFO | ============================================================
