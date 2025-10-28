@@ -216,7 +216,7 @@ def view_grib():
 	Function grabs the first of the downloaded forecast hours and prints
 	the header values contained within.
 	'''
-	folder = Path(__file__).parent / "href_download"
+	folder = Path(__file__).resolve().parent.parent / "href_data/href_download"
 
 	if not folder.exists():
 		raise FileNotFoundError(f"Folder not found: {folder}")
@@ -235,8 +235,8 @@ def view_grib():
 # -------------------------
 
 if manual_mode:
-	pull_date = '20250624'  # YYYYMMDD format
-	run_hour_str = '06'     # '00', '06', '12', '18', etc.
+	pull_date = '20251023'  # YYYYMMDD format
+	run_hour_str = '00'     # '00', '06', '12', '18', etc.
 	forecast_hours = list(range(1, 49))  # Example: f00 to f18 or 19, 49 for f19 to f48
 	
 else:
