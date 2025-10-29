@@ -1,35 +1,63 @@
+# %%
 import xarray as xr
-import matplotlib.pyplot as plt 
-import os
-import pathlib
-from pathlib import Path
-import cartopy.crs as ccrs
 import numpy as np
-import pandas as pd
+import pprint
+
+# Path to GRIB file
+grib_path = "nbm_data/nbm_download/blend.t18z.qmd.f051.co.grib2"
+
+# Load the dataset
+
+# Example: open only data at 2 meters above ground
+ds = xr.open_dataset(
+    grib_path,
+    engine="cfgrib",
+    backend_kwargs={"filter_by_keys": {"typeOfLevel": "heightAboveGround", "level": 2}}
+)
 
 
-# lat = ds.air.lat.data
-# lon = ds.air.lon.data
-# temp = ds.air.data
-ds = xr.load_dataset("nbm_data/nbm_download/nbm_t00z_f001_custom.grib2.part", engine="cfgrib")
-# ds.sel(lat = 52, long = 251.8998, method = "nearest").plot()
+lat = ds['latitude']
+lon = ds['longitude']
 
-# if __name__ == "__main__":
-#     # main()
-# plt.pcolormesh(lon, lat, temp[0, :, :]);
+# Target location (example: Denver)
+target_lat = 39.7392
+target_lon = -104.9903
 
-# print(ds.coords["longitude"])\
-# lat = ds.latitude.data
-# lon = ds.longitude.data
-ds
-# ds.sel(time="2025-10-28")
+# Compute distance on the sphere (approximation)
+dist = np.sqrt((lat - target_lat)**2 + (lon - target_lon)**2)
 
+# Find the indices of the nearest grid point
+iy, ix = np.unravel_index(np.argmin(dist.values), dist.shape)
+nearest_lat = lat.values[iy, ix]
+nearest_lon = lon.values[iy, ix]
 
+print(f"\nNearest grid point found at:")
+print(f"  Latitude:  {nearest_lat}")
+print(f"  Longitude: {nearest_lon}")
+print(f"  Indices:   (y={iy}, x={ix})")
 
-# # temp = ds.data_vars["aptmp"].data
+# Print global dataset info
+print("\n--- DATASET SUMMARY ---")
+print(ds)
 
-# ds.attrs
-# ds.data_vars
-# ds.coords
-# plt.figure()
-# plt.pcolormesh(lon, lat, temp[:, :]);
+print("\n--- GLOBAL ATTRIBUTES ---")
+pprint.pprint(ds.attrs)
+
+# Print coordinate metadata
+print("\n--- COORDINATES ---")
+for coord in ds.coords:
+    print(f"\nCoordinate: {coord}")
+    pprint.pprint(ds[coord].attrs)
+
+# Print variable-level metadata and value at the nearest point
+print("\n--- VARIABLES AND METADATA ---")
+for var in ds.data_vars:
+    print(f"\nVariable: {var}")
+    pprint.pprint(ds[var].attrs)
+    print("Value at nearest grid point:")
+    val = ds[var].isel(y=iy, x=ix).values
+    print(val)
+
+print("\n--- SELECTED POINT DATA (summary) ---")
+point_data = {var: ds[var].isel(y=iy, x=ix).values for var in ds.data_vars}
+pprint.pprint(point_data)
