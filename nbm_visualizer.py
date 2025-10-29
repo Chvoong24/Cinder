@@ -1,14 +1,11 @@
-# %%
 import xarray as xr
 import numpy as np
 import pprint
 
-# Path to GRIB file
 grib_path = "nbm_data/nbm_download/blend.t18z.qmd.f051.co.grib2"
 
-# Load the dataset
 
-# Example: open only data at 2 meters above ground
+# open only data at 2 meters above ground, can adjust field make a variable
 ds = xr.open_dataset(
     grib_path,
     engine="cfgrib",
@@ -19,7 +16,7 @@ ds = xr.open_dataset(
 lat = ds['latitude']
 lon = ds['longitude']
 
-# Target location (example: Denver)
+# Target location
 target_lat = 39.7392
 target_lon = -104.9903
 
@@ -34,7 +31,7 @@ nearest_lon = lon.values[iy, ix]
 print(f"\nNearest grid point found at:")
 print(f"  Latitude:  {nearest_lat}")
 print(f"  Longitude: {nearest_lon}")
-print(f"  Indices:   (y={iy}, x={ix})")
+# print(f"  Indices:   (y={iy}, x={ix})")
 
 # Print global dataset info
 print("\n--- DATASET SUMMARY ---")
