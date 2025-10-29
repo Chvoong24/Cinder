@@ -32,8 +32,16 @@ def get_value_from_latlon(lat, lon, lats, lons, data):
 
 
 def make_json_file(folder_path, lat, lon, forecast_time, sitrep):
+    """
+    Args:
+        folder_path: Path to folder with grib2 files.
+        lat: desired latitude point for forecast
+        lon: desired longitude point for forecast
+        forecast_time: the time the forecast was created in zulu time
+        sitrep: the model that the collection of grib_files was run for
+    """
     readable_data = [] 
-
+    forecast_types = []
 
     def get_all_readable_data(filename):
         grbs = pygrib.open(filename)
@@ -49,17 +57,32 @@ def make_json_file(folder_path, lat, lon, forecast_time, sitrep):
                 data, lats, lons = grb.data()
                 value = get_value_from_latlon(lat, lon, lats, lons, data)
                 readable_data.append((limit, grb.name, grb.forecastTime, value))
-                
+                forecast_types.append((grb.name, limit))
     
     for file_path in folder_path.iterdir():
         get_all_readable_data(file_path)
 
+    forecast_types = sorted(list(set(forecast_types)))
     headers = ["threshold", "name", "forecastTime", "probability"]
-    records = [dict(zip(headers, row)) for row in readable_data]
+    
+
+    output_data = {
+        "metadata": {
+            "sitrep": sitrep,
+            "forecast_time": forecast_time,
+            "location": {"lat": lat, "lon": lon},
+            "folder": str(folder_path),
+            "forecast types": forecast_types,
+        },
+        "data": [dict(zip(headers, row)) for row in readable_data],
+    }
+
 
     output_name = f"{sitrep}{forecast_time}_for_{lat},{lon}.json"
     with open(output_name, "w", encoding="utf-8") as f:
-        json.dump(records, f, ensure_ascii=False, indent=2)
+        json.dump(output_data, f, ensure_ascii=False, indent=2)
+
+
 
     print(f"JSON saved as {output_name}")
 
