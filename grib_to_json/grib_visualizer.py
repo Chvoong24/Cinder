@@ -72,7 +72,7 @@ def make_json_file(folder_path, lat, lon, forecast_time, sitrep):
             "forecast_time": forecast_time,
             "location": {"lat": lat, "lon": lon},
             "folder": str(folder_path),
-            "forecast types": forecast_types,
+            "forecast_types": forecast_types,
         },
         "data": [dict(zip(headers, row)) for row in readable_data],
     }
