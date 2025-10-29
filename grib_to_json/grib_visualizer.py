@@ -4,6 +4,13 @@ from pathlib import Path
 import json
 
 
+desired_href_forecast_types = [
+    "Total Precipitation",
+    "10 metre wind speed",
+]
+
+LAT = 24.02619
+LON = -107.421197
 
 def get_value_from_latlon(lat, lon, lats, lons, data):
     """
@@ -24,83 +31,48 @@ def get_value_from_latlon(lat, lon, lats, lons, data):
 
 
 
-readable_data = []
+def make_json_file(folder_path, lat, lon, forecast_time, sitrep):
+    readable_data = [] 
 
 
+    def get_all_readable_data(filename):
+        grbs = pygrib.open(filename)
+        print(f"Parsing {filename}")
+        for grb in grbs:
+            if grb.name in desired_href_forecast_types:
+                limit = ""
+                if grb.upperLimit > grb.lowerLimit:
+                    limit = f">{grb.upperLimit}"
+                elif grb.upperLimit < grb.lowerLimit:
+                    limit = f"<{grb.lowerLimit}"
 
-desired_href_forecast_types = [
-    "Total Precipitation",
-    "10 metre wind speed",
-]
-
-def get_all_readable_data(filename, lat, lon):
-    grbs = pygrib.open(filename)
-    print(f"Parsing {filename}")
-    for grb in grbs:
-        if grb.name in desired_href_forecast_types:
-            limit = ""
-            if grb.upperLimit > grb.lowerLimit:
-                limit = f">{grb.upperLimit}"
+                data, lats, lons = grb.data()
+                value = get_value_from_latlon(lat, lon, lats, lons, data)
+                readable_data.append((limit, grb.name, grb.forecastTime, value))
                 
-            elif grb.upperLimit < grb.lowerLimit:
-                limit = f"<{grb.lowerLimit}"
-            else:
-                pass
-
-
-            data, lats, lons = grb.data()
-            value = get_value_from_latlon(lat, lon, lats, lons, data)
-
-            this_data = (limit, grb.name, grb.forecastTime, value)
-
-            readable_data.append(this_data)
-
-
-        else:
-            pass
-
-        # print(f"Probability of {limit} {val} {grb.units} {grb.name} at {grb.forecastTime} hours from {grb.analDate} is {value} at {LAT},{LON}")
-
-        
-
-
-FILE_NAME = 'href_download/href.t12z.conus.prob.f12.grib2'
-LAT = 24.02619
-LON = -107.421197
-
-
-
-
-
-
-def make_json_file(folder_path, data, lat, lon, forecast_time, sitrep):
-    """
-    Args:
-        folder_path: The path to the folder with all the grib2 files
-        data: The list that contains all desired data for the grib2 files
-        lat: lattitude part of coordinate
-        lon: longitude part of coordinate
-        forecast_time: the time that the grib2 files were made for in zulu time (for naming the json)
-        sitrep: the model name (for naming the json)
-
-    Returns nothing. Creates a json file in current directory.
     
-    """
     for file_path in folder_path.iterdir():
-        get_all_readable_data(file_path, lat, lon)
+        get_all_readable_data(file_path)
 
-    print("Making JSON")
     headers = ["threshold", "name", "forecastTime", "probability"]
-    records = [dict(zip(headers, row)) for row in data]
-    with open(f"{sitrep}{forecast_time}_for_{lat},{lon}.json", "w", encoding="utf-8") as f:
+    records = [dict(zip(headers, row)) for row in readable_data]
+
+    output_name = f"{sitrep}{forecast_time}_for_{lat},{lon}.json"
+    with open(output_name, "w", encoding="utf-8") as f:
         json.dump(records, f, ensure_ascii=False, indent=2)
-    print("JSON Made")
+
+    print(f"JSON saved as {output_name}")
 
 
 
 
 FOLDER = Path("href_download/")
-make_json_file(FOLDER, readable_data, LAT, LON, "12z", "HREF")
+make_json_file(FOLDER, LAT, LON, "12z", "HREF")
+
+
+# ========= Testing =============
+
+# FILE_NAME = 'href_download/href.t12z.conus.prob.f12.grib2'
 
 
 
