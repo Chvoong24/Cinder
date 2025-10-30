@@ -4,7 +4,7 @@ import pygrib
 
 
 
-filename = "href_download/href.t12z.conus.prob.f01.grib2"
+filename = "blend.t00z.qmd.f001.co.grib2"
 grbs = pygrib.open(filename)
 for grb in grbs:
     print(grb)
