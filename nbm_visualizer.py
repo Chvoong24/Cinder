@@ -1,18 +1,19 @@
 import xarray as xr
 import numpy as np
 import pprint
+import pygrib
 
-grib_path = "nbm_data/nbm_download/blend.t18z.qmd.f051.co.grib2"
+grib_path = "nbm_data/nbm_download/blend.t00z.qmd.f001.co.grib2"
 
 
 # open only data at 2 meters above ground, can adjust field make a variable
 ds = xr.open_dataset(
     grib_path,
-    engine="cfgrib",
-    backend_kwargs={"filter_by_keys": {"typeOfLevel": "heightAboveGround", "level": 2}}
+    engine="cfgrib"
+    # backend_kwargs={"filter_by_keys": {"typeOfLevel": "heightAboveGround", "level": 2}}
 )
 
-
+ds 
 lat = ds['latitude']
 lon = ds['longitude']
 
@@ -53,8 +54,29 @@ for var in ds.data_vars:
     pprint.pprint(ds[var].attrs)
     print("Value at nearest grid point:")
     val = ds[var].isel(y=iy, x=ix).values
-    print(val)
+#     print(val)
 
-print("\n--- SELECTED POINT DATA (summary) ---")
-point_data = {var: ds[var].isel(y=iy, x=ix).values for var in ds.data_vars}
-pprint.pprint(point_data)
+# print("\n--- SELECTED POINT DATA (summary) ---")
+# point_data = {var: ds[var].isel(y=iy, x=ix).values for var in ds.data_vars}
+# pprint.pprint(point_data)# --- Identify probabilistic variables ---
+prob_vars = [
+    var for var in ds.data_vars
+    if "prob" in var.lower() or "probability" in ds[var].attrs.get("long_name", "").lower()
+]
+
+if not prob_vars:
+    print("\nNo probabilistic variables found in this dataset.")
+else:
+    print("\n--- PROBABILISTIC VARIABLES ---")
+    for var in prob_vars:
+        print(f"\nVariable: {var}")
+        pprint.pprint(ds[var].attrs)
+        value = ds[var].isel(y=iy, x=ix).values
+        print(f"Value at nearest grid point: {value}")
+
+
+
+# grbs = pygrib.open("nbm_data/nbm_download/blend.t00z.qmd.f001.co.grib2")
+# grbs.seek(0)
+# for grb in grbs:
+#     print(grb)
