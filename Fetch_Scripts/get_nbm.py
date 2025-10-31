@@ -30,7 +30,7 @@ MANUAL_PATTERNS = [
 
 MAX_THREADS = 10
 F_START = 0
-F_END = 276
+F_END = 48
 
 BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
 
@@ -76,29 +76,34 @@ def determine_model_run():
 
 def rollback_day():
     """Fetch data from previous day in case of current day unavailability."""
-    dt = datetime.now(timezone.utc)
-    curr_day = dt.day()
-
+    curr_day = datetime.now(timezone.utc)
     prev_day = curr_day - timedelta(days=1)
     pull_date = prev_day.strftime('%Y%m%d')
 
     return pull_date
 
-def rollback_cycle(cycle_str):
+def rollback_cycle(date_str, cycle_str):
     """Adjust cycle to previous cycle in case of unavailability."""
     cycle = int(cycle_str)
+
     if cycle == 0:
-        # Rollback to previous day 18z
-        rollback_day()
+        # Roll back to previous day’s 18z
+        new_date = rollback_day()
+        new_cycle = "18"
     elif cycle == 6:
-        rollback_cycle = '00'
+        new_date = date_str
+        new_cycle = "00"
     elif cycle == 12:
-        rollback_cycle = '06'
+        new_date = date_str
+        new_cycle = "06"
     elif cycle == 18:
-        rollback_cycle = '12'
+        new_date = date_str
+        new_cycle = "12"
     else:
-        rollback_cycle = '18'
-    return rollback_cycle
+        new_date = date_str
+        new_cycle = "18"
+
+    return new_date, new_cycle
 # =========================
 # Logging
 # =========================
@@ -328,7 +333,7 @@ def main():
                 if not grib_url:
                     logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)")
 
-                    cycle_str = rollback_cycle(cycle_str)
+                    pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
                     fxx = 0
                     continue
 
