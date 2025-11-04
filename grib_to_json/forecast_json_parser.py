@@ -8,7 +8,7 @@ with open("href12z_for_41.5623,-72.6506.json", "rb") as f:
 metadata = parsed["metadata"]
 data = parsed["data"]
 
-print("Model:", metadata["sitrep"])
+print("Model:", metadata["model"])
 print("Forecast time:", metadata["forecast_time"])
 print("Location:", metadata["location"])
 print("Available fields:", metadata["forecast_types"])

@@ -115,7 +115,7 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
     output_data = {
         "metadata": {
-            "sitrep": model,
+            "model": model,
             "forecast_time": cycle,
             "location": {"lat": lat, "lon": lon},
             "folder": str(folder_path),

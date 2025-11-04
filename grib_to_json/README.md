@@ -1,33 +1,31 @@
 # GRIB to JSON Converter
 
-This folder contains scripts to convert GRIB2 weather data files to JSON format.
+Scripts for converting GRIB2 weather files to JSON.
 
 ## Files
 
-1. **grib_data_to_json.py** - Main converter script
+grib_data_to_json.py - Main converter
 
-   - Converts GRIB2 files to JSON for a specific lat/lon location
-   - Uses multithreading (8 workers) for fast processing
-   - Monitors memory usage during conversion
+- Converts GRIB2 files to JSON for a specific lat/lon
+- Uses multithreading (8 workers)
+- Monitors memory usage
 
-2. **forecast_json_parser.py** - JSON reader
+forecast_json_parser.py - JSON reader
 
-   - Simple script to read and display the generated JSON files
-   - Uses `orjson` for fast parsing
+- Reads and displays the generated JSON files
+- Uses orjson for fast parsing
 
-3. **grib_graphical.py** - Visualization tool
-   - Creates map visualizations using matplotlib + cartopy
-   - Shows weather data on geographic maps
+grib_graphical.py - Visualization
 
-## Usage
+- Creates map visualizations with matplotlib + cartopy
 
-### Basic Usage
+## How to Use
 
-Edit `grib_data_to_json.py` and configure:
+Edit grib_data_to_json.py and set your coordinates:
 
 ```python
-LAT = 41.5623  # Your latitude
-LON = -72.6506  # Your longitude
+LAT = 41.5623  # Hartford
+LON = -72.6506
 
 DESIRED_FORECAST_TYPES = [
     "Total Precipitation",
@@ -37,29 +35,25 @@ DESIRED_FORECAST_TYPES = [
     "2 metre relative humidity"
 ]
 
-FOLDER = Path("href_download")  # Path to GRIB files
+FOLDER = Path("href_download")
 ```
 
-Then run:
+Run it:
 
 ```bash
 python grib_data_to_json.py
 ```
 
-### Output
+## Output
 
-Generates JSON files named like:
+Generates JSON files like: `href12z_for_41.5623,-72.6506.json`
 
-```
-HREF12z_for_41.5623,-72.6506.json
-```
-
-### JSON Structure
+Format:
 
 ```json
 {
   "metadata": {
-    "sitrep": "HREF",
+    "model": "href",
     "forecast_time": "12z",
     "location": {"lat": 41.5623, "lon": -72.6506},
     "forecast_types": [...]
@@ -77,13 +71,9 @@ HREF12z_for_41.5623,-72.6506.json
 
 ## Dependencies
 
-Install with:
+Install with: `pip install -r ../requirements.txt`
 
-```bash
-pip install -r ../requirements.txt
-```
-
-Required packages:
+Needs:
 
 - pygrib
 - numpy
@@ -92,11 +82,9 @@ Required packages:
 - matplotlib
 - cartopy
 
-## Connecticut Cities Coordinates
+## Connecticut Cities
 
-For reference, here are the 4 Connecticut cities:
-
-- **Hartford**: 41.5623, -72.6506
-- **Middletown**: 41.5623, -72.6508
-- **Bridgeport**: 41.2677, -73.2048
-- **New Haven**: 41.3083, -72.9279
+Hartford: 41.5623, -72.6506
+Middletown: 41.5623, -72.6508
+Bridgeport: 41.2677, -73.2048
+New Haven: 41.3083, -72.9279
