@@ -27,8 +27,9 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
 0. Open a new Terminal Window
 0. Terminal Line should say ``(.venv) (base)...``
 
-## Imports
-1. Import requests with ``pip install requests`` in VSCode terminal
+## Import Required Python Libraries
+1. Ensure you are in the main "Cinder" directory.
+2. In the terminal, run the command ``pip install -r requirements.txt``
 
 
 ## How To Fetch Data
@@ -40,7 +41,7 @@ https://github.com/Chvoong24/Cinder/blob/main/README.md
 >Note: You can interrupt the fetch data process whenever you feel like it after you run the file
 
 ## How To Interrupt Data Fetch
-1. For VSCode: Press ```Ctrl``` + ``` C ``` until terminal stops printing
+1. In the terminal window, press ```Ctrl``` + ``` C ``` until terminal stops printing
 
 ## How Do You Know It Works? (Unit Tests)
 1. Run ```fetch_all.py```
