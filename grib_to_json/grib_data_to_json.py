@@ -39,104 +39,110 @@ for handler in logging.getLogger().handlers:
 
 
 
-def get_value_from_latlon(lat, lon, lats, lons, data):
-    """
-    input is the lat, lon you want, as well as the data, list of lats, and list of lons
-    output is the value closest to the input lat, lon
-    """
-    # Calculate how far each grid point is from the target lat,lon
-    lat_diff = lats - lat
-    lon_diff = lons - lon
-    distance_squared = lat_diff**2 + lon_diff**2
-    
-    # Find the row and col of the closest point
-    flat_index = np.argmin(distance_squared)
-    row, col = np.unravel_index(flat_index, distance_squared.shape)
-
-    # Return the value at that grid point
-    return data[row, col]
-
-
-
-
+import os
+import re
+import json
+import logging
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import numpy as np
+import pygrib
 
 logger = logging.getLogger(__name__)
+
+def get_value_from_latlon(lat, lon, lats, lons, data):
+    """
+    Return the value in `data` closest to the given lat/lon.
+    """
+    distance_squared = (lats - lat) ** 2 + (lons - lon) ** 2
+    row, col = np.unravel_index(np.argmin(distance_squared), distance_squared.shape)
+    return float(data[row, col])
+
 
 def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8):
     """
     Args:
         folder_path: Path to folder with grib2 files.
-        lat: desired latitude point for forecast
-        lon: desired longitude point for forecast
-        desired_forecast_types: list of GRIB variable names to include
-        forecast_time: the time the forecast was created (Zulu)
-        sitrep: model name for the collection
-        max_workers: number of threads (default 8)
+        lat, lon: desired latitude/longitude point for forecast.
+        max_workers: number of threads for parallel execution.
     """
 
     prob_re = re.compile(r'Probability.*\(([^)]*)\)', re.IGNORECASE)
 
     def get_all_readable_data(filename):
         readable_data = []
-        forecast_types = []
+
         try:
-            with pygrib.open(str(filename)) as grbs:
-                logger.info(f"Parsing {filename}")
+            with pygrib.open(filename.path) as grbs:  # <-- use filename.path
+                logger.info(f"Parsing {filename.name}")
+
+                match = re.search(r'f(\d{2})', filename.name)
+                if match:
+                    forecast_end = int(match.group(1))
+                    
+                    
+
                 for grb in grbs:
-                    if grb.name not in desired_forecast_types:
+                    if grb.name not in desired_forecast_types: 
                         continue
 
-                    # Extract probability threshold
+                    # Extract probability threshold if available
                     match = prob_re.search(str(grb))
                     limit = match.group(1) if match else "none"
 
-                    # Get data & nearest value
+                    # Get nearest value to requested lat/lon
                     data, lats, lons = grb.data()
-                    d2 = (lats - lat)**2 + (lons - lon)**2
-                    r, c = np.unravel_index(np.argmin(d2), d2.shape)
-                    value = float(data[r, c])
+                    value = get_value_from_latlon(lat, lon, lats, lons, data)
 
-                    readable_data.append((limit, grb.name, grb.forecastTime, value))
-                    forecast_types.append((grb.name, limit))
+                    
+                    step_length = forecast_end - grb.forecastTime
+                    
+
+                    readable_data.append((limit, grb.name, step_length, grb.forecastTime, value))
 
         except Exception as e:
-            logger.error(f"Error processing {filename}: {e}")
+            logger.error(f"Error processing {filename.name}: {e}")
 
-        return readable_data, forecast_types
+        return readable_data
 
     # --- Parallel execution ---
     readable_data = []
-    forecast_types = []
+
+    folder_path = os.fspath(folder_path) if not isinstance(folder_path, (str, os.PathLike)) else folder_path
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(get_all_readable_data, file_path): file_path for file_path in folder_path.iterdir() if file_path.is_file()}
+        futures = {
+            executor.submit(get_all_readable_data, file_path): file_path
+            for file_path in os.scandir(folder_path) if file_path.is_file()
+        }
 
         for future in as_completed(futures):
             file_path = futures[future]
             try:
-                rd, ft = future.result()
+                rd = future.result()
                 readable_data.extend(rd)
-                forecast_types.extend(ft)
             except Exception as e:
                 logger.error(f"Failed on {file_path}: {e}")
 
-    # --- Post-processing ---
-    
-    
-
-    
-
-    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    # --- Metadata from first file ---
+    files = [f.name for f in os.scandir(folder_path) if f.is_file()]
+    model, cycle = "unknown", "unknown"
     if files:
-        first_file = files[0]  # name only (not full path)
-        match = re.search(r"([a-zA-Z]+)[._]t?(\d{2}z)", first_file, re.IGNORECASE)
+        match = re.search(r"([a-zA-Z]+)[._]t?(\d{2}z)", files[0], re.IGNORECASE)
         if match:
             model, cycle = match.groups()
 
+    # --- Prepare JSON output ---
 
-
+    forecast_types = [tup[:2] for tup in readable_data]
     forecast_types = sorted(set(forecast_types))
-    headers = ["threshold", "name", "forecastTime", "probability"]
+
+
+    hour_and_step_list = [tup[2:4] for tup in readable_data]
+    hour_and_step_list = sorted(set(hour_and_step_list))
+    print(hour_and_step_list)
+    
+
+    headers = ["threshold", "name", "step_length", "forecast_time", "probability"]
 
 
     output_data = {
@@ -146,6 +152,8 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
             "location": {"lat": lat, "lon": lon},
             "folder": str(folder_path),
             "forecast_types": forecast_types,
+            "hour_list": hour_and_step_list
+            
         },
         "data": [dict(zip(headers, row)) for row in readable_data],
     }
@@ -155,6 +163,7 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
         json.dump(output_data, f, ensure_ascii=False, indent=2)
 
     print(f"JSON saved as {output_name}")
+
 
 
 
@@ -170,68 +179,7 @@ DESIRED_FORECAST_TYPES = [
     "2 metre relative humidity"
 ]
 
-FOLDER = Path("nbm_download")
+FOLDER = Path("href_download")
 
 make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
 
-
-# ========= Testing =============
-
-# FILE_NAME = "nbm_download/nbm_t18z_f024_custom.grib2"
-
-# nbm_names = []
-# grbs = pygrib.open(FILE_NAME)
-# grb = grbs.message(1)
-# print(grb)
-# for grb in grbs:
-#     # print(grb)
-#     nbm_names.append(grb.name)
-
-
-# for key in grb.keys():
-#     try:
-#         print(f"{key}: {getattr(grb, key)}")
-#     except Exception as e:
-#         print(f"{key}: <unavailable> ({e})")
-
-
-# nbm_names = set(nbm_names)
-# for name in nbm_names:
-#     print(name)
-
-
-
-# print("Short name:", grb.shortName)
-# print("Name:", grb.name)
-# print("Units:", grb.units)
-# print("Type of level:", grb.typeOfLevel)
-# print("Level:", grb.level)
-# print("Forecast time:", grb.forecastTime)
-# print("Start time:", grb.analDate)
-# print("End time:", grb.validDate)
-# print("Probability type:", grb.parameterCategory, grb.parameterNumber)
-# print("Description:", grb.parameterName)
-# # print("Probability type", grb.probabilityType)
-# print("Lower limit", grb.lowerLimit)
-# print("Upper limit", grb.upperLimit)
-
-
-# href_forecast_types = [
-#     "Total Precipitation",
-#     "Convective available potential energy",
-#     "Convective inhibition",
-#     "Categorical freezing rain",
-#     "Categorical rain",
-#     "10 metre wind speed",
-#     "Haines Index",
-#     "Lightning",
-#     "Water equivalent of accumulated snow depth (deprecated)",
-#     "unknown",
-#     "Precipitable water",
-#     "Vertical speed shear",
-#     "Categorical ice pellets",
-#     "Flight Category",
-#     "Maximum/Composite radar reflectivity",
-#     "Visibility",
-#     "Categorical snow"
-# ]
