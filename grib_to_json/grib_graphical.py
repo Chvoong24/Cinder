@@ -1,14 +1,12 @@
 import pygrib
 
-
-
-
-
-filename = "blend.t00z.qmd.f001.co.grib2"
+# use href test data that's in the repo
+filename = "href_download/href.t12z.conus.prob.f01.grib2"
 grbs = pygrib.open(filename)
-for grb in grbs:
-    print(grb)
-grb = grbs.message(42)
+print(f"Total messages: {grbs.messages}")
+for i, grb in enumerate(grbs):
+    print(f"{i+1}: {grb}")
+grb = grbs.message(1)
 
 
 
@@ -20,11 +18,10 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
-
+# extract lat/lon and data
 lats = grb.latitudes
 lons = grb.longitudes
 values = grb.values
-
 
 lats_two_dimensional = lats.reshape(values.shape)
 lons_two_dimensional = lons.reshape(values.shape)
@@ -46,11 +43,10 @@ lon_max = float(da.lon.max())
 lat_min = float(da.lat.min())
 lat_max = float(da.lat.max())
 
-
+# set up map
 figure = plt.figure(figsize=(10, 6))
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
-
 
 pcm = ax.pcolormesh(
     da.lon,

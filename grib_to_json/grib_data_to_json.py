@@ -40,39 +40,21 @@ for handler in logging.getLogger().handlers:
 
 
 def get_value_from_latlon(lat, lon, lats, lons, data):
-    """
-    input is the lat, lon you want, as well as the data, list of lats, and list of lons
-    output is the value closest to the input lat, lon
-    """
-    # Calculate how far each grid point is from the target lat,lon
+    """find value at nearest grid point"""
     lat_diff = lats - lat
     lon_diff = lons - lon
     distance_squared = lat_diff**2 + lon_diff**2
     
-    # Find the row and col of the closest point
     flat_index = np.argmin(distance_squared)
     row, col = np.unravel_index(flat_index, distance_squared.shape)
-
-    # Return the value at that grid point
     return data[row, col]
 
 
 
 
 
-logger = logging.getLogger(__name__)
-
 def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8):
-    """
-    Args:
-        folder_path: Path to folder with grib2 files.
-        lat: desired latitude point for forecast
-        lon: desired longitude point for forecast
-        desired_forecast_types: list of GRIB variable names to include
-        forecast_time: the time the forecast was created (Zulu)
-        sitrep: model name for the collection
-        max_workers: number of threads (default 8)
-    """
+    """parse grib files and save as json for a specific location"""
 
     prob_re = re.compile(r'Probability.*\(([^)]*)\)', re.IGNORECASE)
 
@@ -86,11 +68,10 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
                     if grb.name not in desired_forecast_types:
                         continue
 
-                    # Extract probability threshold
                     match = prob_re.search(str(grb))
                     limit = match.group(1) if match else "none"
 
-                    # Get data & nearest value
+                    # get nearest point
                     data, lats, lons = grb.data()
                     d2 = (lats - lat)**2 + (lons - lon)**2
                     r, c = np.unravel_index(np.argmin(d2), d2.shape)
@@ -104,7 +85,6 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
         return readable_data, forecast_types
 
-    # --- Parallel execution ---
     readable_data = []
     forecast_types = []
 
@@ -119,12 +99,6 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
                 forecast_types.extend(ft)
             except Exception as e:
                 logger.error(f"Failed on {file_path}: {e}")
-
-    # --- Post-processing ---
-    
-    
-
-    
 
     files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
     if files:
@@ -159,8 +133,8 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
 
 
-LAT = 24.02619
-LON = -107.421197
+LAT = 41.5623
+LON = -72.6506
 
 DESIRED_FORECAST_TYPES = [
     "Total Precipitation",
@@ -170,12 +144,12 @@ DESIRED_FORECAST_TYPES = [
     "2 metre relative humidity"
 ]
 
-FOLDER = Path("nbm_download")
+FOLDER = Path("href_download")
 
 make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
 
 
-# ========= Testing =============
+# old testing code
 
 # FILE_NAME = "nbm_download/nbm_t18z_f024_custom.grib2"
 
