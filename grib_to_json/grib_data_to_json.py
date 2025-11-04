@@ -139,7 +139,7 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
     hour_and_step_list = [tup[2:4] for tup in readable_data]
     hour_and_step_list = sorted(set(hour_and_step_list))
-    print(hour_and_step_list)
+
     
 
     headers = ["threshold", "name", "step_length", "forecast_time", "probability"]
