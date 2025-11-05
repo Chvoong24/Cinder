@@ -1,18 +1,19 @@
 # Cinder
 Project for COMP333  
-Chvoong24: Chris Voong  
-duyhuynh-dev: Duy Huynh  
-bentaffet: Ben Taffet  
-Hawklight1: Ben Mckinney 
-https://github.com/Chvoong24/Cinder/blob/main/README.md
-
 
 # Table Of Contents
+- [Members](#members)
 - [Start Up](#start-up)
     - [Create An Enviroment](#create-a-python-enviroment)
     - [Necessary Imports](#imports)
 - [How To Use](#how-to-fetch-data)
 - [How Do You Know It Works](#how-do-you-know-it-works-unit-tests)
+
+## Members
+Chvoong24: Chris Voong  
+duyhuynh-dev: Duy Huynh  
+bentaffet: Ben Taffet  
+Hawklight1: Ben Mckinney 
 
 ## Start Up
 1. Clone Repository 
