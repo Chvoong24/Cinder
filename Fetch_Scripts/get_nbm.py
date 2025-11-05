@@ -328,14 +328,15 @@ def main():
         futures = []
 
         with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-            for fxx in range(F_START + 1, F_END + 1):
+            fxx = F_START + 1
+            while fxx <= F_END:
                 grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
                 if not grib_url:
                     logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)")
-
+                    fxx = 1
                     pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
-                    fxx = 0
                     continue
+                fxx += 1
 
                 # Submit the download task to the thread pool
                 futures.append(
