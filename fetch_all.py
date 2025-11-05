@@ -16,8 +16,11 @@ def fetch_all():
     
 
 if __name__ == "__main__":
-        t0 = time.time()
-        futures = []
-
-        with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-            futures.append(executor.submit(fetch_all))
+   with ThreadPoolExecutor(max_workers=2) as executor:
+        futures = [
+            executor.submit(nbm.main),
+            executor.submit(href.main),
+            executor.submit(refs.main)
+        ]
+        for future in futures:
+            future.result()
