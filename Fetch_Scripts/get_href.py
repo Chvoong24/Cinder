@@ -30,7 +30,7 @@ LOGDIR.mkdir(parents=True, exist_ok=True)
 
 # Multi Threading
 MAX_THREADS = 10    # Parallel download threads
-MAX_RETRIES = 10     # Retry attempts allowed before fail
+MAX_RETRIES = 5     # Retry attempts allowed before fail
 RETRY_DELAY = 10    # Delay (secs) between retry attempts
 MIN_FILE_SIZE = 1 * 1024    # Min file size check
 
