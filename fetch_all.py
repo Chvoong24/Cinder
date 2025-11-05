@@ -5,7 +5,7 @@ import os
 import time
 from concurrent.futures import ThreadPoolExecutor
 
-MAX_THREADS = 5
+MAX_THREADS = 10
 
 # Maybe add multithread runtime to speed this process up too, might need to see if it will or not
 def fetch_all():
@@ -16,7 +16,7 @@ def fetch_all():
     
 
 if __name__ == "__main__":
-   with ThreadPoolExecutor(max_workers=2) as executor:
+   with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
         futures = [
             executor.submit(nbm.main),
             executor.submit(href.main),
