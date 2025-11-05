@@ -1,14 +1,23 @@
-import Fetch_Scripts.get_nbm as get_nbm
-import Fetch_Scripts.get_href as get_href
+import Fetch_Scripts.get_nbm as nbm
+import Fetch_Scripts.get_href as href
+import Fetch_Scripts.get_refs as refs
 import os
+import time
 from concurrent.futures import ThreadPoolExecutor
+
+MAX_THREADS = 5
 
 # Maybe add multithread runtime to speed this process up too, might need to see if it will or not
 def fetch_all():
-    get_nbm.main()
-    get_href.main()
+    nbm.main()
+    href.main()
+    refs.main()
 
     
 
 if __name__ == "__main__":
-    fetch_all()
+        t0 = time.time()
+        futures = []
+
+        with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+            futures.append(executor.submit(fetch_all))
