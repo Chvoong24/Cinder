@@ -1,0 +1,2316 @@
+{
+  "metadata": {
+    "sitrep": "nbm",
+    "anal_date": "2025-11-06 06:00:00",
+    "location": {
+      "lat": 24.02619,
+      "lon": -107.421197
+    },
+    "folder": "nbm_download"
+  },
+  "data": [
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 74.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 35,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 57.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 27,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 33.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 32,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 94.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 44,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 98.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 20,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 96.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 43,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 99.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 16,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 88.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 11,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 69.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 3,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 27.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 4,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 98.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 21,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 96.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 2,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 58.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 34,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 45.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 33,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 31.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 5,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 70.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 26,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 99.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 17,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 98.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 42,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 94.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 45,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 62.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 10,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 67.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 48,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 97.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 39,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 27.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 8,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 38.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 9,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 97.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 38,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 95.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 19,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 98.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 18,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 34.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 31,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 37.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 28,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 33.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 29,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 89.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 23,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 90.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 36,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 32.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 7,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 84.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 47,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 97.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 40,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 95.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 12,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 93.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 37,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 29.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 30,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 99.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 15,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 76.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 25,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 97.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 22,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 99.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 14,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 29.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 6,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 97.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 13,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 98.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 41,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 91.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 46,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 270.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 0.0
+    },
+    {
+      "threshold": "< 273.15 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 299.8169 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 99.0
+    },
+    {
+      "threshold": "> 305.372 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 310.928 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 316.483 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 0.0
+    },
+    {
+      "threshold": "> 322.039 K",
+      "name": "2 metre temperature",
+      "step_length": 0,
+      "forecast_time": 1,
+      "value": 0.0
+    }
+  ]
+}
