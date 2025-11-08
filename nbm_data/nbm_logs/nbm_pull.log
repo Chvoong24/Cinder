@@ -550,3 +550,7 @@
 2025-10-23 12:20:35,128 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
 2025-10-23 12:20:41,754 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/18/qmd/blend.t18z.qmd.f023.co.grib2.idx -> HTTP 404
 2025-10-23 12:20:52,248 | INFO | No candidate GRIB URL for 20251013 t18z f023 (skip)
+2025-11-06 14:47:51,943 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-11-06 14:47:53,631 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-11-06 14:47:56,367 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-11-06 14:48:00,571 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
