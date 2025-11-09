@@ -19,8 +19,9 @@ MANUAL_OUTDIR = pathlib.Path("./refs_download")  # where to save the compact fil
 MANUAL_FIELDS = ["REFC"]  # which fields to keep from manual file; supports: REFC, U10, V10
 # -------------------------------------------------------------------------------------------------------
 
-F_START = 0            # inclusive
-F_END   = 36            # inclusive
+F_START = 1            # inclusive
+F_END   = 48            # inclusive
+MAX_THREADS = 10
 
 # ---- Manual Date/Cycle Selection (manually change pull_date and cycle_run to DATE and CYCLE in MAIN) --
 
@@ -34,8 +35,8 @@ CYCLE = "00"            # '00'..'23'
 # =========================
 
 def determine_model_run():
-    """Determine most recent NBM cycle based on current UTC time."""
-    now = datetime.now(timezone.utc)
+    """Determine most recent cycle based on current UTC time."""
+    now = datetime.now(timezone.utc)   
 
     hour = now.hour
     if hour >= 0 and hour < 6:
@@ -94,9 +95,9 @@ def rollback_cycle(date_str, cycle_str):
 
 # Fields to fetch (regex against .idx "desc" column)
 FIELD_PATTERNS = [
-    r":REFC:",                       # composite reflectivity (entire atmosphere)
-    r":UGRD:10 m above ground:",     # U @ 10 m AGL
-    r":VGRD:10 m above ground:",     # V @ 10 m AGL
+    r":TMP:",              # Temperature 
+    r":APCP:",                      # Precip 
+    r":WIND:"             # Wind Speed
 ]
 
 # RRFS products to try (first match wins for each field)
@@ -105,13 +106,13 @@ PRODUCTS = ["prslev"]
 BUCKET = "https://noaa-rrfs-pds.s3.amazonaws.com"
 
 # Output locations
-OUTDIR = pathlib.Path("./rrfs_download")
-LOGDIR = pathlib.Path("./rrfs_logs")
+OUTDIR = pathlib.Path("./refs_download")
+LOGDIR = pathlib.Path("./refs_logs")
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
 
 # Logging
-LOGFILE = LOGDIR / "rrfs_pull.log"
+LOGFILE = LOGDIR / "refs_pull.log"
 LOG_LEVEL = logging.INFO
 MAX_RETRIES = 1
 TIMEOUT = 60
@@ -123,7 +124,7 @@ IDX_RE = re.compile(r"^\s*(\d+):(\d+):(.*)$")
 # =========================
 # Logging setup
 # =========================
-logger = logging.getLogger("rrfs")
+logger = logging.getLogger("refs")
 logger.setLevel(LOG_LEVEL)
 logger.handlers.clear()
 
@@ -204,9 +205,9 @@ def patterns_for(names: list[str]) -> list[str]:
     Supported keys: 'REFC', 'U10', 'V10'
     """
     mapping = {
-        "REFC": r":REFC:",
-        "U10":  r":UGRD:10 m above ground:",
-        "V10":  r":VGRD:10 m above ground:",
+        "TMP": r":TMP:2 m above ground:",
+        "APCP":  r":APCP:surface:",
+        "WIND":  r":WIND:10 m above ground:",
     }
     pats = []
     for n in names:
@@ -214,7 +215,7 @@ def patterns_for(names: list[str]) -> list[str]:
         if key in mapping:
             pats.append(mapping[key])
         else:
-            raise ValueError(f"Unknown field name: {n} (choose from REFC, U10, V10)")
+            raise ValueError(f"Unknown field name: {n} (choose from TMP, APCP, WIND)")
     return pats
 
 # ==================================
@@ -321,14 +322,10 @@ def build_ranges(filtered_entries, full_entries, total_size):
 # =========================
 def candidate_urls(product: str, date: str, cycle: str, fxx: int):
     """
-    member: 'm001'..'m005'
+        Generate candidate url
     """
-    fff = f"{fxx:03d}"
-    if product == "prslev":
-        return [
-            f"{BUCKET}/rrfs_a/rrfs.{date}/{cycle}/rrfs.t{cycle}z.prslev.3km.f{fff}.conus.grib2"
-        ]
-    return []
+    fff = f"{fxx:02d}"
+    return [f"{BUCKET}/rrfs_a/refs.{date}/{cycle}/enspost_timelag/refs.t{cycle}z.conus.avrg.f{fff}.grib2"]
 
 def pick_grib_url(product: str, date: str, cycle: str, fxx: int):
     for url in candidate_urls(product, date, cycle, fxx):
@@ -345,13 +342,7 @@ def pick_grib_url(product: str, date: str, cycle: str, fxx: int):
 # Writers
 # =========================
 def out_combined_path(date: str, cycle: str, fxx: int) -> pathlib.Path:
-    return OUTDIR / f"refs.{date}t{cycle}z.f{fxx:03d}.conus.grib2"
-
-"""
-    RRFS doesn't probide members anymore so out_member_path is likely out of date.
-"""
-def out_member_path(date: str, cycle: str, fxx: int, member: str) -> pathlib.Path:
-    return OUTDIR / f"rrfs.{date}t{cycle}z.f{fxx:03d}.{member}.grib2"
+    return OUTDIR / f"rrfs.{date}t{cycle}z.f{fxx:03d}.conus.grib2"
 
 def fetch_hour(date: str, cycle: str, fxx: int):
     """
@@ -434,36 +425,97 @@ def fetch_hour(date: str, cycle: str, fxx: int):
 # Main
 # =========================
 def main():
-    # Manual single-file branch
-    # if MANUAL_SINGLE and MANUAL_URL:
-    #     try:
-    #         fetch_single_url(MANUAL_URL, MANUAL_OUTDIR, MANUAL_FIELDS)
-    #     except Exception as e:
-    #         logger.exception(f"Manual fetch failed: {e}")
-    #     return
+    try:
+        pull_date, cycle_str = determine_model_run()
+        rollback_count = 0
 
-    pull_date, cycle_str = determine_model_run()
-    logger.info(f"==== RRFS ENS pull start :: {pull_date} t{cycle_str}z ====")
+        while True:  # keep looping until one cycle completes successfully
+            try:
+                logger.info(f"==== REFS pull start :: {pull_date} t{cycle_str}z ====")
+                t0 = time.time()
+                rollback_triggered = False
+                futures = []
 
-    # --- Check if current cycle is available ---
-    test_url, test_idx = pick_grib_url(PRODUCTS[0], pull_date, cycle_str, 0)
-    if not test_url:
-        logger.warning(f"No data for {pull_date} t{cycle_str}z — rolling back")
-        pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
-        logger.info(f"Rolled back to {pull_date} t{cycle_str}z")
+                # --- Validate that the current cycle exists ---
+                test_url, test_idx = pick_grib_url(PRODUCTS[0], pull_date, cycle_str, F_START)
+                if not test_url:
+                    logger.info(
+                        f"No valid data for {pull_date} t{cycle_str}z (Rolling-back Cycle)"
+                    )
+                    pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                    rollback_triggered = True
+                    rollback_count += 1
 
-    # --- Download loop ---
-    logger.info(f"==== RRFS pull start :: {pull_date} t{cycle_str}z f{F_START:03d}-{F_END:03d} ====")
-    started = time.time()
-    success = 0
-    for fxx in range(F_START, F_END + 1):
-        try:
-            out = fetch_hour(pull_date, cycle_str, fxx)
-            if out:
-                success += 1
-        except Exception as e:
-            logger.exception(f"f{fxx:03d} failed: {e}")
-    elapsed = time.time() - started
-    logger.info(f"==== Finished: {success}/{F_END - F_START + 1} ok in {elapsed:.1f}s ====")
+                    if rollback_count >= 8:
+                        logger.error(
+                            f"Exceeded maximum rollback attempts (8). Aborting."
+                        )
+                        return
+
+                # Skip to next cycle iteration if rollback triggered
+                if rollback_triggered:
+                    continue
+
+                # --- Start threaded download ---
+                logger.info(
+                    f"==== REFS pull :: {pull_date} t{cycle_str}z f{F_START:03d}-{F_END:03d} ===="
+                )
+
+                with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+                    for fxx in range(F_START, F_END + 1):
+                        grib_url, idx_url = pick_grib_url(PRODUCTS[0], pull_date, cycle_str, fxx)
+                        if not grib_url:
+                            logger.info(
+                                f"No candidate URL for f{fxx:02d} — rolling back cycle"
+                            )
+                            pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                            rollback_triggered = True
+                            rollback_count += 1
+
+                            if rollback_count >= MAX_RETRIES:
+                                logger.error(
+                                    f"Exceeded maximum rollback attempts ({MAX_RETRIES}). Aborting."
+                                )
+                                return
+                            break  # stop this cycle completely
+
+                        futures.append(executor.submit(fetch_hour, pull_date, cycle_str, fxx))
+
+                    # Skip rest of this loop if rollback happened
+                    if rollback_triggered:
+                        continue
+
+                    success = 0
+                    for f in futures:
+                        try:
+                            out = f.result()
+                            if out:
+                                success += 1
+                        except Exception as e:
+                            logger.exception(f"❌ Thread fetch failed: {e}")
+
+                dt = time.time() - t0
+                logger.info(
+                    f"==== Finished: {success}/{F_END - F_START + 1} ok in {dt:.1f}s ===="
+                )
+
+                # If finished without rollback, break main loop
+                break
+
+            except Exception as e:
+                logger.exception(f"❌ Cycle fetch failed: {e}")
+                pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                rollback_count += 1
+                if rollback_count >= MAX_RETRIES:
+                    logger.error(
+                        f"Exceeded maximum rollback attempts ({MAX_RETRIES}). Aborting."
+                    )
+                    return
+
+    except Exception as e:
+        logger.exception(f"❌ Main thread failed: {e}")
+
+
+
 if __name__ == "__main__":
     main()
