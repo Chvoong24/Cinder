@@ -5,7 +5,8 @@ import logging
 import pathlib
 import requests
 from logging.handlers import TimedRotatingFileHandler
-from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timezone, timedelta
 
 # =========================
 # User settings
@@ -18,26 +19,89 @@ MANUAL_OUTDIR = pathlib.Path("./refs_download")  # where to save the compact fil
 MANUAL_FIELDS = ["REFC"]  # which fields to keep from manual file; supports: REFC, U10, V10
 # -------------------------------------------------------------------------------------------------------
 
-DATE  = "20250923"      # UTC YYYYMMDD
+F_START = 1            # inclusive
+F_END   = 48            # inclusive
+MAX_THREADS = 10
+
+# ---- Manual Date/Cycle Selection (manually change pull_date and cycle_run to DATE and CYCLE in MAIN) --
+
+DATE  = "20251030"      # UTC YYYYMMDD
 CYCLE = "00"            # '00'..'23'
-F_START = 0            # inclusive
-F_END   = 36            # inclusive
+
+# -------------------------------------------------------------------------------------------------------
+
+# =========================
+# Determine Model Run
+# =========================
+
+def determine_model_run():
+    """Determine most recent cycle based on current UTC time."""
+    now = datetime.now(timezone.utc)   
+
+    hour = now.hour
+    if hour >= 0 and hour < 6:
+        cycle = 0
+
+    elif hour >= 6 and hour < 12:
+        cycle = 6
+
+    elif hour >= 12 and hour < 18:
+        cycle = 12
+
+    else:
+        cycle = 18
+
+    ## Modify to include logic for rollback day if needed: NOT DONE YET!!!
+
+    pull_date = now.strftime('%Y%m%d')
+    cycle_str = f"{cycle:02d}"
+
+    return pull_date, cycle_str
+
+def rollback_day():
+    """Fetch data from previous day in case of current day unavailability."""
+    curr_day = datetime.now(timezone.utc)
+    prev_day = curr_day - timedelta(days=1)
+    pull_date = prev_day.strftime('%Y%m%d')
+
+    return pull_date
+
+def rollback_cycle(date_str, cycle_str):
+    """Adjust cycle to previous cycle in case of unavailability."""
+    cycle = int(cycle_str)
+
+    if cycle == 0:
+        # Roll back to previous day’s 18z
+        new_date = rollback_day()
+        new_cycle = "18"
+    elif cycle == 6:
+        new_date = date_str
+        new_cycle = "00"
+    elif cycle == 12:
+        new_date = date_str
+        new_cycle = "06"
+    elif cycle == 18:
+        new_date = date_str
+        new_cycle = "12"
+    else:
+        new_date = date_str
+        new_cycle = "18"
+
+    return new_date, new_cycle
+
 
 # Members to pull
-MEMBERS = [f"m{n:03d}" for n in range(1, 6)]  # m001..m005
+#MEMBERS = [f"m{n:03d}" for n in range(1, 6)]  # m001..m005
 
 # Fields to fetch (regex against .idx "desc" column)
 FIELD_PATTERNS = [
-    r":REFC:",                       # composite reflectivity (entire atmosphere)
-    r":UGRD:10 m above ground:",     # U @ 10 m AGL
-    r":VGRD:10 m above ground:",     # V @ 10 m AGL
+    r":TMP:",              # Temperature 
+    r":APCP:",                      # Precip 
+    r":WIND:"             # Wind Speed
 ]
 
 # RRFS products to try (first match wins for each field)
 PRODUCTS = ["prslev"]
-
-# One combined GRIB per f-hour? (True)  OR one compact GRIB per member? (False)
-COMBINE_ONE_FILE = True
 
 BUCKET = "https://noaa-rrfs-pds.s3.amazonaws.com"
 
@@ -50,7 +114,7 @@ LOGDIR.mkdir(parents=True, exist_ok=True)
 # Logging
 LOGFILE = LOGDIR / "refs_pull.log"
 LOG_LEVEL = logging.INFO
-MAX_RETRIES = 5
+MAX_RETRIES = 1
 TIMEOUT = 60
 BACKOFF = 1.6
 
@@ -115,7 +179,7 @@ def http_get_range(url, start: int, end: int):
         "Range": f"bytes={start}-{end}",
         "Accept-Encoding": "identity",
         "Connection": "close",
-        "User-Agent": "refs-puller/1.0",
+        "User-Agent": "rrfs-puller/1.0",
     }
     for a in range(1, MAX_RETRIES + 1):
         try:
@@ -141,9 +205,9 @@ def patterns_for(names: list[str]) -> list[str]:
     Supported keys: 'REFC', 'U10', 'V10'
     """
     mapping = {
-        "REFC": r":REFC:",
-        "U10":  r":UGRD:10 m above ground:",
-        "V10":  r":VGRD:10 m above ground:",
+        "TMP": r":TMP:2 m above ground:",
+        "APCP":  r":APCP:surface:",
+        "WIND":  r":WIND:10 m above ground:",
     }
     pats = []
     for n in names:
@@ -151,7 +215,7 @@ def patterns_for(names: list[str]) -> list[str]:
         if key in mapping:
             pats.append(mapping[key])
         else:
-            raise ValueError(f"Unknown field name: {n} (choose from REFC, U10, V10)")
+            raise ValueError(f"Unknown field name: {n} (choose from TMP, APCP, WIND)")
     return pats
 
 # ==================================
@@ -161,7 +225,7 @@ def patterns_for(names: list[str]) -> list[str]:
 def fetch_single_url(grib_url: str, outdir: pathlib.Path, field_names: list[str]) -> pathlib.Path:
     """
     Download ONLY the requested fields from an arbitrary GRIB2 URL that has a .idx file.
-    Example grib_url: https://.../refs.t12z.conus.pmmn.f10.grib2
+    Example grib_url: https://.../rrfs.t12z.conus.pmmn.f10.grib2
     """
     outdir.mkdir(parents=True, exist_ok=True)
     idx_url = grib_url + ".idx"
@@ -197,7 +261,7 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, field_names: list[str]
 
     # Output filename
     # Try to infer date/cycle/fhr from the URL; fall back to a safe stem.
-    m = re.search(r"(refs|rrfs)\.t(\d{2})z.*?\.f(\d{2,3})", grib_url)
+    m = re.search(r"(rrfs)\.t(\d{2})z.*?\.f(\d{2,3})", grib_url)
     if m:
         cy, fff = m.group(2), m.group(3)
         stem = f"manual_t{cy}z_f{int(fff):03d}_{'_'.join(field_names).lower()}"
@@ -256,19 +320,15 @@ def build_ranges(filtered_entries, full_entries, total_size):
 # =========================
 # URL candidates (ENSEMBLE)
 # =========================
-def candidate_urls(product: str, date: str, cycle: str, fxx: int, member: str):
+def candidate_urls(product: str, date: str, cycle: str, fxx: int):
     """
-    member: 'm001'..'m005'
+        Generate candidate url
     """
-    fff = f"{fxx:03d}"
-    if product == "prslev":
-        return [
-            f"{BUCKET}/rrfs_a/refs.{date}/{cycle}/{member}/rrfs.t{cycle}z.{member}.prslev.3km.f{fff}.conus.grib2"
-        ]
-    return []
+    fff = f"{fxx:02d}"
+    return [f"{BUCKET}/rrfs_a/refs.{date}/{cycle}/enspost_timelag/refs.t{cycle}z.conus.avrg.f{fff}.grib2"]
 
-def pick_grib_url(product: str, date: str, cycle: str, fxx: int, member: str):
-    for url in candidate_urls(product, date, cycle, fxx, member):
+def pick_grib_url(product: str, date: str, cycle: str, fxx: int):
+    for url in candidate_urls(product, date, cycle, fxx):
         idx_url = f"{url}.idx"
         try:
             r = http_head(idx_url)
@@ -282,181 +342,180 @@ def pick_grib_url(product: str, date: str, cycle: str, fxx: int, member: str):
 # Writers
 # =========================
 def out_combined_path(date: str, cycle: str, fxx: int) -> pathlib.Path:
-    return OUTDIR / f"refs_{date}t{cycle}z_f{fxx:03d}_ens5.grib2"
-
-def out_member_path(date: str, cycle: str, fxx: int, member: str) -> pathlib.Path:
-    return OUTDIR / f"refs_{date}t{cycle}z_f{fxx:03d}_{member}.grib2"
+    return OUTDIR / f"rrfs.{date}t{cycle}z.f{fxx:03d}.conus.grib2"
 
 def fetch_hour(date: str, cycle: str, fxx: int):
     """
-    Pull requested fields from each ensemble member; either:
-    - write ONE combined file with all members' messages (COMBINE_ONE_FILE=True), or
-    - write one compact file per member (COMBINE_ONE_FILE=False).
+    Pull requested fields
+    - write ONE combined file with all messages 
     """
-    if COMBINE_ONE_FILE:
-        outfile = out_combined_path(date, cycle, fxx)
-        if outfile.exists() and outfile.stat().st_size > 0:
-            logger.info(f"{date} t{cycle}z f{fxx:03d} already exists -> {outfile} (skip)")
-            return outfile
-        tmp = outfile.with_suffix(outfile.suffix + ".part")
-        # open once; append member slices into same file
-        with open(tmp, "wb") as out:
-            total_written = 0
-            members_ok = 0
-
-            for member in MEMBERS:
-                downloads = []
-                got_any = False
-
-                # Find a viable product/URL for this member
-                grib_url = idx_url = None
-                entries = None
-                total_size = None
-                for product in PRODUCTS:
-                    grib_url, idx_url = pick_grib_url(product, date, cycle, fxx, member)
-                    if not grib_url:
-                        continue
-                    logger.info(f"{date} t{cycle}z f{fxx:03d} {member} using index -> {idx_url}")
-                    idx_lines = http_get(idx_url).text.splitlines()
-                    entries = parse_idx(idx_lines)
-                    if not entries:
-                        logger.info(f"{date} t{cycle}z f{fxx:03d} {member} empty/invalid index.")
-                        continue
-                    head = http_head(grib_url)
-                    total_size = int(head.headers.get("Content-Length", "0"))
-                    if total_size <= 0:
-                        logger.warning(f"{date} t{cycle}z f{fxx:03d} {member} missing Content-Length.")
-                        continue
-                    # select fields for this member
-                    for pat in FIELD_PATTERNS:
-                        rx = re.compile(pat)
-                        filtered = [e for e in entries if rx.search(e["desc"])]
-                        if not filtered:
-                            continue
-                        ranges = build_ranges(filtered, entries, total_size)
-                        for (start, end, desc) in ranges:
-                            downloads.append((grib_url, start, end, desc))
-                    break  # we found a viable product for this member (or not)
-
-                if not downloads:
-                    logger.info(f"{date} t{cycle}z f{fxx:03d} {member}: no matching fields yet (skip member).")
-                    continue
-
-                # keep in ascending byte order per member
-                downloads.sort(key=lambda t: t[1])
-
-                # fetch ranges
-                for grib_url, start, end, desc in downloads:
-                    logger.info(f"  {member} GET {grib_url} bytes={start}-{end} :: {desc}")
-                    r = http_get_range(grib_url, start, end)
-                    expected = end - start + 1
-                    got = 0
-                    for chunk in r.iter_content(chunk_size=1024*1024):
-                        if not chunk:
-                            continue
-                        out.write(chunk)
-                        got += len(chunk)
-                        total_written += len(chunk)
-                    if got != expected:
-                        raise RuntimeError(
-                            f"{member} range size mismatch [{start}-{end}] expected {expected}, got {got}"
-                        )
-                    got_any = True
-
-                if got_any:
-                    members_ok += 1
-
-        if outfile.exists():
-            outfile.unlink(missing_ok=True)
-        tmp.replace(outfile)
-        sz_mb = outfile.stat().st_size / (1024*1024)
-        logger.info(f"{date} t{cycle}z f{fxx:03d} combined ENS file ({members_ok}/{len(MEMBERS)} members) Size={sz_mb:.1f} MB")
+    
+    outfile = out_combined_path(date, cycle, fxx)
+    if outfile.exists() and outfile.stat().st_size > 0:
+        logger.info(f"{date} t{cycle}z f{fxx:03d} already exists -> {outfile} (skip)")
         return outfile
+    tmp = outfile.with_suffix(outfile.suffix + ".part")
+    # open once; append member slices into same file
+    with open(tmp, "wb") as out:
+        total_written = 0
 
-    else:
-        # One compact file per member
-        made = 0
-        for member in MEMBERS:
-            outfile = out_member_path(date, cycle, fxx, member)
-            if outfile.exists() and outfile.stat().st_size > 0:
-                logger.info(f"{date} t{cycle}z f{fxx:03d} {member} exists -> {outfile} (skip)")
-                made += 1
+        downloads = []
+
+        # Find a viable product/URL for this member
+        grib_url = idx_url = None
+        entries = None
+        total_size = None
+        for product in PRODUCTS:
+            grib_url, idx_url = pick_grib_url(product, date, cycle, fxx)
+            if not grib_url:
                 continue
-
-            downloads = []
-            grib_url = idx_url = None
-            total_size = None
-            for product in PRODUCTS:
-                grib_url, idx_url = pick_grib_url(product, date, cycle, fxx, member)
-                if not grib_url:
-                    continue
-                logger.info(f"{date} t{cycle}z f{fxx:03d} {member} using index -> {idx_url}")
-                idx_lines = http_get(idx_url).text.splitlines()
-                entries = parse_idx(idx_lines)
-                if not entries:
-                    logger.info(f"{date} t{cycle}z f{fxx:03d} {member} empty/invalid index.")
-                    continue
-                head = http_head(grib_url)
-                total_size = int(head.headers.get("Content-Length", "0"))
-                if total_size <= 0:
-                    logger.warning(f"{date} t{cycle}z f{fxx:03d} {member} missing Content-Length.")
-                    continue
-                for pat in FIELD_PATTERNS:
-                    rx = re.compile(pat)
-                    filtered = [e for e in entries if rx.search(e["desc"])]
-                    if not filtered:
-                        continue
-                    ranges = build_ranges(filtered, entries, total_size)
-                    for (start, end, desc) in ranges:
-                        downloads.append((grib_url, start, end, desc))
-                break
-
-            if not downloads:
-                logger.info(f"{date} t{cycle}z f{fxx:03d} {member}: no matching fields yet (skip).")
+            logger.info(f"{date} t{cycle}z f{fxx:03d} using index -> {idx_url}")
+            idx_lines = http_get(idx_url).text.splitlines()
+            entries = parse_idx(idx_lines)
+            if not entries:
+                logger.info(f"{date} t{cycle}z f{fxx:03d} empty/invalid index.")
                 continue
+            head = http_head(grib_url)
+            total_size = int(head.headers.get("Content-Length", "0"))
+            if total_size <= 0:
+                logger.warning(f"{date} t{cycle}z f{fxx:03d} missing Content-Length.")
+                continue
+            # select fields for this member
+            for pat in FIELD_PATTERNS:
+                rx = re.compile(pat)
+                filtered = [e for e in entries if rx.search(e["desc"])]
+                if not filtered:
+                    continue
+                ranges = build_ranges(filtered, entries, total_size)
+                for (start, end, desc) in ranges:
+                    downloads.append((grib_url, start, end, desc))
+            break  # we found a viable product for this member (or not)
 
-            downloads.sort(key=lambda t: t[1])
-            tmp = outfile.with_suffix(outfile.suffix + ".part")
-            with open(tmp, "wb") as out:
-                for grib_url, start, end, desc in downloads:
-                    logger.info(f"  {member} GET {grib_url} bytes={start}-{end} :: {desc}")
-                    r = http_get_range(grib_url, start, end)
-                    for chunk in r.iter_content(chunk_size=1024*1024):
-                        if chunk:
-                            out.write(chunk)
-            if outfile.exists():
-                outfile.unlink(missing_ok=True)
-            tmp.replace(outfile)
-            sz_mb = outfile.stat().st_size / (1024*1024)
-            logger.info(f"{date} t{cycle}z f{fxx:03d} {member} done. Size = {sz_mb:.1f} MB")
-            made += 1
-        return made
+        if not downloads:
+            logger.info(f"{date} t{cycle}z f{fxx:03d} : no matching fields")
+
+        # keep in ascending byte order
+        downloads.sort(key=lambda t: t[1])
+
+        # fetch ranges
+        for grib_url, start, end, desc in downloads:
+            logger.info(f" GET {grib_url} bytes={start}-{end} :: {desc}")
+            r = http_get_range(grib_url, start, end)
+            expected = end - start + 1
+            got = 0
+            for chunk in r.iter_content(chunk_size=1024*1024):
+                if not chunk:
+                    continue
+                out.write(chunk)
+                got += len(chunk)
+                total_written += len(chunk)
+            if got != expected:
+                raise RuntimeError(
+                    f"range size mismatch [{start}-{end}] expected {expected}, got {got}"
+                )
+
+    if outfile.exists():
+        outfile.unlink(missing_ok=True)
+    tmp.replace(outfile)
+    sz_mb = outfile.stat().st_size / (1024*1024)
+    logger.info(f"{date} t{cycle}z f{fxx:03d} combined ENS file Size={sz_mb:.1f} MB")
+    return outfile
 
 # =========================
 # Main
 # =========================
 def main():
-    # Manual single-file branch
-    if MANUAL_SINGLE and MANUAL_URL:
-        try:
-            fetch_single_url(MANUAL_URL, MANUAL_OUTDIR, MANUAL_FIELDS)
-        except Exception as e:
-            logger.exception(f"Manual fetch failed: {e}")
-        return
+    try:
+        pull_date, cycle_str = determine_model_run()
+        rollback_count = 0
 
-    # Normal bulk ensemble pulling
-    logger.info(f"==== REFS ENS pull start :: {DATE} t{CYCLE}z f{F_START:03d}-{F_END:03d} (combine={COMBINE_ONE_FILE}) ====")
-    started = time.time()
-    success = 0
-    for fxx in range(F_START, F_END + 1):
-        try:
-            out = fetch_hour(DATE, CYCLE, fxx)
-            if out:
-                success += 1
-        except Exception as e:
-            logger.exception(f"f{fxx:03d} failed: {e}")
-    elapsed = time.time() - started
-    logger.info(f"==== Finished: {success}/{F_END - F_START + 1} ok in {elapsed:.1f}s ====")
+        while True:  # keep looping until one cycle completes successfully
+            try:
+                logger.info(f"==== REFS pull start :: {pull_date} t{cycle_str}z ====")
+                t0 = time.time()
+                rollback_triggered = False
+                futures = []
+
+                # --- Validate that the current cycle exists ---
+                test_url, test_idx = pick_grib_url(PRODUCTS[0], pull_date, cycle_str, F_START)
+                if not test_url:
+                    logger.info(
+                        f"No valid data for {pull_date} t{cycle_str}z (Rolling-back Cycle)"
+                    )
+                    pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                    rollback_triggered = True
+                    rollback_count += 1
+
+                    if rollback_count >= 8:
+                        logger.error(
+                            f"Exceeded maximum rollback attempts (8). Aborting."
+                        )
+                        return
+
+                # Skip to next cycle iteration if rollback triggered
+                if rollback_triggered:
+                    continue
+
+                # --- Start threaded download ---
+                logger.info(
+                    f"==== REFS pull :: {pull_date} t{cycle_str}z f{F_START:03d}-{F_END:03d} ===="
+                )
+
+                with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+                    for fxx in range(F_START, F_END + 1):
+                        grib_url, idx_url = pick_grib_url(PRODUCTS[0], pull_date, cycle_str, fxx)
+                        if not grib_url:
+                            logger.info(
+                                f"No candidate URL for f{fxx:02d} — rolling back cycle"
+                            )
+                            pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                            rollback_triggered = True
+                            rollback_count += 1
+
+                            if rollback_count >= MAX_RETRIES:
+                                logger.error(
+                                    f"Exceeded maximum rollback attempts ({MAX_RETRIES}). Aborting."
+                                )
+                                return
+                            break  # stop this cycle completely
+
+                        futures.append(executor.submit(fetch_hour, pull_date, cycle_str, fxx))
+
+                    # Skip rest of this loop if rollback happened
+                    if rollback_triggered:
+                        continue
+
+                    success = 0
+                    for f in futures:
+                        try:
+                            out = f.result()
+                            if out:
+                                success += 1
+                        except Exception as e:
+                            logger.exception(f"❌ Thread fetch failed: {e}")
+
+                dt = time.time() - t0
+                logger.info(
+                    f"==== Finished: {success}/{F_END - F_START + 1} ok in {dt:.1f}s ===="
+                )
+
+                # If finished without rollback, break main loop
+                break
+
+            except Exception as e:
+                logger.exception(f"❌ Cycle fetch failed: {e}")
+                pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                rollback_count += 1
+                if rollback_count >= MAX_RETRIES:
+                    logger.error(
+                        f"Exceeded maximum rollback attempts ({MAX_RETRIES}). Aborting."
+                    )
+                    return
+
+    except Exception as e:
+        logger.exception(f"❌ Main thread failed: {e}")
+
+
 
 if __name__ == "__main__":
     main()

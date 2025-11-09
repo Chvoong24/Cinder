@@ -32,12 +32,16 @@ Hawklight1: Ben Mckinney
 1. Ensure you are in the main "Cinder" directory.
 2. In the terminal, run the command ``pip install -r requirements.txt``
 
+# Table Of Contents
+- [StyleGuide](#style-guide)
+    - [Branching](#branching)
+- [How To Use](#how-to-interrupt-data-fetch--end)
 
 ## How To Fetch Data
 1. Go to the **fetch_all.py** file
-2. Run file
-3. Wait for completion checks in IDE terminal (may take a while)
-4. Files appear in ```<model>_download```. Logs appear in ```<model>_log``` folder
+0. Run file
+0. Files appear in ```<model>_data```. In ```<model>_data``` download files appear in ```<model>_download``` folder. Logs appear in ```<model>_log``` folder.
+0. Wait for completion checks in IDE terminal (may take a while)
 
 >Note: You can interrupt the fetch data process whenever you feel like it after you run the file
 
