@@ -19,46 +19,49 @@ def add_hours_to_time(time_str: str, hours: int) -> str:
 
 
 
+import sys
+import orjson
+from pathlib import Path
 
+if __name__ == "__main__":
+    # Check command-line arguments
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <filename> <forecast_hour>")
+        sys.exit(1)
 
-FILENAME = "nbm06z_for_24.02619,-107.421197.json"
+    FILENAME = Path(sys.argv[1])
+    user_hour = str(sys.argv[2])  # forecast hour
 
-with open(FILENAME, "rb") as f:
-    parsed = orjson.loads(f.read())
+    if not FILENAME.exists():
+        print(f"File '{FILENAME}' does not exist!")
+        sys.exit(1)
 
+    with open(FILENAME, "rb") as f:
+        parsed = orjson.loads(f.read())
 
-metadata = parsed["metadata"]
-data = parsed["data"]
+    metadata = parsed["metadata"]
+    data = parsed["data"]
 
-print("Model:", metadata["sitrep"])
-print("Forecast time:", metadata["anal_date"])
-print("Location:", metadata["location"])
+    print("Model:", metadata["sitrep"])
+    print("Forecast time:", metadata["anal_date"])
+    print("Location:", metadata["location"])
 
+    for record in data:
+        if str(record["forecast_time"]) == user_hour:
+            threshold = record["threshold"]
+            name = record["name"]
+            step_length = record["step_length"]
+            forecast_time = record["forecast_time"]
+            step_end = add_hours_to_time(metadata["anal_date"], forecast_time)
+            step_start = add_hours_to_time(metadata["anal_date"], forecast_time - step_length)
+            value = record["value"]
 
+            if int(step_length) == 0:
+                print(f"Probability of {threshold} of {name} at {step_end} is {value}")
+            else:
+                print(f"Probability of {threshold} of {name} between {step_start} and {step_end} is {value}")
 
-user_hour = str(input("Enter forecast hour: "))
-
-
-
-for record in data:
-
-    if str(record["forecast_time"]) == user_hour:
-        threshold = record["threshold"]
-        name = record["name"]
-        step_length = record["step_length"]
-        forecast_time = record["forecast_time"]
-        step_end = add_hours_to_time(metadata["anal_date"], record["forecast_time"])
-        value = record["value"]
-
-
-
-        step_start = add_hours_to_time(metadata["anal_date"], (forecast_time - step_length))
-        # print(step_start, step_end, name)
-
-        if int(step_length) == 0:
-            print(f"Probability of {threshold} of {name} at {step_end} is {value}")
-        else:
-            print(f"Probability of {threshold} of {name} between {step_start} and {step_end} is {value}")
-
-
-
+"""
+href12z_for_24.02619,-107.421197.json
+nbm06z_for_24.02619,-107.421197.json
+"""

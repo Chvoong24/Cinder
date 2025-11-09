@@ -6,6 +6,8 @@ import re
 import logging
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import sys
+
 
 # Logger
 
@@ -157,9 +159,44 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
 
 
+# if __name__ == "__main__":
+#     LAT = 24.02619
+#     LON = -107.421197
+
+#     DESIRED_FORECAST_TYPES = [
+#         "Total Precipitation",
+#         "10 metre wind speed",
+#         "Apparent temperature",
+#         "2 metre temperature",
+#         "2 metre relative humidity"
+#     ]
+
+#     FOLDER = Path("href_download")
+#     make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
+
 if __name__ == "__main__":
-    LAT = 24.02619
-    LON = -107.421197
+    # Check if the correct number of arguments are provided
+    if len(sys.argv) != 4:
+        print("Usage: python script.py <lat> <lon> <folder>")
+        sys.exit(1)
+
+    # Parse command-line arguments
+    LAT = float(sys.argv[1])
+    LON = float(sys.argv[2])
+    sitrep = sys.argv[3]  # keep it as string
+
+    folder_name = ""
+
+    if sitrep == "href":
+        folder_name = "href_download"
+    elif sitrep == "nbm":
+        folder_name = "nbm_download"
+    elif sitrep == "refs":
+        folder_name = "refs_download"
+    else:
+        logger.error(f"Unknown sitrep: {sitrep}")
+        sys.exit(1)
+
 
     DESIRED_FORECAST_TYPES = [
         "Total Precipitation",
@@ -169,5 +206,10 @@ if __name__ == "__main__":
         "2 metre relative humidity"
     ]
 
-    FOLDER = Path("href_download")
-    make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
+    make_json_file(folder_name, LAT, LON, DESIRED_FORECAST_TYPES)
+
+"""
+24.02619
+-107.421197
+href
+"""
