@@ -325,7 +325,7 @@ def candidate_urls(product: str, date: str, cycle: str, fxx: int):
         Generate candidate url
     """
     fff = f"{fxx:02d}"
-    return [f"{BUCKET}/rrfs_a/refs.{date}/{cycle}/enspost_timelag/refs.t{cycle}z.conus.avrg.f{fff}.grib2"]
+    return [f"{BUCKET}/rrfs_a/refs.{date}/{cycle}/enspost_timelag/refs.t{cycle}z.conus.prob.f{fff}.grib2"]
 
 def pick_grib_url(product: str, date: str, cycle: str, fxx: int):
     for url in candidate_urls(product, date, cycle, fxx):
