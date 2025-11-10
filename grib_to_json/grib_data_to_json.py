@@ -6,12 +6,10 @@ import re
 import logging
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import sys
 
 
-
-
-
-
+# Logger
 
 class SafeMemoryFormatter(logging.Formatter):
     def format(self, record):
@@ -37,17 +35,7 @@ for handler in logging.getLogger().handlers:
 
 
 
-
-
-import os
-import re
-import json
-import logging
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import numpy as np
-import pygrib
-
-logger = logging.getLogger(__name__)
+# Code workflow
 
 def get_value_from_latlon(lat, lon, lats, lons, data):
     """
@@ -63,31 +51,41 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
     Args:
         folder_path: Path to folder with grib2 files.
         lat, lon: desired latitude/longitude point for forecast.
+        desired_forecast_types: list of grib2 forecast types that you want in the json.
         max_workers: number of threads for parallel execution.
+    
+    Outputs a JSON file to the current directory
     """
 
     prob_re = re.compile(r'Probability.*\(([^)]*)\)', re.IGNORECASE)
 
     def get_all_readable_data(filename):
+
         readable_data = []
-
+        anal_date = ""
         try:
-            with pygrib.open(filename.path) as grbs:  # <-- use filename.path
+            with pygrib.open(filename.path) as grbs:
                 logger.info(f"Parsing {filename.name}")
+                first_grib = grbs.message(1)
+                anal_date = first_grib.analDate
 
-                match = re.search(r'f(\d{2})', filename.name)
+                match = re.search(r'f(\d{2,3})', filename.name)
                 if match:
                     forecast_end = int(match.group(1))
-                    
-                    
 
                 for grb in grbs:
                     if grb.name not in desired_forecast_types: 
                         continue
-
+                    anal_date = grb.analDate
                     # Extract probability threshold if available
+
                     match = prob_re.search(str(grb))
-                    limit = match.group(1) if match else "none"
+                    if match:
+                        pass
+                    else:
+                        continue
+                    
+                    limit = f"{match.group(1) if match else "none"} {grb.units}"
 
                     # Get nearest value to requested lat/lon
                     data, lats, lons = grb.data()
@@ -95,16 +93,20 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
                     
                     step_length = forecast_end - grb.forecastTime
+                    # print(grb)
+                    # print(grb.analDate)
+                    # print("Forecast end: ", forecast_end)
+                    # print("Forecast time: ", grb.forecastTime)
+                    # print("Step length: ", step_length)
                     
-
                     readable_data.append((limit, grb.name, step_length, grb.forecastTime, value))
-
+                logger.info(f"Parsed {filename.name}")
         except Exception as e:
             logger.error(f"Error processing {filename.name}: {e}")
 
-        return readable_data
+        return readable_data, anal_date
 
-    # --- Parallel execution ---
+    # --- Parallelization ---
     readable_data = []
 
     folder_path = os.fspath(folder_path) if not isinstance(folder_path, (str, os.PathLike)) else folder_path
@@ -115,15 +117,18 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
             for file_path in os.scandir(folder_path) if file_path.is_file()
         }
 
+        anal_date = None  # initialize before loop
         for future in as_completed(futures):
             file_path = futures[future]
             try:
-                rd = future.result()
+                rd, ad = future.result()
                 readable_data.extend(rd)
+                if anal_date is None and ad:  # capture the first non-empty analysis date
+                    anal_date = ad
             except Exception as e:
                 logger.error(f"Failed on {file_path}: {e}")
 
-    # --- Metadata from first file ---
+    # --- Prepare JSON output ---
     files = [f.name for f in os.scandir(folder_path) if f.is_file()]
     model, cycle = "unknown", "unknown"
     if files:
@@ -131,32 +136,20 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
         if match:
             model, cycle = match.groups()
 
-    # --- Prepare JSON output ---
 
-    forecast_types = [tup[:2] for tup in readable_data]
-    forecast_types = sorted(set(forecast_types))
-
-
-    hour_and_step_list = [tup[2:4] for tup in readable_data]
-    hour_and_step_list = sorted(set(hour_and_step_list))
-
-    
-
-    headers = ["threshold", "name", "step_length", "forecast_time", "probability"]
+    headers = ["threshold", "name", "step_length", "forecast_time", "value"]
 
 
     output_data = {
         "metadata": {
             "sitrep": model,
-            "forecast_time": cycle,
+            "anal_date": anal_date.strftime("%Y-%m-%d %H:%M:%S") if anal_date else "unknown",
             "location": {"lat": lat, "lon": lon},
-            "folder": str(folder_path),
-            "forecast_types": forecast_types,
-            "hour_list": hour_and_step_list
-            
+            "folder": str(folder_path)
         },
         "data": [dict(zip(headers, row)) for row in readable_data],
     }
+
 
     output_name = f"{model}{cycle}_for_{lat},{lon}.json"
     with open(output_name, "w", encoding="utf-8") as f:
@@ -166,20 +159,57 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
 
 
+# if __name__ == "__main__":
+#     LAT = 24.02619
+#     LON = -107.421197
+
+#     DESIRED_FORECAST_TYPES = [
+#         "Total Precipitation",
+#         "10 metre wind speed",
+#         "Apparent temperature",
+#         "2 metre temperature",
+#         "2 metre relative humidity"
+#     ]
+
+#     FOLDER = Path("href_download")
+#     make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
+
+if __name__ == "__main__":
+    # Check if the correct number of arguments are provided
+    if len(sys.argv) != 4:
+        print("Usage: python script.py <lat> <lon> <folder>")
+        sys.exit(1)
+
+    # Parse command-line arguments
+    LAT = float(sys.argv[1])
+    LON = float(sys.argv[2])
+    sitrep = sys.argv[3]  # keep it as string
+
+    folder_name = ""
+
+    if sitrep == "href":
+        folder_name = "href_download"
+    elif sitrep == "nbm":
+        folder_name = "nbm_download"
+    elif sitrep == "refs":
+        folder_name = "refs_download"
+    else:
+        logger.error(f"Unknown sitrep: {sitrep}")
+        sys.exit(1)
 
 
-LAT = 24.02619
-LON = -107.421197
+    DESIRED_FORECAST_TYPES = [
+        "Total Precipitation",
+        "10 metre wind speed",
+        "Apparent temperature",
+        "2 metre temperature",
+        "2 metre relative humidity"
+    ]
 
-DESIRED_FORECAST_TYPES = [
-    "Total Precipitation",
-    "10 metre wind speed",
-    "Apparent temperature",
-    "2 metre temperature",
-    "2 metre relative humidity"
-]
+    make_json_file(folder_name, LAT, LON, DESIRED_FORECAST_TYPES)
 
-FOLDER = Path("href_download")
-
-make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
-
+"""
+24.02619
+-107.421197
+href
+"""
