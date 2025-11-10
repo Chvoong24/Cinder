@@ -7,7 +7,9 @@ Project for COMP333
     - [Create An Enviroment](#create-a-python-enviroment)
     - [Necessary Imports](#imports)
 - [How To Use](#how-to-fetch-data)
+    - [More Info On Functions](#documentation)
 - [How Do You Know It Works](#how-do-you-know-it-works-unit-tests)
+- [Issues Tracker](#issues)
 
 ## Members
 Chvoong24: Chris Voong  
@@ -90,4 +92,6 @@ There are also two sample json files that you can use to test ```forecast_json_p
 
 ## Documentation
 Documentation for all functions can be found at ```build/html/index.html```. It is still work in progress.  
+
+## Issues
 A list of current issues and the state of the project can be found on our [Trello Board](https://trello.com/invite/b/68e3da706221ff22901d141c/ATTI9234f181668ee06c796b682eeee9fb732B0B90BF/team-cinder).
