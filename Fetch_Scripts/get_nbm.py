@@ -34,12 +34,14 @@ BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
 
 # Output locations
 
-SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 PARENT_DIR = SCRIPT_DIR.parent
 
-OUTDIR = PARENT_DIR / "nbm_download"
-LOGDIR = PARENT_DIR / "./nbm_logs"
+NBM_DATA_DIR = PARENT_DIR / "nbm_data"
+
+OUTDIR = NBM_DATA_DIR / "nbm_download"
+LOGDIR = NBM_DATA_DIR / "./nbm_logs"
 
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
