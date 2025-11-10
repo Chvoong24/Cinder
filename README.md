@@ -8,6 +8,8 @@ Project for COMP333
     - [Necessary Imports](#imports)
 - [How To Use](#how-to-fetch-data)
 - [How Do You Know It Works](#how-do-you-know-it-works-unit-tests)
+- [Run Local Website](#starting-local-website)
+
 
 ## Members
 Chvoong24: Chris Voong  
@@ -57,3 +59,5 @@ Hawklight1: Ben Mckinney
 ## Documentation
 Documentation for all functions can be found at ```build/html/index.html```. It is still work in progress.  
 A list of current issues and the state of the project can be found on our [Trello Board](https://trello.com/invite/b/68e3da706221ff22901d141c/ATTI9234f181668ee06c796b682eeee9fb732B0B90BF/team-cinder).
+
+## Starting Local Website 
