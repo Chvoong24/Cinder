@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2025-10-23 11:34:51,186 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
 2025-10-23 11:34:52,862 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
 2025-10-23 11:34:55,489 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
@@ -554,3 +555,203 @@
 2025-11-06 14:47:53,631 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
 2025-11-06 14:47:56,367 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
 2025-11-06 14:48:00,571 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251013/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+=======
+2025-11-10 15:51:07,764 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251110/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-11-10 15:51:09,706 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251110/18/qmd/blend.t18z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-11-10 15:51:12,270 | INFO | No candidate GRIB URL for 20251110 t18z f001 (Rolling-back Cycle)
+2025-11-10 15:51:12,735 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251110/12/qmd/blend.t12z.qmd.f001.co.grib2.idx
+2025-11-10 15:51:13,151 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251110/12/qmd/blend.t12z.qmd.f002.co.grib2.idx
+2025-11-10 15:51:13,706 | INFO | Matched .idx lines:
+2025-11-10 15:51:13,707 | INFO |   msg=17 off=  15479279 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob >305.372:prob fcst 0/0
+2025-11-10 15:51:13,711 | INFO |   msg=18 off=  16456123 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob >310.928:prob fcst 0/0
+2025-11-10 15:51:13,711 | INFO |   msg=19 off=  17392991 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob >313.706:prob fcst 0/0
+2025-11-10 15:51:13,711 | INFO |   msg=20 off=  18329466 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob >316.483:prob fcst 0/0
+2025-11-10 15:51:13,711 | INFO |   msg=21 off=  19265941 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob >322.039:prob fcst 0/0
+2025-11-10 15:51:13,711 | INFO |   msg=22 off=  20202416 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob <273.14:prob fcst 0/0
+2025-11-10 15:51:13,712 | INFO |   msg=23 off=  21660680 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob <270.928:prob fcst 0/0
+2025-11-10 15:51:13,712 | INFO |   msg=24 off=  23106739 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob <255.372:prob fcst 0/0
+2025-11-10 15:51:13,712 | INFO |   msg=25 off=  24154728 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:0% level
+2025-11-10 15:51:13,712 | INFO |   msg=26 off=  25712103 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:5% level
+2025-11-10 15:51:13,712 | INFO |   msg=27 off=  27248180 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:10% level
+2025-11-10 15:51:13,712 | INFO |   msg=28 off=  28780714 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:15% level
+2025-11-10 15:51:13,712 | INFO |   msg=29 off=  30309148 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:20% level
+2025-11-10 15:51:13,712 | INFO |   msg=30 off=  31836363 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:25% level
+2025-11-10 15:51:13,713 | INFO |   msg=31 off=  33360501 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:30% level
+2025-11-10 15:51:13,713 | INFO |   msg=32 off=  34880869 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:35% level
+2025-11-10 15:51:13,713 | INFO |   msg=33 off=  36398103 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:40% level
+2025-11-10 15:51:13,713 | INFO |   msg=34 off=  37913311 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:45% level
+2025-11-10 15:51:13,713 | INFO |   msg=35 off=  39427027 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:50% level
+2025-11-10 15:51:13,713 | INFO |   msg=36 off=  40939863 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:55% level
+2025-11-10 15:51:13,713 | INFO |   msg=37 off=  42450659 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:60% level
+2025-11-10 15:51:13,713 | INFO |   msg=38 off=  43959864 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:65% level
+2025-11-10 15:51:13,713 | INFO |   msg=39 off=  45467191 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:70% level
+2025-11-10 15:51:13,713 | INFO |   msg=40 off=  46974175 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:75% level
+2025-11-10 15:51:13,713 | INFO |   msg=41 off=  48479566 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:80% level
+2025-11-10 15:51:13,713 | INFO |   msg=42 off=  49984663 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:85% level
+2025-11-10 15:51:13,713 | INFO |   msg=43 off=  51488001 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:90% level
+2025-11-10 15:51:13,713 | INFO |   msg=44 off=  52992025 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:95% level
+2025-11-10 15:51:13,713 | INFO |   msg=45 off=  54496725 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:100% level
+2025-11-10 15:51:13,713 | INFO |   msg=46 off=  56031764 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:
+2025-11-10 15:51:13,713 | INFO |   msg=82 off= 178670921 :: d=2025111012:APCP:surface:0-1 hour acc fcst:
+2025-11-10 15:51:13,713 | INFO |   msg=138 off= 243358338 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob <255.372:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=139 off= 243833481 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob <270.928:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=140 off= 244893838 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob <273.15:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=141 off= 245978171 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob >299.817:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=142 off= 246563114 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob >305.372:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=143 off= 247031469 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob >310.928:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=144 off= 247499824 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob >316.483:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=145 off= 247968179 :: d=2025111012:TMP:2 m above ground:1 hour fcst:prob >322.039:prob fcst 255/255
+2025-11-10 15:51:13,713 | INFO |   msg=146 off= 248436534 :: d=2025111012:TMP:2 m above ground:1 hour fcst:0% level
+2025-11-10 15:51:13,713 | INFO |   msg=147 off= 253772399 :: d=2025111012:TMP:2 m above ground:1 hour fcst:5% level
+2025-11-10 15:51:13,713 | INFO |   msg=148 off= 259038062 :: d=2025111012:TMP:2 m above ground:1 hour fcst:10% level
+2025-11-10 15:51:13,713 | INFO |   msg=149 off= 264305165 :: d=2025111012:TMP:2 m above ground:1 hour fcst:15% level
+2025-11-10 15:51:13,713 | INFO |   msg=150 off= 269546964 :: d=2025111012:TMP:2 m above ground:1 hour fcst:20% level
+2025-11-10 15:51:13,713 | INFO |   msg=151 off= 274772453 :: d=2025111012:TMP:2 m above ground:1 hour fcst:25% level
+2025-11-10 15:51:13,713 | INFO |   msg=152 off= 279953143 :: d=2025111012:TMP:2 m above ground:1 hour fcst:30% level
+2025-11-10 15:51:13,713 | INFO |   msg=153 off= 285154189 :: d=2025111012:TMP:2 m above ground:1 hour fcst:35% level
+2025-11-10 15:51:13,713 | INFO |   msg=154 off= 290344481 :: d=2025111012:TMP:2 m above ground:1 hour fcst:40% level
+2025-11-10 15:51:13,713 | INFO |   msg=155 off= 295526708 :: d=2025111012:TMP:2 m above ground:1 hour fcst:45% level
+2025-11-10 15:51:13,713 | INFO |   msg=156 off= 300703377 :: d=2025111012:TMP:2 m above ground:1 hour fcst:50% level
+2025-11-10 15:51:13,713 | INFO |   msg=157 off= 305847264 :: d=2025111012:TMP:2 m above ground:1 hour fcst:55% level
+2025-11-10 15:51:13,713 | INFO |   msg=158 off= 311013281 :: d=2025111012:TMP:2 m above ground:1 hour fcst:60% level
+2025-11-10 15:51:13,713 | INFO |   msg=159 off= 316142252 :: d=2025111012:TMP:2 m above ground:1 hour fcst:65% level
+2025-11-10 15:51:13,713 | INFO |   msg=160 off= 321295281 :: d=2025111012:TMP:2 m above ground:1 hour fcst:70% level
+2025-11-10 15:51:13,713 | INFO |   msg=161 off= 326441765 :: d=2025111012:TMP:2 m above ground:1 hour fcst:75% level
+2025-11-10 15:51:13,714 | INFO |   msg=162 off= 331582811 :: d=2025111012:TMP:2 m above ground:1 hour fcst:80% level
+2025-11-10 15:51:13,714 | INFO |   msg=163 off= 336688904 :: d=2025111012:TMP:2 m above ground:1 hour fcst:85% level
+2025-11-10 15:51:13,714 | INFO |   msg=164 off= 341792794 :: d=2025111012:TMP:2 m above ground:1 hour fcst:90% level
+2025-11-10 15:51:13,714 | INFO |   msg=165 off= 346928071 :: d=2025111012:TMP:2 m above ground:1 hour fcst:95% level
+2025-11-10 15:51:13,714 | INFO |   msg=166 off= 352031439 :: d=2025111012:TMP:2 m above ground:1 hour fcst:100% level
+2025-11-10 15:51:13,714 | INFO |   msg=167 off= 357102326 :: d=2025111012:TMP:2 m above ground:1 hour fcst:ens mean
+2025-11-10 15:51:13,714 | INFO |   msg=168 off= 362180703 :: d=2025111012:TMP:2 m above ground:1 hour fcst:ens std dev
+2025-11-10 15:51:13,714 | INFO |   msg=169 off= 365976380 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >8.7456:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=170 off= 367501827 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >11.3177:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=171 off= 368808687 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >15.4333:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=172 off= 369712268 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >17.4911:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=173 off= 370448184 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >21.0922:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=174 off= 370999587 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >24.6933:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=175 off= 371496162 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >28.8089:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=176 off= 371977188 :: d=2025111012:GUST:10 m above ground:1 hour fcst:prob >32.9244:prob fcst 255/255
+2025-11-10 15:51:13,714 | INFO |   msg=177 off= 372451089 :: d=2025111012:GUST:10 m above ground:1 hour fcst:0% level
+2025-11-10 15:51:13,714 | INFO |   msg=178 off= 374228778 :: d=2025111012:GUST:10 m above ground:1 hour fcst:5% level
+2025-11-10 15:51:13,714 | INFO |   msg=179 off= 376024595 :: d=2025111012:GUST:10 m above ground:1 hour fcst:10% level
+2025-11-10 15:51:13,714 | INFO |   msg=180 off= 377808059 :: d=2025111012:GUST:10 m above ground:1 hour fcst:15% level
+2025-11-10 15:51:13,714 | INFO |   msg=181 off= 379607496 :: d=2025111012:GUST:10 m above ground:1 hour fcst:20% level
+2025-11-10 15:51:13,714 | INFO |   msg=182 off= 381403170 :: d=2025111012:GUST:10 m above ground:1 hour fcst:25% level
+2025-11-10 15:51:13,714 | INFO |   msg=183 off= 383198999 :: d=2025111012:GUST:10 m above ground:1 hour fcst:30% level
+2025-11-10 15:51:13,714 | INFO |   msg=184 off= 384994952 :: d=2025111012:GUST:10 m above ground:1 hour fcst:35% level
+2025-11-10 15:51:13,714 | INFO |   msg=185 off= 386792705 :: d=2025111012:GUST:10 m above ground:1 hour fcst:40% level
+2025-11-10 15:51:13,714 | INFO |   msg=186 off= 388582012 :: d=2025111012:GUST:10 m above ground:1 hour fcst:45% level
+2025-11-10 15:51:13,714 | INFO |   msg=187 off= 390379758 :: d=2025111012:GUST:10 m above ground:1 hour fcst:50% level
+2025-11-10 15:51:13,714 | INFO |   msg=188 off= 392201240 :: d=2025111012:GUST:10 m above ground:1 hour fcst:55% level
+2025-11-10 15:51:13,714 | INFO |   msg=189 off= 394006557 :: d=2025111012:GUST:10 m above ground:1 hour fcst:60% level
+2025-11-10 15:51:13,714 | INFO |   msg=190 off= 395810646 :: d=2025111012:GUST:10 m above ground:1 hour fcst:65% level
+2025-11-10 15:51:13,714 | INFO |   msg=191 off= 397631184 :: d=2025111012:GUST:10 m above ground:1 hour fcst:70% level
+2025-11-10 15:51:13,714 | INFO |   msg=192 off= 399456047 :: d=2025111012:GUST:10 m above ground:1 hour fcst:75% level
+2025-11-10 15:51:13,714 | INFO |   msg=193 off= 401285332 :: d=2025111012:GUST:10 m above ground:1 hour fcst:80% level
+2025-11-10 15:51:13,714 | INFO |   msg=194 off= 403123044 :: d=2025111012:GUST:10 m above ground:1 hour fcst:85% level
+2025-11-10 15:51:13,714 | INFO |   msg=195 off= 404973286 :: d=2025111012:GUST:10 m above ground:1 hour fcst:90% level
+2025-11-10 15:51:13,714 | INFO |   msg=196 off= 406824020 :: d=2025111012:GUST:10 m above ground:1 hour fcst:95% level
+2025-11-10 15:51:13,714 | INFO |   msg=197 off= 408708754 :: d=2025111012:GUST:10 m above ground:1 hour fcst:100% level
+2025-11-10 15:51:13,714 | INFO |   msg=198 off= 410647559 :: d=2025111012:GUST:10 m above ground:1 hour fcst:ens mean
+2025-11-10 15:51:13,714 | INFO |   msg=199 off= 412338633 :: d=2025111012:GUST:10 m above ground:1 hour fcst:ens std dev
+2025-11-10 15:51:13,715 | INFO | Writing -> /Users/chris/Desktop/School/Projects/Cinder/nbm_data/nbm_download/nbm_t12z_f001_custom.grib2
+2025-11-10 15:51:13,715 | INFO |   GET bytes=15479279-16456122 :: d=2025111012:APTMP:2 m above ground:1 hour fcst:prob >305.372:prob fcst 0/0
+2025-11-10 15:51:13,791 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251110/12/qmd/blend.t12z.qmd.f003.co.grib2.idx
+2025-11-10 15:51:14,100 | INFO | Matched .idx lines:
+2025-11-10 15:51:14,108 | INFO |   msg=17 off=  15489813 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob >305.372:prob fcst 0/0
+2025-11-10 15:51:14,108 | INFO |   msg=18 off=  16470391 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob >310.928:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=19 off=  17407070 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob >313.706:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=20 off=  18343555 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob >316.483:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=21 off=  19280030 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob >322.039:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=22 off=  20216505 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob <273.14:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=23 off=  21648516 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob <270.928:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=24 off=  23063379 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob <255.372:prob fcst 0/0
+2025-11-10 15:51:14,109 | INFO |   msg=25 off=  24062702 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:0% level
+2025-11-10 15:51:14,110 | INFO |   msg=26 off=  25615323 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:5% level
+2025-11-10 15:51:14,110 | INFO |   msg=27 off=  27140654 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:10% level
+2025-11-10 15:51:14,110 | INFO |   msg=28 off=  28662664 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:15% level
+2025-11-10 15:51:14,111 | INFO |   msg=29 off=  30180930 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:20% level
+2025-11-10 15:51:14,111 | INFO |   msg=30 off=  31696386 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:25% level
+2025-11-10 15:51:14,111 | INFO |   msg=31 off=  33209446 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:30% level
+2025-11-10 15:51:14,111 | INFO |   msg=32 off=  34720420 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:35% level
+2025-11-10 15:51:14,111 | INFO |   msg=33 off=  36229555 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:40% level
+2025-11-10 15:51:14,111 | INFO |   msg=34 off=  37735897 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:45% level
+2025-11-10 15:51:14,111 | INFO |   msg=35 off=  39241249 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:50% level
+2025-11-10 15:51:14,111 | INFO |   msg=36 off=  40744443 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:55% level
+2025-11-10 15:51:14,111 | INFO |   msg=37 off=  42245999 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:60% level
+2025-11-10 15:51:14,111 | INFO |   msg=38 off=  43746332 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:65% level
+2025-11-10 15:51:14,111 | INFO |   msg=39 off=  45246238 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:70% level
+2025-11-10 15:51:14,111 | INFO |   msg=40 off=  46745710 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:75% level
+2025-11-10 15:51:14,111 | INFO |   msg=41 off=  48242829 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:80% level
+2025-11-10 15:51:14,111 | INFO |   msg=42 off=  49739004 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:85% level
+2025-11-10 15:51:14,111 | INFO |   msg=43 off=  51233844 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:90% level
+2025-11-10 15:51:14,111 | INFO |   msg=44 off=  52727535 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:95% level
+2025-11-10 15:51:14,111 | INFO |   msg=45 off=  54222118 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:100% level
+2025-11-10 15:51:14,111 | INFO |   msg=46 off=  55742476 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:
+2025-11-10 15:51:14,111 | INFO |   msg=82 off= 179731054 :: d=2025111012:APCP:surface:1-2 hour acc fcst:
+2025-11-10 15:51:14,112 | INFO |   msg=138 off= 243916203 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob <255.372:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=139 off= 244384708 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob <270.928:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=140 off= 245427690 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob <273.15:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=141 off= 246508775 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob >299.817:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=142 off= 247090537 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob >305.372:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=143 off= 247558892 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob >310.928:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=144 off= 248027247 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob >316.483:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=145 off= 248495602 :: d=2025111012:TMP:2 m above ground:2 hour fcst:prob >322.039:prob fcst 255/255
+2025-11-10 15:51:14,112 | INFO |   msg=146 off= 248963957 :: d=2025111012:TMP:2 m above ground:2 hour fcst:0% level
+2025-11-10 15:51:14,112 | INFO |   msg=147 off= 254275585 :: d=2025111012:TMP:2 m above ground:2 hour fcst:5% level
+2025-11-10 15:51:14,112 | INFO |   msg=148 off= 259470970 :: d=2025111012:TMP:2 m above ground:2 hour fcst:10% level
+2025-11-10 15:51:14,112 | INFO |   msg=149 off= 264632670 :: d=2025111012:TMP:2 m above ground:2 hour fcst:15% level
+2025-11-10 15:51:14,113 | INFO |   msg=150 off= 269769553 :: d=2025111012:TMP:2 m above ground:2 hour fcst:20% level
+2025-11-10 15:51:14,113 | INFO |   msg=151 off= 274918529 :: d=2025111012:TMP:2 m above ground:2 hour fcst:25% level
+2025-11-10 15:51:14,113 | INFO |   msg=152 off= 280053491 :: d=2025111012:TMP:2 m above ground:2 hour fcst:30% level
+2025-11-10 15:51:14,113 | INFO |   msg=153 off= 285148057 :: d=2025111012:TMP:2 m above ground:2 hour fcst:35% level
+2025-11-10 15:51:14,114 | INFO |   msg=154 off= 290262860 :: d=2025111012:TMP:2 m above ground:2 hour fcst:40% level
+2025-11-10 15:51:14,114 | INFO |   msg=155 off= 295370223 :: d=2025111012:TMP:2 m above ground:2 hour fcst:45% level
+2025-11-10 15:51:14,114 | INFO |   msg=156 off= 300471505 :: d=2025111012:TMP:2 m above ground:2 hour fcst:50% level
+2025-11-10 15:51:14,114 | INFO |   msg=157 off= 305539176 :: d=2025111012:TMP:2 m above ground:2 hour fcst:55% level
+2025-11-10 15:51:14,114 | INFO |   msg=158 off= 310597153 :: d=2025111012:TMP:2 m above ground:2 hour fcst:60% level
+2025-11-10 15:51:14,114 | INFO |   msg=159 off= 315676166 :: d=2025111012:TMP:2 m above ground:2 hour fcst:65% level
+2025-11-10 15:51:14,114 | INFO |   msg=160 off= 320717456 :: d=2025111012:TMP:2 m above ground:2 hour fcst:70% level
+2025-11-10 15:51:14,114 | INFO |   msg=161 off= 325781942 :: d=2025111012:TMP:2 m above ground:2 hour fcst:75% level
+2025-11-10 15:51:14,114 | INFO |   msg=162 off= 330809560 :: d=2025111012:TMP:2 m above ground:2 hour fcst:80% level
+2025-11-10 15:51:14,114 | INFO |   msg=163 off= 335860902 :: d=2025111012:TMP:2 m above ground:2 hour fcst:85% level
+2025-11-10 15:51:14,114 | INFO |   msg=164 off= 340909167 :: d=2025111012:TMP:2 m above ground:2 hour fcst:90% level
+2025-11-10 15:51:14,115 | INFO |   msg=165 off= 345924814 :: d=2025111012:TMP:2 m above ground:2 hour fcst:95% level
+2025-11-10 15:51:14,115 | INFO |   msg=166 off= 350945036 :: d=2025111012:TMP:2 m above ground:2 hour fcst:100% level
+2025-11-10 15:51:14,117 | INFO |   msg=167 off= 355953169 :: d=2025111012:TMP:2 m above ground:2 hour fcst:ens mean
+2025-11-10 15:51:14,117 | INFO |   msg=168 off= 360976831 :: d=2025111012:TMP:2 m above ground:2 hour fcst:ens std dev
+2025-11-10 15:51:14,120 | INFO |   msg=169 off= 364787867 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >8.7456:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=170 off= 366280838 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >11.3177:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=171 off= 367586432 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >15.4333:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=172 off= 368486926 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >17.4911:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=173 off= 369219362 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >21.0922:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=174 off= 369776412 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >24.6933:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=175 off= 370272637 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >28.8089:prob fcst 255/255
+2025-11-10 15:51:14,120 | INFO |   msg=176 off= 370752989 :: d=2025111012:GUST:10 m above ground:2 hour fcst:prob >32.9244:prob fcst 255/255
+2025-11-10 15:51:14,127 | INFO |   msg=177 off= 371225817 :: d=2025111012:GUST:10 m above ground:2 hour fcst:0% level
+2025-11-10 15:51:14,128 | INFO |   msg=178 off= 373009650 :: d=2025111012:GUST:10 m above ground:2 hour fcst:5% level
+2025-11-10 15:51:14,128 | INFO |   msg=179 off= 374789740 :: d=2025111012:GUST:10 m above ground:2 hour fcst:10% level
+2025-11-10 15:51:14,128 | INFO |   msg=180 off= 376580226 :: d=2025111012:GUST:10 m above ground:2 hour fcst:15% level
+2025-11-10 15:51:14,128 | INFO |   msg=181 off= 378358260 :: d=2025111012:GUST:10 m above ground:2 hour fcst:20% level
+2025-11-10 15:51:14,128 | INFO |   msg=182 off= 380137798 :: d=2025111012:GUST:10 m above ground:2 hour fcst:25% level
+2025-11-10 15:51:14,128 | INFO |   msg=183 off= 381916100 :: d=2025111012:GUST:10 m above ground:2 hour fcst:30% level
+2025-11-10 15:51:14,128 | INFO |   msg=184 off= 383697585 :: d=2025111012:GUST:10 m above ground:2 hour fcst:35% level
+2025-11-10 15:51:14,128 | INFO |   msg=185 off= 385480112 :: d=2025111012:GUST:10 m above ground:2 hour fcst:40% level
+2025-11-10 15:51:14,128 | INFO |   msg=186 off= 387254706 :: d=2025111012:GUST:10 m above ground:2 hour fcst:45% level
+2025-11-10 15:51:14,128 | INFO |   msg=187 off= 389037306 :: d=2025111012:GUST:10 m above ground:2 hour fcst:50% level
+2025-11-10 15:51:14,128 | INFO |   msg=188 off= 390843689 :: d=2025111012:GUST:10 m above ground:2 hour fcst:55% level
+2025-11-10 15:51:14,128 | INFO |   msg=189 off= 392634102 :: d=2025111012:GUST:10 m above ground:2 hour fcst:60% level
+2025-11-10 15:51:14,128 | INFO |   msg=190 off= 394424533 :: d=2025111012:GUST:10 m above ground:2 hour fcst:65% level
+2025-11-10 15:51:14,128 | INFO |   msg=191 off= 396232789 :: d=2025111012:GUST:10 m above ground:2 hour fcst:70% level
+2025-11-10 15:51:14,137 | INFO |   msg=192 off= 398045558 :: d=2025111012:GUST:10 m above ground:2 hour fcst:75% level
+2025-11-10 15:51:14,137 | INFO |   msg=193 off= 399862687 :: d=2025111012:GUST:10 m above ground:2 hour fcst:80% level
+2025-11-10 15:51:14,138 | INFO |   msg=194 off= 401689474 :: d=2025111012:GUST:10 m above ground:2 hour fcst:85% level
+2025-11-10 15:51:14,138 | INFO |   msg=195 off= 403529286 :: d=2025111012:GUST:10 m above ground:2 hour fcst:90% level
+2025-11-10 15:51:14,138 | INFO |   msg=196 off= 405367475 :: d=2025111012:GUST:10 m above ground:2 hour fcst:95% level
+2025-11-10 15:51:14,138 | INFO |   msg=197 off= 407240457 :: d=2025111012:GUST:10 m above ground:2 hour fcst:100% level
+2025-11-10 15:51:14,138 | INFO |   msg=198 off= 409171538 :: d=2025111012:GUST:10 m above ground:2 hour fcst:ens mean
+2025-11-10 15:51:14,138 | INFO |   msg=199 off= 410824543 :: d=2025111012:GUST:10 m above ground:2 hour fcst:ens std dev
+2025-11-10 15:51:14,138 | INFO | Writing -> /Users/chris/Desktop/School/Projects/Cinder/nbm_data/nbm_download/nbm_t12z_f002_custom.grib2
+2025-11-10 15:51:14,138 | INFO |   GET bytes=15489813-16470390 :: d=2025111012:APTMP:2 m above ground:2 hour fcst:prob >305.372:prob fcst 0/0
+>>>>>>> origin/main

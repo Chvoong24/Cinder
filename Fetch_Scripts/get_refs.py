@@ -7,6 +7,7 @@ import requests
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 
 # =========================
 # User settings
@@ -106,8 +107,15 @@ PRODUCTS = ["prslev"]
 BUCKET = "https://noaa-rrfs-pds.s3.amazonaws.com"
 
 # Output locations
-OUTDIR = pathlib.Path("./refs_download")
-LOGDIR = pathlib.Path("./refs_logs")
+SCRIPT_DIR = Path(__file__).resolve().parent
+
+PARENT_DIR = SCRIPT_DIR.parent
+
+REFS_DATA_DIR = PARENT_DIR / "refs_data"
+
+OUTDIR = REFS_DATA_DIR / "refs_download"
+LOGDIR = REFS_DATA_DIR / "./refs_logs"
+
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
 
