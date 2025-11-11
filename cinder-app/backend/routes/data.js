@@ -4,7 +4,7 @@ import Point from "../models/Point.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const { lat, lon } = req.query; // ✅ use req.query (not res.query!)
+  const { lat, lon } = req.query; 
 
   if (!lat || !lon) {
     return res.status(400).json({ error: "Missing lat or lon query parameters" });

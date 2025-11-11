@@ -9,12 +9,9 @@ Project for COMP333
 - [How To Use](#how-to-fetch-data)
     - [More Info On Functions](#documentation)
 - [How Do You Know It Works](#how-do-you-know-it-works-unit-tests)
-<<<<<<< HEAD
 - [Run Local Website](#starting-local-website)
 
-=======
 - [Issues Tracker](#issues)
->>>>>>> origin/main
 
 ## Members
 Chvoong24: Chris Voong  
@@ -110,7 +107,8 @@ A list of current issues and the state of the project can be found on our [Trell
     1. ```terminal 
         cd .../Cinder/cinder-app/backend
         ```
-    2. run ```npm run dev``` in your terminal
+    0. Type ```npm install nodemon --save-dev``` in your terminal
+    0. run ```npm run dev``` in your terminal
 
 0. In a **new** terminal, change directory until you are in frontend/cinderWeb
     - ```.../where/your/file/is/frontend/cinderWeb```
