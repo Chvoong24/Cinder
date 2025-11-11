@@ -21,7 +21,7 @@ async function run() {
       __dirname,
       "models",
       "data",
-      "nbm06z_for_24.02619,-107.421197.json"
+      "nbm06z_for_24.02619,-107.421197.json" //Needs to paramertized
     );
     const data = fs.readFileSync(filePath, "utf-8");
 

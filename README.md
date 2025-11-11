@@ -61,3 +61,22 @@ Documentation for all functions can be found at ```build/html/index.html```. It 
 A list of current issues and the state of the project can be found on our [Trello Board](https://trello.com/invite/b/68e3da706221ff22901d141c/ATTI9234f181668ee06c796b682eeee9fb732B0B90BF/team-cinder).
 
 ## Starting Local Website 
+1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/?operating-system=macos&macos-installation-method=homebrew)
+    - Choose your OS and follow download instructions
+
+0. In your terminal, change directory until you are in backend
+    - ```.../where/your/file/is/backend```
+    1. ```terminal 
+        cd .../Cinder/cinder-app/backend
+        ```
+    2. run ```npm run dev``` in your terminal
+
+0. In a **new** terminal, change directory until you are in frontend/cinderWeb
+    - ```.../where/your/file/is/frontend/cinderWeb```
+    1. ```terminal
+       cd .../Cinder/cinder-app/frontend/cinderWeb
+       ```
+    2. run ```npm run dev``` in your terminal
+
+0. Go to localhost that was printed in frontend terminal on a browser
+
