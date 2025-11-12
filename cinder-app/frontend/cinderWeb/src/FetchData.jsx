@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function FetchData() {
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
+  const [fh , setFH] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
@@ -37,6 +38,14 @@ function FetchData() {
         value={lon}
         onChange={(e) => setLon(e.target.value)}
         style={{ marginRight: "1rem", padding: "0.5rem" }}
+      />
+      <input
+        type="number"
+        step="any"
+        placeholder="Forecast Hour"
+        value={fh}
+        onChange ={(e) => setFH(e.target.value)}
+        style={{ marginRight: "1rem", padding: "0.5rem"}}
       />
       <button onClick={fetchData} style={{ padding: "0.5rem 1rem" }}>
         Fetch Data

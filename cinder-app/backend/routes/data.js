@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
     const points = await Point.find({
       lat: parseFloat(lat),
       lon: parseFloat(lon),
+      
     });
 
     if (!points.length) {
