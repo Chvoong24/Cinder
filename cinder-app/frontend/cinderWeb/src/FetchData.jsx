@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function FetchData() {
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
-  const [fh , setFH] = useState("");
+  const [fh , setFH] = useState("")
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
