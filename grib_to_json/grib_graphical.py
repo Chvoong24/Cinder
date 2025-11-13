@@ -20,11 +20,9 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 
-
 lats = grb.latitudes
 lons = grb.longitudes
 values = grb.values
-
 
 lats_two_dimensional = lats.reshape(values.shape)
 lons_two_dimensional = lons.reshape(values.shape)
@@ -46,11 +44,9 @@ lon_max = float(da.lon.max())
 lat_min = float(da.lat.min())
 lat_max = float(da.lat.max())
 
-
 figure = plt.figure(figsize=(10, 6))
 ax = plt.axes(projection=ccrs.PlateCarree())
 ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=ccrs.PlateCarree())
-
 
 pcm = ax.pcolormesh(
     da.lon,

@@ -150,7 +150,6 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
         "data": [dict(zip(headers, row)) for row in readable_data],
     }
 
-
     output_name = f"{model}{cycle}_for_{lat},{lon}.json"
     with open(output_name, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)

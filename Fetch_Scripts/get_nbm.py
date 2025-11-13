@@ -14,11 +14,6 @@ from pathlib import Path
 MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251012/18/qmd/blend.t18z.qmd.f051.co.grib2"
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
-# Examples:
-#   r":TMP:2 m above ground:"                  -> any 2 m temperature messages
-#   r":TMP:2 m above ground:.*72 hour fcst"    -> 2 m temp with 72h fcst
-#   r":TMP:2 m above ground:.*prob >305\.372:" -> specific probability threshold (escape dot)
-#   r":APCP:surface:.*:6 hour acc"             -> 6-hr precip accumulation
 MANUAL_PATTERNS = [
     r":APTMP:2 m above ground:",             # -> Apparent Temperature
     r":TMP:2 m above ground:",               # -> Temperature
@@ -38,10 +33,8 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 
 PARENT_DIR = SCRIPT_DIR.parent
 
-NBM_DATA_DIR = PARENT_DIR / "nbm_data"
-
-OUTDIR = NBM_DATA_DIR / "nbm_download"
-LOGDIR = NBM_DATA_DIR / "./nbm_logs"
+OUTDIR = PARENT_DIR / "nbm_download"
+LOGDIR = PARENT_DIR / "./nbm_logs"
 
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
@@ -323,6 +316,26 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 def main():
     try:
         pull_date, cycle_str = determine_model_run()
+<<<<<<< HEAD
+
+        t0 = time.time()
+        futures = []
+
+        with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+            for fxx in range(F_START + 1, F_END + 1):
+                grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
+                if not grib_url:
+                    logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)")
+
+                    pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                    fxx = 0
+                    continue
+
+                # Submit the download task to the thread pool
+                futures.append(
+                    executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
+                )
+=======
 
         while True:  # keep looping until all files for one cycle succeed
             try:
@@ -360,6 +373,7 @@ def main():
                                 logger.info(f"ℹ️  Nothing matched; finished in {dt:.1f}s")
                         except Exception as e:
                             logger.exception(f"❌ Manual fetch failed in one thread: {e}")
+>>>>>>> origin/chris_stack
 
                 # If we finished successfully without rollback, break the outer loop
                 break
