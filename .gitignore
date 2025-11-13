@@ -29,6 +29,7 @@ data
 *_data/*_download
 *_data/*_logs
 
+#remove this when incorporating web to main
 cinder-app
 
 
