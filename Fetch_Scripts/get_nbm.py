@@ -3,6 +3,7 @@ import time
 import logging
 import pathlib
 import requests
+from datetime import datetime, timezone, timedelta
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
@@ -11,29 +12,22 @@ from pathlib import Path
 # User settings (MANUAL ONLY)
 # =========================
 MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251012/18/qmd/blend.t18z.qmd.f051.co.grib2"
-OUTDIR     = pathlib.Path("./nbm_multi_download")
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
-# Examples:
-#   r":TMP:2 m above ground:"                  -> any 2 m temperature messages
-#   r":TMP:2 m above ground:.*72 hour fcst"    -> 2 m temp with 72h fcst
-#   r":TMP:2 m above ground:.*prob >305\.372:" -> specific probability threshold (escape dot)
-#   r":APCP:surface:.*:6 hour acc"             -> 6-hr precip accumulation
+# Pull ensemble mean forecasts (actual values) instead of probabilities
 MANUAL_PATTERNS = [
-    # r":TMP:2 m above ground:51 hour fcst:prob >305\.372:",
-    r":APTMP:2 m above ground:51 hour fcst:prob >310\.928:",
-    r":TMP:2 m above ground:",                  # -> any 2 m temperature messages
-    r":TMP:2 m above ground:.*72 hour fcst",    # ->  2 m temp with 72h fcst
-    r":TMP:2 m above ground:.*prob >305\.372:", # ->  specific probability threshold (escape dot)
-    r":APCP:surface:.*:6 hour acc",             # -> 6-hr precip accumulation
+    r":TMP:2 m above ground:.*:ens mean",       # temp ensemble mean (actual forecast)
+    r":DPT:2 m above ground:.*:ens mean",       # dew point ensemble mean
+    r":RH:2 m above ground:.*:ens mean",        # relative humidity ensemble mean
+    r":UGRD:10 m above ground:.*:ens mean",     # u-wind component
+    r":VGRD:10 m above ground:.*:ens mean",     # v-wind component
+    r":PRMSL:mean sea level:.*:ens mean",       # pressure at mean sea level
+    r":APCP:surface:.*:ens mean",               # accumulated precipitation
 ]
 
 MAX_THREADS = 10
-
-DATE = "20251013"
-CYCLE = "00"
 F_START = 0
-F_END = 23
+F_END = 48
 
 BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
 
@@ -43,14 +37,70 @@ SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
 
 PARENT_DIR = SCRIPT_DIR.parent
 
-NBM_DATA_DIR = PARENT_DIR / "nbm_data"
-
-OUTDIR = NBM_DATA_DIR / "nbm_download"
-LOGDIR = NBM_DATA_DIR / "./nbm_logs"
+OUTDIR = PARENT_DIR / "nbm_download"
+LOGDIR = PARENT_DIR / "./nbm_logs"
 
 OUTDIR.mkdir(parents=True, exist_ok=True)
 LOGDIR.mkdir(parents=True, exist_ok=True)
 
+# =========================
+# Determine Model Run
+# =========================
+
+def determine_model_run():
+    """Determine most recent NBM cycle based on current UTC time."""
+    now = datetime.now(timezone.utc)
+
+    hour = now.hour
+    if hour >= 0 and hour < 6:
+        cycle = 0
+
+    elif hour >= 6 and hour < 12:
+        cycle = 6
+
+    elif hour >= 12 and hour < 18:
+        cycle = 12
+
+    else:
+        cycle = 18
+
+    ## Modify to include logic for rollback day if needed: NOT DONE YET!!!
+
+    pull_date = now.strftime('%Y%m%d')
+    cycle_str = f"{cycle:02d}"
+
+    return pull_date, cycle_str
+
+def rollback_day():
+    """Fetch data from previous day in case of current day unavailability."""
+    curr_day = datetime.now(timezone.utc)
+    prev_day = curr_day - timedelta(days=1)
+    pull_date = prev_day.strftime('%Y%m%d')
+
+    return pull_date
+
+def rollback_cycle(date_str, cycle_str):
+    """Adjust cycle to previous cycle in case of unavailability."""
+    cycle = int(cycle_str)
+
+    if cycle == 0:
+        # Roll back to previous day’s 18z
+        new_date = rollback_day()
+        new_cycle = "18"
+    elif cycle == 6:
+        new_date = date_str
+        new_cycle = "00"
+    elif cycle == 12:
+        new_date = date_str
+        new_cycle = "06"
+    elif cycle == 18:
+        new_date = date_str
+        new_cycle = "12"
+    else:
+        new_date = date_str
+        new_cycle = "18"
+
+    return new_date, new_cycle
 # =========================
 # Logging
 # =========================
@@ -76,7 +126,7 @@ logger.addHandler(fh)
 # =========================
 # HTTP (retry) helpers
 # =========================
-MAX_RETRIES = 5
+MAX_RETRIES = 2
 TIMEOUT = 60
 BACKOFF = 1.6
 
@@ -222,7 +272,7 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
     # Log which lines matched for transparency
     logger.info("Matched .idx lines:")
     for e in matched:
-        logger.info(f"  msg={e['msg']:>4} off={e['offset']:>10} :: {e['desc']}")
+        logger.info(f"  msg={e['msg']:>} off={e['offset']:>10} :: {e['desc']}")
 
     # Build byte ranges
     downloads = build_ranges(matched, entries, total_size)
@@ -269,21 +319,25 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 # =========================
 def main():
     try:
+        pull_date, cycle_str = determine_model_run()
+
         t0 = time.time()
         futures = []
 
         with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-            for cycle in ["00", "06", "12", "18"]:
-                for fxx in range(F_START + 1, F_END + 1):
-                    grib_url, idx_url = pick_grib_url('qmd', DATE, cycle, fxx)
-                    if not grib_url:
-                        logger.info(f"No candidate GRIB URL for {DATE} t{cycle}z f{fxx:03d} (skip)")
-                        continue
+            for fxx in range(F_START + 1, F_END + 1):
+                grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
+                if not grib_url:
+                    logger.info(f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)")
 
-                    # Submit the download task to the thread pool
-                    futures.append(
-                        executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
-                    )
+                    pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                    fxx = 0
+                    continue
+
+                # Submit the download task to the thread pool
+                futures.append(
+                    executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
+                )
 
             # Wait for all threads to complete and log results
             for f in futures:
@@ -302,3 +356,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+

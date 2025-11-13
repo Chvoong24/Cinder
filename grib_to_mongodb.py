@@ -25,7 +25,7 @@ MONGODB_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017/cinder_weather
 
 # GRIB file directories
 SCRIPT_DIR = Path(__file__).resolve().parent
-NBM_DIR = SCRIPT_DIR / "nbm_data" / "nbm_download"
+NBM_DIR = SCRIPT_DIR / "nbm_download"
 HREF_DIR = SCRIPT_DIR / "href_data" / "href_download"
 REFS_DIR = SCRIPT_DIR / "refs_data" / "refs_download"
 
@@ -80,9 +80,20 @@ def get_target_locations():
 
 def get_value_at_location(ds, var_name, lat, lon):
     try:
-        # use xarray's built-in nearest neighbor selection
-        point = ds[var_name].sel(latitude=lat, longitude=lon, method='nearest')
-        value = float(point.values)
+        # check if lat/lon are 1D or 2D coordinates
+        if 'latitude' in ds.dims and 'longitude' in ds.dims:
+            # 1D lat/lon coordinates (e.g., HREF)
+            point = ds[var_name].sel(latitude=lat, longitude=lon, method='nearest')
+            value = float(point.values)
+        else:
+            # 2D lat/lon grid (e.g., NBM with y/x grid)
+            lats = ds['latitude'].values
+            lons = ds['longitude'].values
+            # find nearest grid point
+            dist = np.sqrt((lats - lat)**2 + (lons - lon)**2)
+            min_idx = np.unravel_index(np.argmin(dist), dist.shape)
+            value = float(ds[var_name].values[min_idx])
+        
         return value if not np.isnan(value) else None
     except Exception as e:
         logger.warning(f"Error extracting location-specific value for {var_name}: {e}")
