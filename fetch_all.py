@@ -9,6 +9,8 @@ MAX_THREADS = 10
 
 # Maybe add multithread runtime to speed this process up too, might need to see if it will or not
 def fetch_all():
+    """Runs all model fetch scripts (NBM, HREF, REFS) and multithreads the processes"""
+
     nbm.main()
     href.main()
     refs.main()

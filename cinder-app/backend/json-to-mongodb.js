@@ -16,17 +16,16 @@ async function run() {
     await client.connect();
     const database = client.db("ModelData");
     const collection = database.collection("points");
-
-    const filePath = path.join(
+    fs.readdirSync(__dirname, "/models/data/").forEach((file) => {
+      const filePath = path.join(
       __dirname,
       "models",
       "data",
-      "nbm06z_for_24.02619,-107.421197.json" //Needs to be paramertized
+      file //Needs to be paramertized
     );
     const data = fs.readFileSync(filePath, "utf-8");
-
     let parsed = JSON.parse(data);
-
+    
     //  Extract lat/lon from metadata
     const lat = parsed.metadata?.location?.lat;
     const lon = parsed.metadata?.location?.lon;
@@ -34,13 +33,16 @@ async function run() {
     if (!lat || !lon) {
       throw new Error("Missing lat/lon in metadata!");
     }
-
+    
     // Attach lat/lon to each data entry
     let points = parsed.data.map((entry) => ({
       ...entry,
       lat,
       lon,
     }));
+ 
+    })
+
 
     const result = await collection.insertMany(points);
     console.log(` Inserted ${result.insertedCount} documents with lat/lon`);
