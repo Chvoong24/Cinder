@@ -14,15 +14,11 @@ from pathlib import Path
 MANUAL_URL = "https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251012/18/qmd/blend.t18z.qmd.f051.co.grib2"
 
 # List of REGEX patterns to match .idx "desc" column (case-sensitive by default)
-# Pull ensemble mean forecasts (actual values) instead of probabilities
 MANUAL_PATTERNS = [
-    r":TMP:2 m above ground:.*:ens mean",       # temp ensemble mean (actual forecast)
-    r":DPT:2 m above ground:.*:ens mean",       # dew point ensemble mean
-    r":RH:2 m above ground:.*:ens mean",        # relative humidity ensemble mean
-    r":UGRD:10 m above ground:.*:ens mean",     # u-wind component
-    r":VGRD:10 m above ground:.*:ens mean",     # v-wind component
-    r":PRMSL:mean sea level:.*:ens mean",       # pressure at mean sea level
-    r":APCP:surface:.*:ens mean",               # accumulated precipitation
+    r":APTMP:2 m above ground:",             # -> Apparent Temperature
+    r":TMP:2 m above ground:",               # -> Temperature
+    r":APCP:surface:",                       # -> Precip Accumulation
+    r":GUST:"                                # -> Windspeed
 ]
 
 MAX_THREADS = 10
@@ -33,7 +29,7 @@ BUCKET = "https://noaa-nbm-para-pds.s3.amazonaws.com"
 
 # Output locations
 
-SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+SCRIPT_DIR = Path(__file__).resolve().parent
 
 PARENT_DIR = SCRIPT_DIR.parent
 
@@ -267,7 +263,7 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 
     if not matched:
         logger.info("No index lines matched your MANUAL_PATTERNS. Nothing to do.")
-        return None
+        raise Exception("No index lines matched.")
 
     # Log which lines matched for transparency
     logger.info("Matched .idx lines:")
@@ -320,6 +316,7 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
 def main():
     try:
         pull_date, cycle_str = determine_model_run()
+<<<<<<< HEAD
 
         t0 = time.time()
         futures = []
@@ -338,18 +335,53 @@ def main():
                 futures.append(
                     executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
                 )
+=======
 
-            # Wait for all threads to complete and log results
-            for f in futures:
-                try:
-                    out = f.result()
-                    dt = time.time() - t0
-                    if out:
-                        logger.info(f"✅ Finished manual slice -> {out} in {dt:.1f}s")
-                    else:
-                        logger.info(f"ℹ️  Nothing matched; finished in {dt:.1f}s")
-                except Exception as e:
-                    logger.exception(f"❌ Manual fetch failed in one thread: {e}")
+        while True:  # keep looping until all files for one cycle succeed
+            try:
+                t0 = time.time()
+                futures = []
+                rollback_triggered = False
+
+                with ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+                    for fxx in range(F_START + 1, F_END + 1):
+                        grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
+                        if not grib_url:
+                            logger.info(
+                                f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)"
+                            )
+                            pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
+                            rollback_triggered = True
+                            break  # stop this cycle completely
+
+                        futures.append(
+                            executor.submit(fetch_single_url, grib_url, OUTDIR, MANUAL_PATTERNS)
+                        )
+
+                    # If rollback happened, skip to next cycle iteration
+                    if rollback_triggered:
+                        continue
+
+                    # Otherwise, process results
+                    for f in futures:
+                        try:
+                            out = f.result()
+                            dt = time.time() - t0
+                            if out:
+                                logger.info(f"✅ Finished manual slice -> {out} in {dt:.1f}s")
+                            else:
+                                logger.info(f"ℹ️  Nothing matched; finished in {dt:.1f}s")
+                        except Exception as e:
+                            logger.exception(f"❌ Manual fetch failed in one thread: {e}")
+>>>>>>> origin/chris_stack
+
+                # If we finished successfully without rollback, break the outer loop
+                break
+
+            except Exception as e:
+                logger.exception(f"❌ Cycle fetch failed: {e}")
+                # optionally rollback and retry
+                pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
 
     except Exception as e:
         logger.exception(f"❌ Main thread failed: {e}")

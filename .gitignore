@@ -8,8 +8,8 @@ grib_to_json/nbm_download/
 grib_to_json/*.json
 
 # Environment variables
-backend/.env
-.env
+# backend/.env
+# .env
 
 # Dependencies
 node_modules/

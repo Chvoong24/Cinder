@@ -30,7 +30,7 @@ LOGDIR.mkdir(parents=True, exist_ok=True)
 
 # Multi Threading
 MAX_THREADS = 10    # Parallel download threads
-MAX_RETRIES = 10     # Retry attempts allowed before fail
+MAX_RETRIES = 5     # Retry attempts allowed before fail
 RETRY_DELAY = 10    # Delay (secs) between retry attempts
 MIN_FILE_SIZE = 1 * 1024    # Min file size check
 
@@ -64,13 +64,13 @@ logger.addHandler(fh)
 manual_mode = False  # ⚡ Set to True for manual download and adjust date/time at bottom of script.
 
 # -----------------------------------------
-# --- Determine HREF Run (00/06/12/18) ----
+# --- Determine Model Run (00/06/12/18) ----
 # -----------------------------------------
 
-def determine_href_run():
+def determine_model_run():
 	now = datetime.now(timezone.utc)
 	
-	if now.hour >= 20:
+	if now.hour >= 19:
 		run_hour = 18
 		
 	elif now.hour >= 12:
@@ -216,7 +216,7 @@ def view_grib():
 	Function grabs the first of the downloaded forecast hours and prints
 	the header values contained within.
 	'''
-	folder = Path(__file__).parent / "href_download"
+	folder = Path(__file__).resolve().parent.parent / "href_data/href_download"
 
 	if not folder.exists():
 		raise FileNotFoundError(f"Folder not found: {folder}")
@@ -235,12 +235,12 @@ def view_grib():
 # -------------------------
 
 if manual_mode:
-	pull_date = '20250624'  # YYYYMMDD format
-	run_hour_str = '06'     # '00', '06', '12', '18', etc.
+	pull_date = '20251023'  # YYYYMMDD format
+	run_hour_str = '00'     # '00', '06', '12', '18', etc.
 	forecast_hours = list(range(1, 49))  # Example: f00 to f18 or 19, 49 for f19 to f48
 	
 else:
-	pull_date, run_hour_str = determine_href_run()
+	pull_date, run_hour_str = determine_model_run()
 	forecast_hours = list(range(1, 49))
 
 if __name__ == "__main__":
