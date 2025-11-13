@@ -12,6 +12,19 @@ const uri = 'mongodb://127.0.0.1:27017/ModelData'
 const client = new MongoClient(uri);
 export async function run() {
     try {
-        const aggDB = client.db('')
+        const aggDB = client.db('filteredDB');
+        const pipeline = [];
+        pipeline.push({
+            $match: {
+            forecast_time: 1,
+            },
+        });
+        for await (const document of aggregationResult) {
+        console.log(document);
+        }
+    } finally {
+        await client.close();
     }
 }
+
+run().catch(console.dir);

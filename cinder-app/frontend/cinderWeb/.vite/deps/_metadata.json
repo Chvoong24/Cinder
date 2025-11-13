@@ -1,25 +1,25 @@
 {
-  "hash": "95a2bd1d",
+  "hash": "cf89ec61",
   "configHash": "549b6ea6",
-  "lockfileHash": "8c0bdfa6",
-  "browserHash": "3ef37bf8",
+  "lockfileHash": "592a19c2",
+  "browserHash": "21696581",
   "optimized": {
     "react": {
-      "src": "../../node_modules/react/index.js",
+      "src": "../../../../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "3d13442f",
+      "fileHash": "91ac6f3f",
       "needsInterop": true
     },
     "react-dom/client": {
-      "src": "../../node_modules/react-dom/client.js",
+      "src": "../../../../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "457b6e3b",
+      "fileHash": "02e43f1d",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-KHA5YKM3": {
-      "file": "chunk-KHA5YKM3.js"
+    "chunk-EDAMWA2N": {
+      "file": "chunk-EDAMWA2N.js"
     }
   }
 }

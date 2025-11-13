@@ -21,13 +21,13 @@ async function run() {
       __dirname,
       "models",
       "data",
-      "nbm06z_for_24.02619,-107.421197.json" //Needs to paramertized
+      "nbm06z_for_24.02619,-107.421197.json" //Needs to be paramertized
     );
     const data = fs.readFileSync(filePath, "utf-8");
 
     let parsed = JSON.parse(data);
 
-    // ✅ Extract lat/lon from metadata
+    //  Extract lat/lon from metadata
     const lat = parsed.metadata?.location?.lat;
     const lon = parsed.metadata?.location?.lon;
 
@@ -35,7 +35,7 @@ async function run() {
       throw new Error("Missing lat/lon in metadata!");
     }
 
-    // ✅ Attach lat/lon to each data entry
+    // Attach lat/lon to each data entry
     let points = parsed.data.map((entry) => ({
       ...entry,
       lat,
@@ -43,9 +43,9 @@ async function run() {
     }));
 
     const result = await collection.insertMany(points);
-    console.log(`✅ Inserted ${result.insertedCount} documents with lat/lon`);
+    console.log(` Inserted ${result.insertedCount} documents with lat/lon`);
   } catch (err) {
-    console.error("❌ Error:", err);
+    console.error(" Error:", err);
   } finally {
     await client.close();
   }
