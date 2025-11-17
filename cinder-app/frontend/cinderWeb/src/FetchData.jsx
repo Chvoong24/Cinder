@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FetchData.css"; // <-- ADD THIS LINE
+import "./FetchData.css";
 
 function FetchData() {
   const [lat, setLat] = useState("");
@@ -10,30 +10,30 @@ function FetchData() {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
- const fetchData = async () => {
-  setError("");
-  setData(null);
+  const fetchData = async () => {
+    setError("");
+    setData(null);
 
-  try {
-    const res = await fetch(
-      `/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
-    );
-    if (!res.ok) throw new Error(`Server error: ${res.status}`);
-    const json = await res.json();
-    setData(json);
-  } catch (err) {
-    setError(err.message);
-  }
-};
+    try {
+      const res = await fetch(
+        `/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
+      );
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      const json = await res.json();
+      setData(json);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
   return (
     <div className="fetch-container">
       <div className="fetch-card">
         <h2 className="title">Cinder</h2>
 
+        {/* Inputs */}
         <input
           type="number"
-          step="any"
           placeholder="Latitude"
           value={lat}
           onChange={(e) => setLat(e.target.value)}
@@ -42,7 +42,6 @@ function FetchData() {
 
         <input
           type="number"
-          step="any"
           placeholder="Longitude"
           value={lon}
           onChange={(e) => setLon(e.target.value)}
@@ -51,24 +50,22 @@ function FetchData() {
 
         <input
           type="number"
-          step="any"
           placeholder="Forecast Hour"
           value={fh}
           onChange={(e) => setFH(e.target.value)}
           className="input"
         />
 
-       <input
+        <input
           type="number"
-          step="any"
           placeholder="Forecast Min"
           value={fh_min}
           onChange={(e) => setMin(e.target.value)}
           className="range"
         />
+
         <input
           type="number"
-          step="any"
           placeholder="Forecast Max"
           value={fh_max}
           onChange={(e) => setMax(e.target.value)}
@@ -81,10 +78,32 @@ function FetchData() {
 
         {error && <p className="error">{error}</p>}
 
-        {data && (
-          <pre className="json-box">
-            {JSON.stringify(data, null, 2)}
-          </pre>
+        {data && data.length > 0 && (
+          <div className="table-container">
+            <table className="result-table">
+              <thead>
+                <tr>
+                  <th>Threshold</th>
+                  <th>Name</th>
+                  <th>Step Length</th>
+                  <th>Forecast Time</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {data.map((item, i) => (
+                  <tr key={i}>
+                    <td>{item.threshold ?? "—"}</td>
+                    <td>{item.name ?? "—"}</td>
+                    <td>{item.step_length ?? "—"}</td>
+                    <td>{item.forecast_time ?? "—"}</td>
+                    <td>{item.value ?? "—"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
