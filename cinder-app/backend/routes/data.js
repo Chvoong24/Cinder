@@ -4,28 +4,45 @@ import Point from "../models/Point.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const { lat, lon, fh } = req.query; 
-
-  if (!lat || !lon) {
-    return res.status(400).json({ error: "Missing lat or lon query parameters" });
-  }
-
   try {
-    const points = await Point.find({
-      lat: parseFloat(lat),
-      lon: parseFloat(lon),
-      fh:  parseInt(fh),
-    });
+    const { lat, lon, fh, fh_min, fh_max } = req.query;
 
-    if (!points.length) {
-      return res.status(404).json({ error: "No data found for these coordinates" });
+    if (!lat || !lon) {
+      return res.status(400).json({ error: "lat and lon are required" });
     }
-    // else if (fh == 0){
-    // }
-    res.json(points);
 
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const query = {
+      lat: Number(lat),
+      lon: Number(lon)
+    };
+
+
+    if (
+      fh_min !== undefined && fh_max !== undefined &&
+      fh_min !== "" && fh_max !== ""
+    ) {
+      query.forecast_time = {
+        $gte: Number(fh_min),
+        $lte: Number(fh_max)
+      };
+    }
+    else if (fh !== undefined && fh !== "") {
+      query.forecast_time = Number(fh);
+    }
+
+    console.log("QUERY →", query);
+
+    const points = await Point.find(query);
+
+    if (!points || points.length === 0) {
+      return res.status(404).json({ error: "No data found for these parameters" });
+    }
+
+    return res.json(points);
+
+  } catch (err) {
+    console.error("ROUTE ERROR:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 

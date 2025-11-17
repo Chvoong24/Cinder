@@ -16,38 +16,34 @@ async function run() {
     await client.connect();
     const database = client.db("ModelData");
     const collection = database.collection("points");
-    fs.readdirSync(__dirname, "/models/data/").forEach((file) => {
-      const filePath = path.join(
-      __dirname,
-      "models",
-      "data",
-      file //Needs to be paramertized
-    );
-    const data = fs.readFileSync(filePath, "utf-8");
-    let parsed = JSON.parse(data);
-    
-    //  Extract lat/lon from metadata
-    const lat = parsed.metadata?.location?.lat;
-    const lon = parsed.metadata?.location?.lon;
 
-    if (!lat || !lon) {
-      throw new Error("Missing lat/lon in metadata!");
+    const dirPath = path.join(__dirname, "models", "data");
+    const files = fs.readdirSync(dirPath);
+
+    for (const file of files) {
+      const filePath = path.join(dirPath, file);
+      const raw = fs.readFileSync(filePath, "utf-8");
+      const parsed = JSON.parse(raw);
+
+      const lat = parsed.metadata?.location?.lat;
+      const lon = parsed.metadata?.location?.lon;
+
+      if (!lat || !lon) {
+        console.warn(`Skipping ${file}: missing lat/lon`);
+        continue;
+      }
+
+      const points = parsed.data.map((entry) => ({
+        ...entry,
+        lat,
+        lon,
+      }));
+
+      const result = await collection.insertMany(points);
+      console.log(`Inserted ${result.insertedCount} docs from ${file}`);
     }
-    
-    // Attach lat/lon to each data entry
-    let points = parsed.data.map((entry) => ({
-      ...entry,
-      lat,
-      lon,
-    }));
- 
-    })
-
-
-    const result = await collection.insertMany(points);
-    console.log(` Inserted ${result.insertedCount} documents with lat/lon`);
   } catch (err) {
-    console.error(" Error:", err);
+    console.error("Error:", err);
   } finally {
     await client.close();
   }

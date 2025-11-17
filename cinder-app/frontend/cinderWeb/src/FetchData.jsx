@@ -1,70 +1,92 @@
 import React, { useState } from "react";
+import "./FetchData.css"; // <-- ADD THIS LINE
 
 function FetchData() {
   const [lat, setLat] = useState("");
   const [lon, setLon] = useState("");
-  const [fh , setFH] = useState("")
+  const [fh, setFH] = useState("");
+  const [fh_max, setMax] = useState("");
+  const [fh_min, setMin] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
-  const fetchData = async () => {
-    setError("");
-    setData(null);
+ const fetchData = async () => {
+  setError("");
+  setData(null);
 
-    try {
-      const res = await fetch(`/api/data?lat=${lat}&lon=${lon}`);
-      if (!res.ok) throw new Error(`Server error: ${res.status}`);
-      const json = await res.json();
-      setData(json);
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+  try {
+    const res = await fetch(
+      `/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
+    );
+    if (!res.ok) throw new Error(`Server error: ${res.status}`);
+    const json = await res.json();
+    setData(json);
+  } catch (err) {
+    setError(err.message);
+  }
+};
 
   return (
-    <div style={{ marginTop: "2rem" }}>
-      <input
-        type="number"
-        step="any"
-        placeholder="Latitude"
-        value={lat}
-        onChange={(e) => setLat(e.target.value)}
-        style={{ marginRight: "1rem", padding: "0.5rem" }}
-      />
-      <input
-        type="number"
-        step="any"
-        placeholder="Longitude"
-        value={lon}
-        onChange={(e) => setLon(e.target.value)}
-        style={{ marginRight: "1rem", padding: "0.5rem" }}
-      />
-      <input
-        type="number"
-        step="any"
-        placeholder="Forecast Hour"
-        value={fh}
-        onChange ={(e) => setFH(e.target.value)}
-        style={{ marginRight: "1rem", padding: "0.5rem"}}
-      />
-      <button onClick={fetchData} style={{ padding: "0.5rem 1rem" }}>
-        Fetch Data
-      </button>
+    <div className="fetch-container">
+      <div className="fetch-card">
+        <h2 className="title">Cinder</h2>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {data && (
-       <pre
-  style={{
-    backgroundColor: "#1e1e1e",
-    color: "#00ffcc",
-    padding: "1rem",
-    borderRadius: "8px",
-    overflowX: "auto",
-  }}
->
-  {JSON.stringify(data, null, 2)}
-</pre>
-      )}
+        <input
+          type="number"
+          step="any"
+          placeholder="Latitude"
+          value={lat}
+          onChange={(e) => setLat(e.target.value)}
+          className="input"
+        />
+
+        <input
+          type="number"
+          step="any"
+          placeholder="Longitude"
+          value={lon}
+          onChange={(e) => setLon(e.target.value)}
+          className="input"
+        />
+
+        <input
+          type="number"
+          step="any"
+          placeholder="Forecast Hour"
+          value={fh}
+          onChange={(e) => setFH(e.target.value)}
+          className="input"
+        />
+
+       <input
+          type="number"
+          step="any"
+          placeholder="Forecast Min"
+          value={fh_min}
+          onChange={(e) => setMin(e.target.value)}
+          className="range"
+        />
+        <input
+          type="number"
+          step="any"
+          placeholder="Forecast Max"
+          value={fh_max}
+          onChange={(e) => setMax(e.target.value)}
+          className="range"
+        />
+
+        <button onClick={fetchData} className="button">
+          Fetch Data
+        </button>
+
+        {error && <p className="error">{error}</p>}
+
+        {data && (
+          <pre className="json-box">
+            {JSON.stringify(data, null, 2)}
+          </pre>
+        )}
+      </div>
     </div>
   );
 }
