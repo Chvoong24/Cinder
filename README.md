@@ -3,6 +3,7 @@ Project for COMP333
 
 # Table Of Contents
 - [Members](#members)
+- [System Requirements](#system-requirements)
 - [Start Up](#start-up)
     - [Create An Enviroment](#create-a-python-enviroment)
     - [Necessary Imports](#imports)
@@ -18,6 +19,9 @@ Chvoong24: Chris Voong
 duyhuynh-dev: Duy Huynh  
 bentaffet: Ben Taffet  
 Hawklight1: Ben Mckinney 
+
+## System Requirements
+Have at least 15GB of free storage
 
 ## Start Up
 1. Clone Repository 
