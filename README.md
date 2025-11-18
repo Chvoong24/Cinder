@@ -55,7 +55,7 @@ Have at least 15GB of free storage
     0. Type ```npm install nodemon --save-dev``` in your terminal
     0. run ```npm run dev``` in your terminal  
     ### **Output**
-    ![alt text](../Cinder/images/backend_npm_run_dev_image.png "Terminal when 'npm run dev' is ran")
+    <img src = "images/backend_npm_run_dev_image.png" alt = "Terminal when 'npm run dev' is ran" width="600px">
 
 0. In a **new** terminal, change directory until you are in frontend/cinderWeb
     - ```.../where/your/file/is/frontend/cinderWeb```
@@ -64,25 +64,25 @@ Have at least 15GB of free storage
        ```
     2. run ```npm run dev``` in your terminal
     ### **Output**
-    ![alt text](../Cinder/images/frontend_npm_run_dev_image.png "Terminal when 'npm run dev' is ran")
+    <img src = "images/frontend_npm_run_dev_image.png" alt = "Terminal when 'npm run dev' is ran" width="600px">
 0. Go to localhost that was printed in frontend terminal on a browser
 
 
 ## Navigating The Website
 - Once all the steps above are completed navigate to [localhost](http://localhost:5173])
 - Browser should look like this:  
-![alt text](../Cinder/images/default_wesbite_image.png "Default Website View")
+<!-- ![alt text](../Cinder/images/default_wesbite_image.png "Default Website View") -->
+<img src = "images/default_wesbite_image.png" alt = "Default Website View" width="600px">
 - Input your latitude and longitude in their respective search boxes, once populated, click the ``Fetch Data`` button
     - For example, lat: 24.02619 lon: -107.421197
         - **Optional**  
         You are able to input your forecast hour or range as well, though not required. The output will just be the entire JSON file. For this example, I will use the ranges from 15-36 inclusive  
-
- ![alt text](../Cinder/images/Website_Fields_Populated_Loading_image.png "Website With Fields populated. Lat = 24.02619, Lon = -107.421197, Forecast min = 15, Forecast max = 36")
+ <img src = "images/Website_Fields_Populated_Loading_image.png" alt = "Website With Fields populated. Lat = 24.02619, Lon = -107.421197, Forecast min = 15, Forecast max = 36" width="600px">
 - The blue loading bar indicates the fetching progress
 > Note: It may take up to 10 minutes to finish fetching all data  
 
 **Finished Output**  
-![alt text](../Cinder/images/Finished_output_image.png "Fetched Output")
+<img src = "images/Finished_output_image.png" alt = "Fetch Output" width="600px">
 
 - The output is sorted by weather model alphabetical order: HREF, NBM, RRFS
 
