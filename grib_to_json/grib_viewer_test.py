@@ -2,16 +2,19 @@ import pygrib
 
 # ========= Testing =============
 
-FILE_NAME = "nbm_download/nbm_t06z_f043_custom.grib2"
+FILE_NAME = "nbm_download/nbm_t06z_f001_custom.grib2"
 
 
 
 levels = []
 grbs = pygrib.open(FILE_NAME)
+
 for grb in grbs:
     print(grb)
+    print(grb.values)
+    print(grb.units)
 
-    levels.append((grb.name, grb.units))
+    # levels.append((grb.name, grb.units))
 
 
     # for key in grb.keys():
@@ -20,8 +23,14 @@ for grb in grbs:
     #     except Exception as e:
     #         print(f"{key}: <unavailable> ({e})")
 
-print(set(levels))
-
+# print(set(levels))
+# grb = grbs.message(9)
+# for key in grb.keys():
+#         try:
+#             print(f"{key}: {getattr(grb, key)}")
+#         except Exception as e:
+#             print(f"{key}: <unavailable> ({e})")
+# print(grb.values)
 # for i, name in enumerate(all_names):
 #     print(i, name)
 

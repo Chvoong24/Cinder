@@ -62,6 +62,8 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
                 for grb in grbs:
                     if not any(kw in grb.name.lower() for kw in desired_forecast_types):
                         continue
+                    
+
 
                     anal_date = grb.analDate
                     text = str(grb)
@@ -71,6 +73,8 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
                     units = getattr(grb, "units", "") or ""
                     limit = f"{threshold_text} {units}".strip()
 
+                    if not (">" in limit or "<" in limit):
+                        continue
                     try:
                         data, lats, lons = grb.data()
                         value = get_value_from_latlon(lat, lon, lats, lons, data)
