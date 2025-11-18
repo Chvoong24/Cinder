@@ -32,7 +32,7 @@ router.get("/", async (req, res) => {
 
     console.log("QUERY →", query);
 
-    const points = await Point.find(query).sort({ forecast_time: 1 });
+    const points = await Point.find(query).sort({ sitrep: 1 });
 
     if (!points || points.length === 0) {
       return res.status(404).json({ error: "No data found for these parameters" });

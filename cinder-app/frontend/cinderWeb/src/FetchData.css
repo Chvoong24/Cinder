@@ -13,8 +13,11 @@
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro", system-ui, sans-serif;
 }
 
+.fetch-card h2 {
+    text-align: center;
+}
 
-.input-row,
+
 .range-row {
   display: flex;
   gap: 16px;

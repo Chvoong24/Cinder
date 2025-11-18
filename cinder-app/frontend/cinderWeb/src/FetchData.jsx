@@ -29,7 +29,7 @@ function FetchData() {
   return (
     <div className="fetch-container">
       <div className="fetch-card">
-        <h2 className="title">Cinder</h2>
+        <h2 className="title">Cinder ⛅</h2>
 
         {/* Inputs */}
         <input
@@ -83,8 +83,9 @@ function FetchData() {
             <table className="result-table">
               <thead>
                 <tr>
-                  <th>Threshold</th>
+                  <th>Sitrep</th>
                   <th>Name</th>
+                  <th>Threshold</th>
                   <th>Step Length</th>
                   <th>Forecast Time</th>
                   <th>Value</th>
@@ -94,8 +95,9 @@ function FetchData() {
               <tbody>
                 {data.map((item, i) => (
                   <tr key={i}>
-                    <td>{item.threshold ?? "—"}</td>
+                    <td>{item.sitrep ?? "-"}</td>
                     <td>{item.name ?? "—"}</td>
+                    <td>{item.threshold ?? "—"}</td>
                     <td>{item.step_length ?? "—"}</td>
                     <td>{item.forecast_time ?? "—"}</td>
                     <td>{item.value ?? "—"}</td>

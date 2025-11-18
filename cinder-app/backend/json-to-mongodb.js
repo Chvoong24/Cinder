@@ -27,6 +27,7 @@ async function run() {
 
       const lat = parsed.metadata?.location?.lat;
       const lon = parsed.metadata?.location?.lon;
+      const sitrep = parsed.metadata?.sitrep
 
       if (!lat || !lon) {
         console.warn(`Skipping ${file}: missing lat/lon`);
@@ -37,6 +38,7 @@ async function run() {
         ...entry,
         lat,
         lon,
+        sitrep,
       }));
 
       const result = await collection.insertMany(points);

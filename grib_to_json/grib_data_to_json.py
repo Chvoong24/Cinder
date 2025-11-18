@@ -150,12 +150,24 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
         "data": [dict(zip(headers, row)) for row in readable_data],
     }
 
+    PARENT_DIR = SCRIPT_DIR.parent
+
+    DATA_DIR = PARENT_DIR / "cinder-app" / "backend" / "models"
+
+    OUTDIR = DATA_DIR / "data"
+
+    OUTPUT_DIR = OUTDIR
+
+    if not OUTPUT_DIR.exists():
+        raise FileNotFoundError(f"Hardcoded output directory does not exist: {OUTPUT_DIR}")
+
     output_name = f"{model}{cycle}_for_{lat},{lon}.json"
-    with open(output_name, "w", encoding="utf-8") as f:
+    output_path = OUTPUT_DIR / output_name
+
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)
 
-    print(f"JSON saved as {output_name}")
-
+    print(f"JSON saved to {output_path}")
 
 
 # if __name__ == "__main__":
@@ -184,14 +196,24 @@ if __name__ == "__main__":
     LON = float(sys.argv[2])
     sitrep = sys.argv[3]  # keep it as string
 
+    SCRIPT_DIR = Path(__file__).resolve().parent
+
+    PARENT_DIR = SCRIPT_DIR.parent
+
+    DATA_DIR = PARENT_DIR
+
+
     folder_name = ""
 
     if sitrep == "href":
-        folder_name = "href_download"
+        OUTDIR = DATA_DIR / "href_data" / "href_download"
+        folder_name = OUTDIR
     elif sitrep == "nbm":
-        folder_name = "nbm_download"
+        OUTDIR = DATA_DIR / "nbm_data" / "nbm_download"
+        folder_name = OUTDIR
     elif sitrep == "refs":
-        folder_name = "refs_download"
+        OUTDIR = DATA_DIR / "refs" / "refs_download"
+        folder_name = OUTDIR
     else:
         logger.error(f"Unknown sitrep: {sitrep}")
         sys.exit(1)
