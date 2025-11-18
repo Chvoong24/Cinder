@@ -35,7 +35,7 @@ DESIRED_FORECAST_TYPES = [
     "2 metre relative humidity"
 ]
 
-FOLDER = Path("href_download")
+FOLDER = Path("../Cinder/href_data/href_download")
 ```
 
 Run it:
@@ -46,7 +46,7 @@ python grib_data_to_json.py
 
 ## Output
 
-Generates JSON files like: `href12z_for_41.5623,-72.6506.json`
+Generates JSON files like: `HREF12z_for_24.02619,-107.421197.json`
 
 Format:
 
@@ -81,10 +81,3 @@ Needs:
 - orjson
 - matplotlib
 - cartopy
-
-## Connecticut Cities
-
-Hartford: 41.5623, -72.6506
-Middletown: 41.5623, -72.6508
-Bridgeport: 41.2677, -73.2048
-New Haven: 41.3083, -72.9279

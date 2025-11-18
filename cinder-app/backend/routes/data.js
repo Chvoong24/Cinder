@@ -30,16 +30,16 @@ router.get("/", async (req, res) => {
       query.forecast_time = Number(fh);
     }
 
-    console.log("QUERY →", query);
+    console.log("QUERY ->", query);
 
     let points = await Point.find(query).sort({ sitrep: 1 });
 
     if (points.length > 0) {
-      console.log("DB HIT → returning cached data");
+      console.log("DB HIT -> returning cached data");
       return res.json(points);
     }
 
-    console.log("DB MISS → running GRIB → JSON script");
+    console.log("DB MISS -> running GRIB -> JSON script");
 
 const gribScript = path.resolve(
   process.cwd(),"../../grib_to_json/grib_data_to_json.py");
@@ -68,7 +68,7 @@ const gribScript = path.resolve(
 
     console.log("Import complete.");
 
-    points = await Point.find(query).sort({ forecast_time: 1 });
+    points = await Point.find(query).sort({ sitrep: 1 });
 
     if (!points || points.length === 0) {
       console.error("Still no DB results after scripts.");

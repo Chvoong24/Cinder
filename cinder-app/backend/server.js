@@ -13,7 +13,7 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 app.use((req, res, next) => {
-  console.log(`➡️ Request received: ${req.method} ${req.url}`);
+  console.log(`Request received: ${req.method} ${req.url}`);
   next();
 });
 
@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 app.use("/api/data", dataRouter);
 
 app.get("/", (req, res) => {
-  console.log("✅ Root route hit");
+  console.log("Root route hit");
   res.send("Backend is running!");
 });
 
@@ -29,7 +29,7 @@ const startServer = async () => {
   try {
     await connectDB();
     const PORT = process.env.PORT || 5050;
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   } catch (error) {
     console.error("Failed to start server:", error);
   }
