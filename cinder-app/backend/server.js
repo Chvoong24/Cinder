@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import cors from "cors";
 import dataRouter from "./routes/data.js";
 import connectDB from "./config/db.js";
+import { progressRouter } from "./routes/progress.js";
 
 dotenv.config();
 const app = express();
+app.use("/progress", progressRouter);
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
@@ -23,7 +25,6 @@ app.get("/", (req, res) => {
   res.send("Backend is running!");
 });
 
-// Mongo connection + start
 const startServer = async () => {
   try {
     await connectDB();

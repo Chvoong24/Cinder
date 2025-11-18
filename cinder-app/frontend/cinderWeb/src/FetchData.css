@@ -169,3 +169,19 @@
 .result-table tr:hover {
   background: #f2f2f7;
 }
+
+.loading-bar-container {
+  width: 100%;
+  height: 8px;
+  background: #e5e5ea;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.loading-bar {
+  height: 100%;
+  width: 0%;
+  background: #007aff;
+  transition: width 0.3s ease;
+}

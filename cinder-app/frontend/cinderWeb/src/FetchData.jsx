@@ -10,28 +10,65 @@ function FetchData() {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+
   const fetchData = async () => {
     setError("");
     setData(null);
+
+
+    setIsLoading(true);
+    setProgress(15);
 
     try {
       const res = await fetch(
         `/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
       );
+
+      setProgress(60);
+
       if (!res.ok) throw new Error(`Server error: ${res.status}`);
+
       const json = await res.json();
+
+      setProgress(100);
+
+      setTimeout(() => setIsLoading(false), 400);
+
       setData(json);
     } catch (err) {
       setError(err.message);
+      setIsLoading(false);
     }
   };
+React.useEffect(() => {
+  const evtSource = new EventSource("http://localhost:5050/progress");
+
+  evtSource.onmessage = (event) => {
+    const p = Number(event.data);
+    if (!isNaN(p)) {
+      setIsLoading(true);
+      setProgress(p);
+
+      if (p >= 100) {
+        setTimeout(() => setIsLoading(false), 300);
+      }
+    }
+  };
+
+  evtSource.onerror = () => {
+    console.log("Progress stream error");
+  };
+
+  return () => evtSource.close();
+}, []);
 
   return (
     <div className="fetch-container">
       <div className="fetch-card">
         <h2 className="title">Cinder ⛅</h2>
 
-        {/* Inputs */}
         <input
           type="number"
           placeholder="Latitude"
@@ -75,6 +112,16 @@ function FetchData() {
         <button onClick={fetchData} className="button">
           Fetch Data
         </button>
+
+        {/* 🔥 Loading Bar */}
+        {isLoading && (
+          <div className="loading-bar-container">
+            <div
+              className="loading-bar"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        )}
 
         {error && <p className="error">{error}</p>}
 

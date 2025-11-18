@@ -8,12 +8,8 @@ import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import sys
 
-
-# Logger
-
 class SafeMemoryFormatter(logging.Formatter):
     def format(self, record):
-        # add default if missing
         if not hasattr(record, "memory"):
             try:
                 import psutil, os
@@ -34,33 +30,23 @@ for handler in logging.getLogger().handlers:
     handler.setFormatter(SafeMemoryFormatter(handler.formatter._fmt, handler.formatter.datefmt))
 
 
-
-# Code workflow
-
 def get_value_from_latlon(lat, lon, lats, lons, data):
-    """
-    Return the value in `data` closest to the given lat/lon.
-    """
+    """returns the data associated at a lat lon coordinate, uses distance formula on a plane"""
     distance_squared = (lats - lat) ** 2 + (lons - lon) ** 2
     row, col = np.unravel_index(np.argmin(distance_squared), distance_squared.shape)
     return float(data[row, col])
 
 
 def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8):
+    """Args: Folder_path -> path of where grib data is located
+             lat and lon are float values of lat and lon
+             desired_forecast_types -> fitlered thresholds (vague for now)
+             max_workers -> hardcoded to 8, is for multithreaded processing
     """
-    Args:
-        folder_path: Path to folder with grib2 files.
-        lat, lon: desired latitude/longitude point for forecast.
-        desired_forecast_types: list of grib2 forecast types that you want in the json.
-        max_workers: number of threads for parallel execution.
-    
-    Outputs a JSON file to the current directory
-    """
-
-    prob_re = re.compile(r'Probability.*\(([^)]*)\)', re.IGNORECASE)
+    prob_re = re.compile(r'\(([^)]*?)\)')
 
     def get_all_readable_data(filename):
-
+        """Parses all data in the inputed grib file"""
         readable_data = []
         anal_date = ""
         try:
@@ -74,71 +60,81 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
                     forecast_end = int(match.group(1))
 
                 for grb in grbs:
-                    if grb.name not in desired_forecast_types: 
+                    if not any(kw in grb.name.lower() for kw in desired_forecast_types):
                         continue
+
                     anal_date = grb.analDate
-                    # Extract probability threshold if available
+                    text = str(grb)
+                    paren_matches = prob_re.findall(text)
+                    threshold_text = paren_matches[-1].strip() if paren_matches else "none"
 
-                    match = prob_re.search(str(grb))
-                    if match:
-                        pass
-                    else:
+                    units = getattr(grb, "units", "") or ""
+                    limit = f"{threshold_text} {units}".strip()
+
+                    try:
+                        data, lats, lons = grb.data()
+                        value = get_value_from_latlon(lat, lon, lats, lons, data)
+                    except Exception as e:
+                        logger.error(f"Error getting data for {filename.name} / {grb.name}: {e}")
                         continue
-                    
-                    limit = f"{match.group(1) if match else "none"} {grb.units}"
 
-                    # Get nearest value to requested lat/lon
-                    data, lats, lons = grb.data()
-                    value = get_value_from_latlon(lat, lon, lats, lons, data)
-
-                    
                     step_length = forecast_end - grb.forecastTime
-                    # print(grb)
-                    # print(grb.analDate)
-                    # print("Forecast end: ", forecast_end)
-                    # print("Forecast time: ", grb.forecastTime)
-                    # print("Step length: ", step_length)
-                    
                     readable_data.append((limit, grb.name, step_length, grb.forecastTime, value))
+
                 logger.info(f"Parsed {filename.name}")
+
         except Exception as e:
             logger.error(f"Error processing {filename.name}: {e}")
 
         return readable_data, anal_date
 
-    # --- Parallelization ---
+
     readable_data = []
 
-    folder_path = os.fspath(folder_path) if not isinstance(folder_path, (str, os.PathLike)) else folder_path
+    folder_path = os.fspath(folder_path)
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {
             executor.submit(get_all_readable_data, file_path): file_path
-            for file_path in os.scandir(folder_path) if file_path.is_file()
+            for file_path in os.scandir(folder_path)
+            if file_path.is_file()
         }
 
-        anal_date = None  # initialize before loop
+        anal_date = None
         for future in as_completed(futures):
             file_path = futures[future]
             try:
                 rd, ad = future.result()
                 readable_data.extend(rd)
-                if anal_date is None and ad:  # capture the first non-empty analysis date
+                if anal_date is None and ad:
                     anal_date = ad
             except Exception as e:
                 logger.error(f"Failed on {file_path}: {e}")
 
-    # --- Prepare JSON output ---
     files = [f.name for f in os.scandir(folder_path) if f.is_file()]
     model, cycle = "unknown", "unknown"
-    if files:
-        match = re.search(r"([a-zA-Z]+)[._]t?(\d{2}z)", files[0], re.IGNORECASE)
-        if match:
-            model, cycle = match.groups()
 
+    if files:
+        fname = files[0].lower()
+
+        m = re.search(r"^(rrfs)\.(\d{8})t(\d{2})z", fname)
+        if m:
+            model = "RRFS"
+            cycle = f"{m.group(3)}z"
+        elif re.search(r"^href", fname):
+            model = "HREF"
+            cyc = re.search(r"t(\d{2})z", fname)
+            if cyc: cycle = f"{cyc.group(1)}z"
+        elif re.search(r"^refs", fname):
+            model = "REFS"
+            cyc = re.search(r"t(\d{2})z", fname)
+            if cyc: cycle = f"{cyc.group(1)}z"
+        elif re.search(r"^nbm", fname):
+            model = "NBM"
+            cyc = re.search(r"t(\d{2})z", fname)
+            if cyc: cycle = f"{cyc.group(1)}z"
 
     headers = ["threshold", "name", "step_length", "forecast_time", "value"]
-
 
     output_data = {
         "metadata": {
@@ -151,18 +147,14 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
     }
 
     PARENT_DIR = SCRIPT_DIR.parent
-
     DATA_DIR = PARENT_DIR / "cinder-app" / "backend" / "models"
-
     OUTDIR = DATA_DIR / "data"
 
-    OUTPUT_DIR = OUTDIR
-
-    if not OUTPUT_DIR.exists():
-        raise FileNotFoundError(f"Hardcoded output directory does not exist: {OUTPUT_DIR}")
+    if not OUTDIR.exists():
+        raise FileNotFoundError(f"Hardcoded output directory does not exist: {OUTDIR}")
 
     output_name = f"{model}{cycle}_for_{lat},{lon}.json"
-    output_path = OUTPUT_DIR / output_name
+    output_path = OUTDIR / output_name
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(output_data, f, ensure_ascii=False, indent=2)
@@ -170,67 +162,45 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
     print(f"JSON saved to {output_path}")
 
 
-# if __name__ == "__main__":
-#     LAT = 24.02619
-#     LON = -107.421197
+def run_all_models(lat, lon):
+    logger.info("Running ALL GRIB → JSON conversions in parallel...")
 
-#     DESIRED_FORECAST_TYPES = [
-#         "Total Precipitation",
-#         "10 metre wind speed",
-#         "Apparent temperature",
-#         "2 metre temperature",
-#         "2 metre relative humidity"
-#     ]
+    model_folders = {
+        "HREF": DATA_DIR / "href_data" / "href_download",
+        "NBM": DATA_DIR / "nbm_data" / "nbm_download",
+        "REFS": DATA_DIR / "refs_data" / "refs_download"
+    }
 
-#     FOLDER = Path("href_download")
-#     make_json_file(FOLDER, LAT, LON, DESIRED_FORECAST_TYPES)
+    with ThreadPoolExecutor(max_workers=3) as executor:
+        futures = []
+
+        for name, folder in model_folders.items():
+            futures.append(
+                executor.submit(
+                    make_json_file,
+                    folder,
+                    lat,
+                    lon,
+                    ["precip", "wind", "apparent", "2 metre", "relative humidity"]
+                )
+            )
+
+        for future in as_completed(futures):
+            future.result()
+
+    logger.info("All GRIB → JSON files have been generated.")
+
+
 
 if __name__ == "__main__":
-    # Check if the correct number of arguments are provided
-    if len(sys.argv) != 4:
-        print("Usage: python script.py <lat> <lon> <folder>")
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <lat> <lon>")
         sys.exit(1)
 
-    # Parse command-line arguments
     LAT = float(sys.argv[1])
     LON = float(sys.argv[2])
-    sitrep = sys.argv[3]  # keep it as string
 
     SCRIPT_DIR = Path(__file__).resolve().parent
+    DATA_DIR = SCRIPT_DIR.parent
 
-    PARENT_DIR = SCRIPT_DIR.parent
-
-    DATA_DIR = PARENT_DIR
-
-
-    folder_name = ""
-
-    if sitrep == "href":
-        OUTDIR = DATA_DIR / "href_data" / "href_download"
-        folder_name = OUTDIR
-    elif sitrep == "nbm":
-        OUTDIR = DATA_DIR / "nbm_data" / "nbm_download"
-        folder_name = OUTDIR
-    elif sitrep == "refs":
-        OUTDIR = DATA_DIR / "refs" / "refs_download"
-        folder_name = OUTDIR
-    else:
-        logger.error(f"Unknown sitrep: {sitrep}")
-        sys.exit(1)
-
-
-    DESIRED_FORECAST_TYPES = [
-        "Total Precipitation",
-        "10 metre wind speed",
-        "Apparent temperature",
-        "2 metre temperature",
-        "2 metre relative humidity"
-    ]
-
-    make_json_file(folder_name, LAT, LON, DESIRED_FORECAST_TYPES)
-
-"""
-24.02619
--107.421197
-href
-"""
+    run_all_models(LAT, LON)
