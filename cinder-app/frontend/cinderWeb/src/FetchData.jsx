@@ -17,7 +17,6 @@ function FetchData() {
     setError("");
     setData(null);
 
-
     setIsLoading(true);
     setProgress(15);
 
@@ -42,27 +41,31 @@ function FetchData() {
       setIsLoading(false);
     }
   };
-React.useEffect(() => {
-  const evtSource = new EventSource("http://localhost:5050/progress");
 
-  evtSource.onmessage = (event) => {
-    const p = Number(event.data);
-    if (!isNaN(p)) {
-      setIsLoading(true);
-      setProgress(p);
+  React.useEffect(() => {
+    const evtSource = new EventSource("http://localhost:5050/progress");
 
-      if (p >= 100) {
-        setTimeout(() => setIsLoading(false), 300);
+    evtSource.onmessage = (event) => {
+      const p = Number(event.data);
+      if (!isNaN(p)) {
+        setIsLoading(true);
+        setProgress(p);
+
+        if (p >= 100) {
+          setTimeout(() => setIsLoading(false), 300);
+        }
       }
-    }
-  };
+    };
 
-  evtSource.onerror = () => {
-    console.log("Progress stream error");
-  };
+    evtSource.onerror = () => {
+      console.log("Progress stream error");
+    };
 
-  return () => evtSource.close();
-}, []);
+    return () => evtSource.close();
+  }, []);
+
+  const hideFH = fh_min !== "" || fh_max !== "";
+  const hideMinMax = fh !== "";
 
   return (
     <div className="fetch-container">
@@ -85,41 +88,43 @@ React.useEffect(() => {
           className="input"
         />
 
-        <input
-          type="number"
-          placeholder="Forecast Hour"
-          value={fh}
-          onChange={(e) => setFH(e.target.value)}
-          className="input"
-        />
+        {!hideFH && (
+          <input
+            type="number"
+            placeholder="Forecast Hour"
+            value={fh}
+            onChange={(e) => setFH(e.target.value)}
+            className="input"
+          />
+        )}
 
-        <input
-          type="number"
-          placeholder="Forecast Min"
-          value={fh_min}
-          onChange={(e) => setMin(e.target.value)}
-          className="range"
-        />
+        {!hideMinMax && (
+          <>
+            <input
+              type="number"
+              placeholder="Forecast Min"
+              value={fh_min}
+              onChange={(e) => setMin(e.target.value)}
+              className="range"
+            />
 
-        <input
-          type="number"
-          placeholder="Forecast Max"
-          value={fh_max}
-          onChange={(e) => setMax(e.target.value)}
-          className="range"
-        />
+            <input
+              type="number"
+              placeholder="Forecast Max"
+              value={fh_max}
+              onChange={(e) => setMax(e.target.value)}
+              className="range"
+            />
+          </>
+        )}
 
         <button onClick={fetchData} className="button">
           Fetch Data
         </button>
 
-        {/* 🔥 Loading Bar */}
         {isLoading && (
           <div className="loading-bar-container">
-            <div
-              className="loading-bar"
-              style={{ width: `${progress}%` }}
-            ></div>
+            <div className="loading-bar" style={{ width: `${progress}%` }}></div>
           </div>
         )}
 
@@ -140,17 +145,30 @@ React.useEffect(() => {
               </thead>
 
               <tbody>
-                {data.map((item, i) => (
-                  <tr key={i}>
-                    <td>{item.sitrep ?? "-"}</td>
-                    <td>{item.name ?? "—"}</td>
-                    <td>{item.threshold ?? "—"}</td>
-                    <td>{item.step_length ?? "—"}</td>
-                    <td>{item.forecast_time ?? "—"}</td>
-                    <td>{item.value ?? "—"}</td>
-                  </tr>
+                {[...data]
+                  .sort((a, b) => {
+                    // Group by name
+                    const nameA = (a.name ?? "").toLowerCase();
+                    const nameB = (b.name ?? "").toLowerCase();
+                    if (nameA < nameB) return -1;
+                    if (nameA > nameB) return 1;
+
+                    // If same name → sort by forecast time
+                    const fA = Number(a.forecast_time ?? 0);
+                    const fB = Number(b.forecast_time ?? 0);
+                    return fA - fB;
+                  })
+                  .map((item, i) => (
+                    <tr key={i}>
+                      <td>{item.sitrep ?? "-"}</td>
+                      <td>{item.name ?? "—"}</td>
+                      <td>{item.threshold ?? "—"}</td>
+                      <td>{item.step_length ?? "—"}</td>
+                      <td>{item.forecast_time ?? "—"}</td>
+                      <td>{item.value ?? "—"}</td>
+                    </tr>
                 ))}
-              </tbody>
+            </tbody>
             </table>
           </div>
         )}
