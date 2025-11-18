@@ -29,7 +29,7 @@ async function run() {
       const lon = parsed.metadata?.location?.lon;
       const sitrep = parsed.metadata?.sitrep
 
-      if (!lat || !lon) {
+      if (lat == null || lon == null)  {
         console.warn(`Skipping ${file}: missing lat/lon`);
         continue;
       }

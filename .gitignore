@@ -25,6 +25,8 @@ dist-ssr
 Fetch_Scripts/__pychache__
 .venv
 
+
+
 data
 *_data/*_download
 *_data/*_logs
