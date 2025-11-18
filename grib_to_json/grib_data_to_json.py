@@ -163,7 +163,7 @@ def make_json_file(folder_path, lat, lon, desired_forecast_types, max_workers=8)
 
 
 def run_all_models(lat, lon):
-    logger.info("Running ALL GRIB → JSON conversions in parallel...")
+    logger.info("Running ALL GRIB -> JSON conversions in parallel...")
 
     model_folders = {
         "HREF": DATA_DIR / "href_data" / "href_download",
@@ -188,7 +188,7 @@ def run_all_models(lat, lon):
         for future in as_completed(futures):
             future.result()
 
-    logger.info("All GRIB → JSON files have been generated.")
+    logger.info("All GRIB -> JSON files have been generated.")
 
 
 
