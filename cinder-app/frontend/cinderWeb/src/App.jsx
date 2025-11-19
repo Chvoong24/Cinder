@@ -1,12 +1,18 @@
-import React from "react";
+import "./App.css";
 import FetchData from "./FetchData";
 
 function App() {
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
-      <h1>Cinder</h1>
+    <main className="app-shell">
+      <header className="app-header">
+        <h1>Cinder Weather Desk</h1>
+        <p className="app-tagline">
+          Type a Connecticut city and pull the latest NBM ensemble mean.
+        </p>
+      </header>
+
       <FetchData />
-    </div>
+    </main>
   );
 }
 

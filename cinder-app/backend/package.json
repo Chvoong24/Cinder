@@ -6,7 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "db:list": "node utils/db-utils.js list-collections",
+    "db:quality": "node utils/db-utils.js check-quality",
+    "db:sample": "node utils/db-utils.js sample-doc",
+    "db:filter": "node utils/db-utils.js filter",
+    "db:migrate": "node utils/db-utils.js migrate",
+    "db:import": "node utils/db-utils.js import-json"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "mongodb": "^7.0.0",
     "mongoose": "^8.19.3"
   },
   "devDependencies": {
