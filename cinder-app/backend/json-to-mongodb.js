@@ -1,54 +1,125 @@
-import mongodb from "mongodb";
 import fs from "fs";
 import path from "path";
+import { MongoClient } from "mongodb";
 import { fileURLToPath } from "url";
-
-const { MongoClient } = mongodb;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const uri = "mongodb://localhost:27017/ModelData";
-const client = new MongoClient(uri);
+
+const client = new MongoClient("mongodb://localhost:27017", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 async function run() {
   try {
+    
     await client.connect();
-    const database = client.db("ModelData");
-    const collection = database.collection("points");
+    console.log("[MONGO] Connected to MongoDB");
 
-    const dirPath = path.join(__dirname, "models", "data");
-    const files = fs.readdirSync(dirPath);
+    
+    const db = client.db("ModelData");
+    const collection = db.collection("points");
+
+    
+    const preferred = path.resolve(__dirname, "..", "cinder-app", "backend", "models", "data");
+    const fallback = path.resolve(__dirname, "models", "data");
+
+    let jsonDir;
+    if (fs.existsSync(preferred) && fs.statSync(preferred).isDirectory()) {
+      jsonDir = preferred;
+    } else if (fs.existsSync(fallback) && fs.statSync(fallback).isDirectory()) {
+      jsonDir = fallback;
+    } else {
+      
+      const alt = path.resolve(__dirname, "models", "data");
+      if (fs.existsSync(alt) && fs.statSync(alt).isDirectory()) {
+        jsonDir = alt;
+      } else {
+        console.error("[IMPORT] JSON data directory not found.");
+        console.error(`Searched: ${preferred}`);
+        console.error(`Searched: ${fallback}`);
+        console.error(`Searched: ${alt}`);
+        return;
+      }
+    }
+
+    console.log(`[IMPORT] Using JSON directory: ${jsonDir}`);
+
+    const files = fs.readdirSync(jsonDir).filter((f) => f.endsWith(".json"));
+
+    if (files.length === 0) {
+      console.log("[IMPORT] No JSON files found.");
+      return;
+    }
 
     for (const file of files) {
-      const filePath = path.join(dirPath, file);
-      const raw = fs.readFileSync(filePath, "utf-8");
-      const parsed = JSON.parse(raw);
+      const fullPath = path.join(jsonDir, file);
+      console.log(`[IMPORT] Reading ${file} ...`);
 
-      const lat = parsed.metadata?.location?.lat;
-      const lon = parsed.metadata?.location?.lon;
-      const sitrep = parsed.metadata?.sitrep
-
-      if (lat == null || lon == null)  {
-        console.warn(`Skipping ${file}: missing lat/lon`);
+      let raw;
+      try {
+        raw = fs.readFileSync(fullPath, "utf8");
+      } catch (err) {
+        console.error(`[IMPORT-ERR] Failed to read ${file}:`, err);
         continue;
       }
 
-      const points = parsed.data.map((entry) => ({
-        ...entry,
+      let json;
+      try {
+        json = JSON.parse(raw);
+      } catch (err) {
+        console.error(`[IMPORT-ERR] Failed to parse ${file} as JSON:`, err);
+        continue;
+      }
+
+      const meta = json.metadata || {};
+      const lat = meta.location?.lat;
+      const lon = meta.location?.lon;
+
+      if (typeof lat === "undefined" || typeof lon === "undefined") {
+        console.warn(`[IMPORT] Skipping ${file} — metadata.location.lat/lon missing`);
+        continue;
+      }
+
+      
+      const docs = json.data.map(item => ({
+        ...item,
         lat,
         lon,
-        sitrep,
+        sitrep: meta.sitrep, 
+        anal_date: meta.anal_date
       }));
 
-      const result = await collection.insertMany(points);
-      console.log(`Inserted ${result.insertedCount} docs from ${file}`);
+      if (docs.length > 0) {
+        try {
+          const res = await collection.insertMany(docs, { ordered: false });
+          console.log(`[IMPORT] Inserted ${res.insertedCount} docs from ${file}`);
+        } catch (err) {
+          
+          if (err.code === 11000) {
+            console.warn(`[IMPORT-WARN] Duplicate key error while inserting ${file}:`, err.message);
+          } else {
+            console.error(`[IMPORT-ERR] Error inserting docs from ${file}:`, err);
+          }
+        }
+      } else {
+        console.log(`[IMPORT] SKIPPED — no data inside ${file}`);
+      }
     }
   } catch (err) {
-    console.error("Error:", err);
+    console.error("[IMPORT-ERR] Fatal:", err);
   } finally {
-    await client.close();
+    try {
+      await client.close();
+      console.log("[MONGO] Connection closed. Import complete.");
+    } catch (err) {
+      console.error("[MONGO-ERR] Error closing client:", err);
+    }
   }
 }
 
-run().catch(console.dir);
+run().catch((err) => {
+  console.error("[IMPORT-ERR] Uncaught:", err);
+});

@@ -135,7 +135,7 @@ function FetchData() {
             <table className="result-table">
               <thead>
                 <tr>
-                  <th>Sitrep</th>
+                  <th>Model</th>
                   <th>Name</th>
                   <th>Threshold</th>
                   <th>Step Length</th>
@@ -147,13 +147,19 @@ function FetchData() {
               <tbody>
                 {[...data]
                   .sort((a, b) => {
-                    // Group by name
+                    // 1) Sort by sitrep (model) alphabetically, case-insensitive
+                    const sA = (a.sitrep ?? "").toLowerCase();
+                    const sB = (b.sitrep ?? "").toLowerCase();
+                    if (sA < sB) return -1;
+                    if (sA > sB) return 1;
+
+                    // 2) If same sitrep, sort by name alphabetically
                     const nameA = (a.name ?? "").toLowerCase();
                     const nameB = (b.name ?? "").toLowerCase();
                     if (nameA < nameB) return -1;
                     if (nameA > nameB) return 1;
 
-                    // If same name → sort by forecast time
+                    // 3) If same name, sort by forecast_time numerically
                     const fA = Number(a.forecast_time ?? 0);
                     const fB = Number(b.forecast_time ?? 0);
                     return fA - fB;
@@ -167,8 +173,8 @@ function FetchData() {
                       <td>{item.forecast_time ?? "—"}</td>
                       <td>{item.value ?? "—"}</td>
                     </tr>
-                ))}
-            </tbody>
+                  ))}
+              </tbody>
             </table>
           </div>
         )}

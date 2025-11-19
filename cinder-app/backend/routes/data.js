@@ -5,6 +5,7 @@ import { spawn } from "child_process";
 import path from "path";
 import { updateProgress } from "./progress.js";
 import { fileURLToPath } from "url";
+import { json } from "stream/consumers";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,8 +32,11 @@ router.get("/", async (req, res) => {
     }
 
     console.log("QUERY ->", query);
-
-    let points = await Point.find(query).sort({ sitrep: 1 });
+    let points = await Point.find(query).sort({
+      sitrep: 1,
+      name: 1,
+      forecast_time: 1
+    });
 
     if (points.length > 0) {
       console.log("DB HIT -> returning cached data");
@@ -41,12 +45,14 @@ router.get("/", async (req, res) => {
 
     console.log("DB MISS -> running GRIB -> JSON script");
 
-const gribScript = path.resolve(
-  process.cwd(),"../../grib_to_json/grib_data_to_json.py");
-    updateProgress(0)
-    await runPython(gribScript,[LAT, LON],(p) => updateProgress(p));
-    updateProgress(100)
+    const gribScript = path.resolve(
+      process.cwd(),
+      "../../grib_to_json/grib_data_to_json.py"
+    );
 
+    updateProgress(0);
+    await runPython(gribScript, [LAT, LON], (p) => updateProgress(p));
+    updateProgress(100);
 
     console.log("GRIB→JSON complete");
 
@@ -57,10 +63,10 @@ const gribScript = path.resolve(
     await new Promise((resolve, reject) => {
       const proc = spawn("node", [importScript]);
 
-      proc.stdout.on("data", d => console.log(`[IMPORT] ${d}`));
-      proc.stderr.on("data", d => console.error(`[IMPORT-ERR] ${d}`));
+      proc.stdout.on("data", (d) => console.log(`[IMPORT] ${d}`));
+      proc.stderr.on("data", (d) => console.error(`[IMPORT-ERR] ${d}`));
 
-      proc.on("close", code => {
+      proc.on("close", (code) => {
         if (code === 0) resolve();
         else reject(new Error(`json-to-mongodb.js exited with code ${code}`));
       });
@@ -68,7 +74,15 @@ const gribScript = path.resolve(
 
     console.log("Import complete.");
 
-    points = await Point.find(query).sort({ sitrep: 1 });
+    const scriptPath = path.resolve(__dirname, "../json-cleaner.py");
+    await runPython(scriptPath);
+    console.log("Cleaned Data Directory");
+
+    points = await Point.find(query).sort({
+      sitrep: 1,
+      name: 1,
+      forecast_time: 1
+    });
 
     if (!points || points.length === 0) {
       console.error("Still no DB results after scripts.");

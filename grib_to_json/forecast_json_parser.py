@@ -41,7 +41,7 @@ if __name__ == "__main__":
     metadata = parsed["metadata"]
     data = parsed["data"]
 
-    print("Model:", metadata["sitrep"])
+    print("Model:", metadata["model"])
     print("Forecast time:", metadata["anal_date"])
     print("Location:", metadata["location"])
 
