@@ -1,6 +1,8 @@
 # Data directories
 href_data/
 nbm_data/
+nbm_download/
+nbm_logs/
 refs_data/
 logs/
 grib_to_json/href_download/
@@ -64,3 +66,11 @@ lerna-debug.log*
 
 # Temporary - remove this when incorporating web to main
 cinder-app
+
+# Old/unused directories
+backend/
+
+# Test/check scripts
+check_nbm.py
+check_nbm_all_messages.py
+check_nbm_detail.py
