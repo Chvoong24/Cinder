@@ -70,7 +70,7 @@ def process_nbm_file(filepath, client):
         if f_match:
             forecast_hour = int(f_match.group(1))
         else:
-            print(f"⚠ {filepath.name}: Could not extract forecast hour")
+            print(f"Warning: {filepath.name} - Could not extract forecast hour")
             return 0
 
         grbs = pygrib.open(str(filepath))
@@ -180,7 +180,7 @@ def process_nbm_file(filepath, client):
 
         if points_to_insert:
             collection.insert_many(points_to_insert)
-            print(f"✓ {filepath.name}: Inserted {len(points_to_insert)} points")
+            print(f"{filepath.name}: Inserted {len(points_to_insert)} points")
             return len(points_to_insert)
         else:
             print(f"⚠ {filepath.name}: No data extracted")
@@ -217,7 +217,7 @@ def main():
         count = process_nbm_file(filepath, client)
         total_points += count
 
-    print(f"\n✓ Complete! Inserted {total_points} total points into MongoDB Atlas")
+    print(f"\nComplete. Inserted {total_points} total points into MongoDB Atlas")
     client.close()
 
 if __name__ == "__main__":

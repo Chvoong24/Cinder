@@ -149,7 +149,7 @@ function FetchData() {
 
       {error && <p className="status-text error">{error}</p>}
       {!error && status === "loading" && (
-        <p className="status-text">Talking to Atlas…</p>
+        <p className="status-text">Loading...</p>
       )}
       {!error && status === "done" && selectedCity && (
         <p className="status-text">

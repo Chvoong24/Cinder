@@ -64,11 +64,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Temporary - remove this when incorporating web to main
-cinder-app
-
-# Old/unused directories
+# Old/unused directories (legacy from before cinder-app/ structure)
 backend/
+frontend/
 
 # Test/check scripts
 check_nbm.py
