@@ -25,12 +25,11 @@ dist-ssr
 Fetch_Scripts/__pychache__
 .venv
 
+
+
 data
 *_data/*_download
 *_data/*_logs
-
-#remove this when incorporating web to main
-cinder-app
 
 
 grib_to_json/download_test/*.grib2

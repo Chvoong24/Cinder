@@ -1,0 +1,17 @@
+{
+  "watch": [
+    "server.js",
+    "routes",
+    "config",
+    "models/Point.js"
+  ],
+  "ignore": [
+    "models/data/**",
+    "utils",
+    "grib_to_py",
+    "python_scripts",
+    "*.json",
+    "**/*.json"
+  ],
+  "ext": "js"
+}

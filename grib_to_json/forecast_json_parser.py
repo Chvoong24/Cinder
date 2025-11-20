@@ -1,5 +1,4 @@
 import orjson
-import sys
 from datetime import datetime, timedelta
 
 def add_hours_to_time(time_str: str, hours: int) -> str:
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     metadata = parsed["metadata"]
     data = parsed["data"]
 
-    print("Model:", metadata["sitrep"])
+    print("Model:", metadata["model"])
     print("Forecast time:", metadata["anal_date"])
     print("Location:", metadata["location"])
 
