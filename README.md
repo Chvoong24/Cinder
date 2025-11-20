@@ -45,7 +45,9 @@ Have at least 15GB of free storage
 
 ## Starting Local Website 
 1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/?operating-system=macos&macos-installation-method=homebrew)
-    - Choose your OS and follow download instructions
+    - Choose your OS and follow download instructions and install
+    - Run MONGODB as a background process ```mongod --config /opt/homebrew/etc/mongod.conf --fork```
+        - Remove  ```--fork`` if it does not work
 
 0. In your terminal, change directory until you are in the backend directory
     - ```.../where/your/file/is/backend```
@@ -62,7 +64,8 @@ Have at least 15GB of free storage
     1. ```terminal
        cd .../Cinder/cinder-app/frontend/cinderWeb
        ```
-    2. run ```npm run dev``` in your terminal
+    0. run ```npm install vite --save-dev```
+    0. run ```npm run dev``` in your terminal
     ### **Output**
     <img src = "images/frontend_npm_run_dev_image.png" alt = "Terminal when 'npm run dev' is ran" width="600px"></img>
 0. Go to localhost that was printed in frontend terminal on a browser
