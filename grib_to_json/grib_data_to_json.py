@@ -115,7 +115,8 @@ def process_single_file(file_path_str, lat, lon, keywords_lower):
 
                 units = getattr(grb, "units", "") or ""
                 limit = f"{threshold_text} {units}".strip()
-
+                if not (">" in limit or "<" in limit):
+                        continue
                 try:
                     if row is not None and col is not None:
                         values = getattr(grb, "values", None)
