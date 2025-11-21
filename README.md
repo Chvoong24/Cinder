@@ -35,11 +35,16 @@ Have at least **15GB** of free storage
 
 0. Select: ``Python: Create Enviroment...``
 0. Select: ``Venv`` or ``Conda`` (If you have Conda enviroments set up)
-0. Select: ``Python 3.13.x``
+    - If using Conda, when creating the enviroment use ```conda env create -f environment_mac.yml```
+-   For **.venv** only
+1. Select: ``Python 3.13.x``
+<img src = "images/creating_env_environment_image.png" alt = "Creating environment python version" width="600px"></img>
+0. Select: requirements.txt
+<img src = "images/creating_requirements_image.png" alt = "Selecting dependencies to install" width="600px"></img>
 0. Open a new Terminal Window
 0. Terminal Line should say ``(.venv) (base)...``
 
-## Import Required Python Libraries
+## Import Required Python Libraries (OPTIONAL)
 1. Ensure you are in the main "Cinder" directory.
 2. In the terminal, run the command ``pip install -r requirements.txt``
 
@@ -47,7 +52,7 @@ Have at least **15GB** of free storage
 1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/?operating-system=macos&macos-installation-method=homebrew)
     - Choose your OS and follow download instructions and install
     - Run MONGODB as a background process ```mongod --config /opt/homebrew/etc/mongod.conf --fork```
-        - Remove  ```--fork`` if it does not work
+        - Remove  ```--fork``` if it does not work
 
 0. In your terminal, change directory until you are in the backend directory
     - ```.../where/your/file/is/backend```

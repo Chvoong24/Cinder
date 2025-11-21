@@ -1,9 +1,5 @@
 import pygrib
 
-
-
-
-
 filename = "blend.t00z.qmd.f001.co.grib2"
 grbs = pygrib.open(filename)
 for grb in grbs:
