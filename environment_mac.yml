@@ -1,4 +1,4 @@
-name: my_env_mac
+name: environment_mac
 channels:
   - conda-forge
   - defaults
