@@ -18,13 +18,13 @@ Project for COMP333
 - [Issues Tracker](#issues)
 
 ## Members
-Chvoong24: Chris Voong  
-duyhuynh-dev: Duy Huynh  
+Hawklight1: Ben Mckinney  
 bentaffet: Ben Taffet  
-Hawklight1: Ben Mckinney 
+Chvoong24: Chris Voong  
+duyhuynh-dev: Duy Huynh    
 
 ## System Requirements
-Have at least 15GB of free storage
+Have at least **15GB** of free storage
 
 ## Start Up
 1. Clone Repository 
@@ -76,14 +76,15 @@ Have at least 15GB of free storage
 - Browser should look like this:  
 <!-- ![alt text](../Cinder/images/default_wesbite_image.png "Default Website View") -->
 <img src = "images/default_wesbite_image.png" alt = "Default Website View" width="600px"></img>
+>Note: You must have run the fetch_all.py script located at ```../Cinder/fetch_all.py``` for the web interface to properally fetch data. For more info, go to [How To Fetch Data](#how-to-fetch-data).
 - Input your latitude and longitude in their respective search boxes, once populated, click the ``Fetch Data`` button
 - For example, lat: 24.02619 lon: -107.421197
     -   **Optional**  
-        You are able to input your forecast hour or range as well, though not required. The output will just be the entire JSON file. For this example, I will use the ranges from 15-36 inclusive  
+        You are able to input your forecast hour or range as well, though not required. The output will just be the entire JSON file. For this example, I will use the ranges from 15-36 inclusive. 
 
  <img src = "images/Website_Fields_Populated_Loading_image.png" alt = "Website With Fields populated. Lat = 24.02619, Lon = -107.421197, Forecast min = 15, Forecast max = 36" width="600px"></img>
 - The blue loading bar indicates the fetching progress
-> Note: It may take up to 10 minutes to finish fetching all data  
+>Note: It may take up to 10 minutes to finish fetching all data. 
 
 **Finished Output**  
 <img src = "images/Finished_output_image.png" alt = "Fetch Output" width="600px"></img>
