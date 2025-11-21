@@ -6,11 +6,6 @@ for grb in grbs:
     print(grb)
 grb = grbs.message(42)
 
-
-
-
-
-
 import xarray
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
