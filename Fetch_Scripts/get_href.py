@@ -68,6 +68,7 @@ manual_mode = False  # ⚡ Set to True for manual download and adjust date/time 
 # -----------------------------------------
 
 def determine_model_run():
+	"""Determines what Cycle and Date depending on the most recent time available."""
 	now = datetime.now(timezone.utc)
 	
 	if now.hour >= 19:

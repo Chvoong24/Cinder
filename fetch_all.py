@@ -1,13 +1,9 @@
 import Fetch_Scripts.get_nbm as nbm
 import Fetch_Scripts.get_href as href
 import Fetch_Scripts.get_refs as refs
-import os
-import time
 from concurrent.futures import ThreadPoolExecutor
 
 MAX_THREADS = 10
-
-# Maybe add multithread runtime to speed this process up too, might need to see if it will or not
 def fetch_all():
     """Runs all model fetch scripts (NBM, HREF, REFS) and multithreads the processes"""
 

@@ -54,6 +54,7 @@ TIMEOUT = 60
 BACKOFF = 1.6
 
 def http_get(url, headers=None, stream=False):
+    """Get reuquest based on URL"""
     for a in range(1, MAX_RETRIES + 1):
         try:
             r = requests.get(url, headers=headers or {}, stream=stream, timeout=TIMEOUT)
@@ -66,6 +67,7 @@ def http_get(url, headers=None, stream=False):
     raise RuntimeError(f"Failed GET {url}")
 
 def http_head(url):
+    """HTTP request based on URL"""
     for a in range(1, MAX_RETRIES + 1):
         try:
             r = requests.head(url, headers={"Accept-Encoding": "identity"}, timeout=TIMEOUT)
@@ -78,6 +80,7 @@ def http_head(url):
     raise RuntimeError(f"Failed HEAD {url}")
 
 def http_get_range(url, start: int, end: int):
+    """HTTP get request try range"""
     hdrs = {
         "Range": f"bytes={start}-{end}",
         "Accept-Encoding": "identity",
