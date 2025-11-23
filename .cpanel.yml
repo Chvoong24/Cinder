@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+  - export DEPLOYPATH=/home/cindernw/public_html/
+  - export DEPLOYFILEPATH=/home/cindernw/public_html/assets/
+  - /cinder-app/frontend/cinderWeb/dist index.html $DEPLOYPATH
+  - /cinder-app/frontend/cinderWeb/dist tab-logo.svg $DEPLOYPATH
+  - /cinder-app/frontend/cinderWeb/dist/assets cinder-app/frontend/cinderWeb/dist/assets/index-BM7pamJ2.css $DEPLOYFILEPATH
+  - /cinder-app/frontend/cinderWeb/dist/assets cinder-app/frontend/cinderWeb/dist/assets/index-C38Xacog.js $DEPLOYFILEPATH
