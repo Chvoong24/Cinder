@@ -14,7 +14,8 @@ Project for COMP333
 - [StyleGuide](#style-guide)
     - [Branching](#branching)
 - [How To Use](#how-to-interrupt-data-fetch--end)
-
+- [Cycle Downloading](#cycle-downloading)
+- [Documentation](#documentation)
 - [Issues Tracker](#issues)
 
 ## Members
@@ -145,7 +146,23 @@ Have at least **15GB** of free storage
 6. For now, there is a folder in grib_to_json called ```href_downloads``` which includes a sample href cycle download.  
 There are also two sample json files that you can use to test ```forecast_json_parser.py```.
 
+## Cycle Downloading
+This is the setup for downloading the sitreps every 6 hours.
+> This only works for mac   
+- Get path to fetch_all.py
+  - Open your a terminal window
+  - Locate fetch_all.py in the main Cinder folder.
+  - Drag the file from Finder and drop it directly into the Terminal window.
+  - The full path to the file will automatically be inserted at the cursor's current position.
+- Copy the script below and paste it into your terminal: ```SCRIPT_PATH="/path/to/your_script.py"
+PYTHON_PATH=$(which python3) 
+CRON_JOB="0 */6 * * * $PYTHON_PATH $SCRIPT_PATH" 
+( crontab -l 2>/dev/null | grep -Fv "$SCRIPT_PATH" ; echo "$CRON_JOB" ) | crontab -```
 
+- Replace ```"/path/to/your_script.py"``` with the path you got for fetch_all.py
+- Click "Enter/Return"
+- Type ```crontab -l``` into your termninal to check if it is there.
+- type ```crontab -r``` to remove the cron.
 
 ## Documentation
 Documentation for all functions can be found at ```build/html/index.html```. It is still work in progress.  
