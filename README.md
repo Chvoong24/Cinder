@@ -14,7 +14,8 @@ Project for COMP333
 - [StyleGuide](#style-guide)
     - [Branching](#branching)
 - [How To Use](#how-to-interrupt-data-fetch--end)
-
+- [Cycle Downloading](#cycle-downloading)
+- [Documentation](#documentation)
 - [Issues Tracker](#issues)
 
 ## Members
@@ -29,13 +30,12 @@ Have at least **15GB** of free storage
 ## Start Up
 1. Clone Repository 
 > Instructions For VSCode IDE
-#### Create A Python Enviroment
+#### Create A Python Enviroment on mac
 1. Windows: Ctrl + Shift + P  
    Mac: Cmd + Shift + P  
 
 0. Select: ``Python: Create Enviroment...``
-0. Select: ``Venv`` or ``Conda`` (If you have Conda enviroments set up)
-    - If using Conda, when creating the enviroment use ```conda env create -f environment_mac.yml```
+0. Select: ``Venv``
 -   For **.venv** only
 1. Select: ``Python 3.13.x``
 <img src = "images/creating_env_environment_image.png" alt = "Creating environment python version" width="600px"></img>
@@ -43,6 +43,15 @@ Have at least **15GB** of free storage
 <img src = "images/creating_requirements_image.png" alt = "Selecting dependencies to install" width="600px"></img>
 0. Open a new Terminal Window
 0. Terminal Line should say ``(.venv) (base)...``
+
+### Create a conda environment on Mac
+1. Install brew if you do not have it
+1. Download conda by running ```brew install --cask anaconda``` in your terminal. You should see the following messages after typing your password.
+<img src = "images/conda_installation.png" alt = "conda installation" width="600px"></img>
+1. Check conda is installed by typing ```conda --version```
+1. Enter ```conda env create -f environment_mac.yml``` into your terminal. Ensure you are in the "Cinder" main folder.
+<img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
+1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
 
 ## Import Required Python Libraries (OPTIONAL)
 1. Ensure you are in the main "Cinder" directory.
@@ -145,7 +154,23 @@ Have at least **15GB** of free storage
 6. For now, there is a folder in grib_to_json called ```href_downloads``` which includes a sample href cycle download.  
 There are also two sample json files that you can use to test ```forecast_json_parser.py```.
 
+## Cycle Downloading
+This is the setup for downloading the sitreps every 6 hours.
+> This only works for mac   
+- Get path to fetch_all.py
+  - Open your a terminal window
+  - Locate fetch_all.py in the main Cinder folder.
+  - Drag the file from Finder and drop it directly into the Terminal window.
+  - The full path to the file will automatically be inserted at the cursor's current position.
+- Copy the script below and paste it into your terminal: ```SCRIPT_PATH="/path/to/your_script.py"
+PYTHON_PATH=$(which python3) 
+CRON_JOB="0 */6 * * * $PYTHON_PATH $SCRIPT_PATH" 
+( crontab -l 2>/dev/null | grep -Fv "$SCRIPT_PATH" ; echo "$CRON_JOB" ) | crontab -```
 
+- Replace ```"/path/to/your_script.py"``` with the path you got for fetch_all.py
+- Click "Enter/Return"
+- Type ```crontab -l``` into your termninal to check if it is there.
+- type ```crontab -r``` to remove the cron.
 
 ## Documentation
 Documentation for all functions can be found at ```build/html/index.html```. It is still work in progress.  
