@@ -1,0 +1,55 @@
+import time
+from datetime import datetime, timezone, timedelta
+
+def determine_model_run():
+    """Determine most recent NBM cycle based on current UTC time."""
+    now = datetime.now(timezone.utc)
+
+    hour = now.hour
+    if hour >= 0 and hour < 6:
+        cycle = 0
+
+    elif hour >= 6 and hour < 12:
+        cycle = 6
+
+    elif hour >= 12 and hour < 18:
+        cycle = 12
+
+    else:
+        cycle = 18
+
+    pull_date = now.strftime('%Y%m%d')
+    cycle_str = f"{cycle:02d}"
+
+    return pull_date, cycle_str
+
+def rollback_day():
+    """Fetch data from previous day in case of current day unavailability."""
+    curr_day = datetime.now(timezone.utc)
+    prev_day = curr_day - timedelta(days=1)
+    pull_date = prev_day.strftime('%Y%m%d')
+
+    return pull_date
+
+def rollback_cycle(date_str, cycle_str):
+    """Adjust cycle to previous cycle in case of unavailability."""
+    cycle = int(cycle_str)
+
+    if cycle == 0:
+        # Roll back to previous day’s 18z
+        new_date = rollback_day()
+        new_cycle = "18"
+    elif cycle == 6:
+        new_date = date_str
+        new_cycle = "00"
+    elif cycle == 12:
+        new_date = date_str
+        new_cycle = "06"
+    elif cycle == 18:
+        new_date = date_str
+        new_cycle = "12"
+    else:
+        new_date = date_str
+        new_cycle = "18"
+
+    return new_date, new_cycle
