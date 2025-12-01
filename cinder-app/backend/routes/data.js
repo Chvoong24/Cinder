@@ -5,7 +5,6 @@ import { spawn } from "child_process";
 import path from "path";
 import { updateProgress } from "./progress.js";
 import { fileURLToPath } from "url";
-import { json } from "stream/consumers";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
