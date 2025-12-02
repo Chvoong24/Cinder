@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 app.use("/progress", progressRouter);
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: process.env.CLIEANT_URL, credentials: true}));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -29,7 +29,7 @@ const startServer = async () => {
   try {
     await connectDB();
     const PORT = process.env.PORT || 5050;
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    app.listen(PORT, "0.0.0.0", () => console.log(`Server running on port ${PORT}`));
   } catch (error) {
     console.error("Failed to start server:", error);
   }

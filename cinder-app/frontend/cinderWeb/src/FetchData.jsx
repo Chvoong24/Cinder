@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import "./FetchData.css";
+import { loadConfig } from '../config';
+
+async function getUser() {
+  const { API_URL } = await loadConfig();
+  const res = await fetch(`${API_URL}/api/user`);
+  return res.json();
+}
+
 
 function FetchData() {
   const [lat, setLat] = useState("");
