@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./FetchData.css";
-import { loadConfig } from "../config.js";
+import { loadConfig } from "./config.js";
 
 export async function getUser() {
   const API_URL = import.meta.env.VITE_API_URL;
