@@ -26,8 +26,8 @@ duyhuynh-dev: Duy Huynh
 
 ## System Requirements
 Have at least **15GB** of free storage
-> Must use Conda environment on Windows (Pygrib package does not work with pip).
 
+Must use Conda environment on Windows (Pygrib package does not work with pip).
 > Preferably use Conda on Mac as well to avoid issues. 
 
 ## Start Up
