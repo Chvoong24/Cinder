@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./FetchData.css";
+import { loadConfig } from "../config.js";
 
 export async function getUser() {
   const API_URL = import.meta.env.VITE_API_URL;
-
   const res = await fetch(`${API_URL}/api/user`);
   return res.json();
 }
@@ -28,8 +28,11 @@ function FetchData() {
     setProgress(15);
 
     try {
+      const config = await loadConfig();
+      const API_URL = config.API_URL;
+
       const res = await fetch(
-        `/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
+        `${API_URL}/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
       );
 
       setProgress(60);
@@ -50,25 +53,27 @@ function FetchData() {
   };
 
   React.useEffect(() => {
-    const evtSource = new EventSource("http://localhost:5050/progress");
+  loadConfig().then((config) => {
+      const evtSource = new EventSource(`${config.API_URL}/progress`);
 
-    evtSource.onmessage = (event) => {
-      const p = Number(event.data);
-      if (!isNaN(p)) {
-        setIsLoading(true);
-        setProgress(p);
+      evtSource.onmessage = (event) => {
+        const p = Number(event.data);
+        if (!isNaN(p)) {
+          setIsLoading(true);
+          setProgress(p);
 
-        if (p >= 100) {
-          setTimeout(() => setIsLoading(false), 300);
+          if (p >= 100) {
+            setTimeout(() => setIsLoading(false), 300);
+          }
         }
-      }
-    };
+      };
 
-    evtSource.onerror = () => {
-      console.log("Progress stream error");
-    };
+      evtSource.onerror = () => {
+        console.log("Progress stream error");
+      };
 
-    return () => evtSource.close();
+      return () => evtSource.close();
+    });
   }, []);
 
   const hideFH = fh_min !== "" || fh_max !== "";
