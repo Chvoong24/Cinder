@@ -1,15 +1,25 @@
----
 deployment:
   tasks:
     - echo "Starting deployment..."
 
+    # Paths
     - export DEPLOYPATH=/home/cindernw/public_html
     - export BUILDPATH=/home/cindernw/repositories/Cinder/cinder-app/frontend/cinderWeb/dist
+    - export CONFIGPATH=/home/cindernw/repositories/Cinder/cinder-app/frontend/cinderWeb/public/config.json
 
-    - echo "Cleaning old files..."
+    - echo "Cleaning old files but keeping config.json if it exists..."
+
+    - if [ -f $DEPLOYPATH/config.json ]; then cp $DEPLOYPATH/config.json /home/cindernw/config.json.backup; fi
+
     - rm -rf $DEPLOYPATH/*
+
+    # Restore config.json if it was saved
+    - if [ -f /home/cindernw/config.json.backup ]; then mv /home/cindernw/config.json.backup $DEPLOYPATH/config.json; fi
 
     - echo "Copying new build files..."
     - cp -r $BUILDPATH/* $DEPLOYPATH/
+
+    - echo "Copying config.json (runtime backend URL)..."
+    - cp $CONFIGPATH $DEPLOYPATH/
 
     - echo "Deployment complete."

@@ -5,9 +5,8 @@ import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
-const client = new MongoClient(MONGO_URI="mongodb+srv://cinderadmin:NWSproject2025@cinderdatabase.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000", {
+ 
+const client = new MongoClient(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -19,7 +18,7 @@ async function run() {
     console.log("[MONGO] Connected to MongoDB");
 
     
-    const db = client.db("modeldata");
+    const db = client.db("modelData");
     const collection = db.collection("points");
 
     

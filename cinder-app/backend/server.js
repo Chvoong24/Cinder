@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 app.use("/progress", progressRouter);
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: process.env.CLIEANT_URL, credentials: true}));
 app.use(express.json());
 
 app.use((req, res, next) => {

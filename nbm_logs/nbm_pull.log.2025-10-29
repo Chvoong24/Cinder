@@ -1,0 +1,212 @@
+2025-10-30 22:07:29,355 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251031/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-30 22:07:31,326 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251031/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-30 22:07:33,888 | INFO | No candidate GRIB URL for 20251031 t00z f001 (Rolling-back Cycle)
+2025-10-30 22:07:33,889 | ERROR | ❌ Main thread failed: 'int' object is not callable
+Traceback (most recent call last):
+  File "<ipython-input-1-7a5054b50b5b>", line 331, in main
+    cycle_str = rollback_cycle(cycle_str)
+  File "<ipython-input-1-7a5054b50b5b>", line 92, in rollback_cycle
+    return rollback_day()
+  File "<ipython-input-1-7a5054b50b5b>", line 80, in rollback_day
+    curr_day = dt.day()
+TypeError: 'int' object is not callable
+2025-10-30 22:09:44,938 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251031/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-30 22:09:46,878 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251031/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-30 22:09:49,440 | INFO | No candidate GRIB URL for 20251031 t00z f001 (Rolling-back Cycle)
+2025-10-30 22:09:49,440 | ERROR | ❌ Main thread failed: unsupported operand type(s) for -: 'int' and 'datetime.timedelta'
+Traceback (most recent call last):
+  File "c:\Users\chrsv\OneDrive\Desktop\Project\Cinder\Fetch_Scripts\get_nbm.py", line 331, in main
+    cycle_str = rollback_cycle(cycle_str)
+  File "c:\Users\chrsv\OneDrive\Desktop\Project\Cinder\Fetch_Scripts\get_nbm.py", line 92, in rollback_cycle
+    return rollback_day()
+  File "c:\Users\chrsv\OneDrive\Desktop\Project\Cinder\Fetch_Scripts\get_nbm.py", line 82, in rollback_day
+    prev_day = curr_day - timedelta(days=1)
+               ~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'int' and 'datetime.timedelta'
+2025-10-30 22:15:48,730 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251031/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-30 22:15:50,674 | WARNING | HEAD https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251031/00/qmd/blend.t00z.qmd.f001.co.grib2.idx -> HTTP 404
+2025-10-30 22:15:53,235 | INFO | No candidate GRIB URL for 20251031 t00z f001 (Rolling-back Cycle)
+2025-10-30 22:15:53,586 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251030/18/qmd/blend.t18z.qmd.f002.co.grib2.idx
+2025-10-30 22:15:53,968 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251030/18/qmd/blend.t18z.qmd.f003.co.grib2.idx
+2025-10-30 22:15:54,365 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251030/18/qmd/blend.t18z.qmd.f004.co.grib2.idx
+2025-10-30 22:15:54,395 | INFO | Matched .idx lines:
+2025-10-30 22:15:54,395 | INFO |   msg=138 off= 251716007 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:54,395 | INFO |   msg=139 off= 252184362 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:54,395 | INFO |   msg=140 off= 252727358 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:54,395 | INFO |   msg=141 off= 253382517 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob >299.817:prob fcst 255/255
+2025-10-30 22:15:54,396 | INFO |   msg=142 off= 254068245 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob >305.372:prob fcst 255/255
+2025-10-30 22:15:54,396 | INFO |   msg=143 off= 254598977 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob >310.928:prob fcst 255/255
+2025-10-30 22:15:54,396 | INFO |   msg=144 off= 255067889 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob >316.483:prob fcst 255/255
+2025-10-30 22:15:54,396 | INFO |   msg=145 off= 255536244 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob >322.039:prob fcst 255/255
+2025-10-30 22:15:54,396 | INFO |   msg=146 off= 256004599 :: d=2025103018:TMP:2 m above ground:2 hour fcst:0% level
+2025-10-30 22:15:54,396 | INFO |   msg=147 off= 261388644 :: d=2025103018:TMP:2 m above ground:2 hour fcst:5% level
+2025-10-30 22:15:54,396 | INFO |   msg=148 off= 266723708 :: d=2025103018:TMP:2 m above ground:2 hour fcst:10% level
+2025-10-30 22:15:54,396 | INFO |   msg=149 off= 272034147 :: d=2025103018:TMP:2 m above ground:2 hour fcst:15% level
+2025-10-30 22:15:54,396 | INFO |   msg=150 off= 277361211 :: d=2025103018:TMP:2 m above ground:2 hour fcst:20% level
+2025-10-30 22:15:54,396 | INFO |   msg=151 off= 282647982 :: d=2025103018:TMP:2 m above ground:2 hour fcst:25% level
+2025-10-30 22:15:54,397 | INFO |   msg=152 off= 287928056 :: d=2025103018:TMP:2 m above ground:2 hour fcst:30% level
+2025-10-30 22:15:54,397 | INFO |   msg=153 off= 293232621 :: d=2025103018:TMP:2 m above ground:2 hour fcst:35% level
+2025-10-30 22:15:54,397 | INFO |   msg=154 off= 298531029 :: d=2025103018:TMP:2 m above ground:2 hour fcst:40% level
+2025-10-30 22:15:54,397 | INFO |   msg=155 off= 303820939 :: d=2025103018:TMP:2 m above ground:2 hour fcst:45% level
+2025-10-30 22:15:54,397 | INFO |   msg=156 off= 309075701 :: d=2025103018:TMP:2 m above ground:2 hour fcst:50% level
+2025-10-30 22:15:54,397 | INFO |   msg=157 off= 314357848 :: d=2025103018:TMP:2 m above ground:2 hour fcst:55% level
+2025-10-30 22:15:54,397 | INFO |   msg=158 off= 319607988 :: d=2025103018:TMP:2 m above ground:2 hour fcst:60% level
+2025-10-30 22:15:54,397 | INFO |   msg=159 off= 324891305 :: d=2025103018:TMP:2 m above ground:2 hour fcst:65% level
+2025-10-30 22:15:54,397 | INFO |   msg=160 off= 330175053 :: d=2025103018:TMP:2 m above ground:2 hour fcst:70% level
+2025-10-30 22:15:54,397 | INFO |   msg=161 off= 335457865 :: d=2025103018:TMP:2 m above ground:2 hour fcst:75% level
+2025-10-30 22:15:54,398 | INFO |   msg=162 off= 340704555 :: d=2025103018:TMP:2 m above ground:2 hour fcst:80% level
+2025-10-30 22:15:54,398 | INFO |   msg=163 off= 345944863 :: d=2025103018:TMP:2 m above ground:2 hour fcst:85% level
+2025-10-30 22:15:54,398 | INFO |   msg=164 off= 351177556 :: d=2025103018:TMP:2 m above ground:2 hour fcst:90% level
+2025-10-30 22:15:54,398 | INFO |   msg=165 off= 356406107 :: d=2025103018:TMP:2 m above ground:2 hour fcst:95% level
+2025-10-30 22:15:54,398 | INFO |   msg=166 off= 361631670 :: d=2025103018:TMP:2 m above ground:2 hour fcst:100% level
+2025-10-30 22:15:54,398 | INFO |   msg=167 off= 366817212 :: d=2025103018:TMP:2 m above ground:2 hour fcst:ens mean
+2025-10-30 22:15:54,398 | INFO |   msg=168 off= 372043641 :: d=2025103018:TMP:2 m above ground:2 hour fcst:ens std dev
+2025-10-30 22:15:54,399 | INFO | Writing -> C:\Users\chrsv\OneDrive\Desktop\Project\Cinder\nbm_download\nbm_t18z_f002_custom.grib2
+2025-10-30 22:15:54,399 | INFO |   GET bytes=251716007-252184361 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:54,803 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251030/18/qmd/blend.t18z.qmd.f005.co.grib2.idx
+2025-10-30 22:15:54,830 | INFO | Matched .idx lines:
+2025-10-30 22:15:54,830 | INFO |   msg=138 off= 250954250 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:54,830 | INFO |   msg=139 off= 251422605 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:54,830 | INFO |   msg=140 off= 251960901 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:54,830 | INFO |   msg=141 off= 252610747 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob >299.817:prob fcst 255/255
+2025-10-30 22:15:54,830 | INFO |   msg=142 off= 253322040 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob >305.372:prob fcst 255/255
+2025-10-30 22:15:54,830 | INFO |   msg=143 off= 253857462 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob >310.928:prob fcst 255/255
+2025-10-30 22:15:54,831 | INFO |   msg=144 off= 254327235 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob >316.483:prob fcst 255/255
+2025-10-30 22:15:54,831 | INFO |   msg=145 off= 254795590 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob >322.039:prob fcst 255/255
+2025-10-30 22:15:54,831 | INFO |   msg=146 off= 255263945 :: d=2025103018:TMP:2 m above ground:3 hour fcst:0% level
+2025-10-30 22:15:54,831 | INFO |   msg=147 off= 260678831 :: d=2025103018:TMP:2 m above ground:3 hour fcst:5% level
+2025-10-30 22:15:54,831 | INFO |   msg=148 off= 266049395 :: d=2025103018:TMP:2 m above ground:3 hour fcst:10% level
+2025-10-30 22:15:54,831 | INFO |   msg=149 off= 271360643 :: d=2025103018:TMP:2 m above ground:3 hour fcst:15% level
+2025-10-30 22:15:54,831 | INFO |   msg=150 off= 276695569 :: d=2025103018:TMP:2 m above ground:3 hour fcst:20% level
+2025-10-30 22:15:54,831 | INFO |   msg=151 off= 282015382 :: d=2025103018:TMP:2 m above ground:3 hour fcst:25% level
+2025-10-30 22:15:54,832 | INFO |   msg=152 off= 287297059 :: d=2025103018:TMP:2 m above ground:3 hour fcst:30% level
+2025-10-30 22:15:54,832 | INFO |   msg=153 off= 292570926 :: d=2025103018:TMP:2 m above ground:3 hour fcst:35% level
+2025-10-30 22:15:54,832 | INFO |   msg=154 off= 297833690 :: d=2025103018:TMP:2 m above ground:3 hour fcst:40% level
+2025-10-30 22:15:54,832 | INFO |   msg=155 off= 303092798 :: d=2025103018:TMP:2 m above ground:3 hour fcst:45% level
+2025-10-30 22:15:54,832 | INFO |   msg=156 off= 308380364 :: d=2025103018:TMP:2 m above ground:3 hour fcst:50% level
+2025-10-30 22:15:54,832 | INFO |   msg=157 off= 313663388 :: d=2025103018:TMP:2 m above ground:3 hour fcst:55% level
+2025-10-30 22:15:54,832 | INFO |   msg=158 off= 318914547 :: d=2025103018:TMP:2 m above ground:3 hour fcst:60% level
+2025-10-30 22:15:54,832 | INFO |   msg=159 off= 324196100 :: d=2025103018:TMP:2 m above ground:3 hour fcst:65% level
+2025-10-30 22:15:54,833 | INFO |   msg=160 off= 329441233 :: d=2025103018:TMP:2 m above ground:3 hour fcst:70% level
+2025-10-30 22:15:54,833 | INFO |   msg=161 off= 334689705 :: d=2025103018:TMP:2 m above ground:3 hour fcst:75% level
+2025-10-30 22:15:54,833 | INFO |   msg=162 off= 339935305 :: d=2025103018:TMP:2 m above ground:3 hour fcst:80% level
+2025-10-30 22:15:54,833 | INFO |   msg=163 off= 345170683 :: d=2025103018:TMP:2 m above ground:3 hour fcst:85% level
+2025-10-30 22:15:54,833 | INFO |   msg=164 off= 350407171 :: d=2025103018:TMP:2 m above ground:3 hour fcst:90% level
+2025-10-30 22:15:54,833 | INFO |   msg=165 off= 355657274 :: d=2025103018:TMP:2 m above ground:3 hour fcst:95% level
+2025-10-30 22:15:54,833 | INFO |   msg=166 off= 360868940 :: d=2025103018:TMP:2 m above ground:3 hour fcst:100% level
+2025-10-30 22:15:54,833 | INFO |   msg=167 off= 366114394 :: d=2025103018:TMP:2 m above ground:3 hour fcst:ens mean
+2025-10-30 22:15:54,834 | INFO |   msg=168 off= 371299004 :: d=2025103018:TMP:2 m above ground:3 hour fcst:ens std dev
+2025-10-30 22:15:54,834 | INFO | Writing -> C:\Users\chrsv\OneDrive\Desktop\Project\Cinder\nbm_download\nbm_t18z_f003_custom.grib2
+2025-10-30 22:15:54,834 | INFO |   GET bytes=250954250-251422604 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:54,969 | INFO |   GET bytes=252184362-252727357 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO | Matched .idx lines:
+2025-10-30 22:15:55,242 | INFO |   msg=138 off= 249461714 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=139 off= 249930069 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=140 off= 250470698 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=141 off= 251129470 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob >299.817:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=142 off= 251824479 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob >305.372:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=143 off= 252355230 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob >310.928:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=144 off= 252824374 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob >316.483:prob fcst 255/255
+2025-10-30 22:15:55,242 | INFO |   msg=145 off= 253292729 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob >322.039:prob fcst 255/255
+2025-10-30 22:15:55,243 | INFO |   msg=146 off= 253761084 :: d=2025103018:TMP:2 m above ground:4 hour fcst:0% level
+2025-10-30 22:15:55,243 | INFO |   msg=147 off= 259174027 :: d=2025103018:TMP:2 m above ground:4 hour fcst:5% level
+2025-10-30 22:15:55,243 | INFO |   msg=148 off= 264493276 :: d=2025103018:TMP:2 m above ground:4 hour fcst:10% level
+2025-10-30 22:15:55,243 | INFO |   msg=149 off= 269781061 :: d=2025103018:TMP:2 m above ground:4 hour fcst:15% level
+2025-10-30 22:15:55,243 | INFO |   msg=150 off= 275062312 :: d=2025103018:TMP:2 m above ground:4 hour fcst:20% level
+2025-10-30 22:15:55,243 | INFO |   msg=151 off= 280361057 :: d=2025103018:TMP:2 m above ground:4 hour fcst:25% level
+2025-10-30 22:15:55,243 | INFO |   msg=152 off= 285647655 :: d=2025103018:TMP:2 m above ground:4 hour fcst:30% level
+2025-10-30 22:15:55,243 | INFO |   msg=153 off= 290897268 :: d=2025103018:TMP:2 m above ground:4 hour fcst:35% level
+2025-10-30 22:15:55,243 | INFO |   msg=154 off= 296172394 :: d=2025103018:TMP:2 m above ground:4 hour fcst:40% level
+2025-10-30 22:15:55,243 | INFO |   msg=155 off= 301439445 :: d=2025103018:TMP:2 m above ground:4 hour fcst:45% level
+2025-10-30 22:15:55,243 | INFO |   msg=156 off= 306671725 :: d=2025103018:TMP:2 m above ground:4 hour fcst:50% level
+2025-10-30 22:15:55,244 | INFO |   msg=157 off= 311937633 :: d=2025103018:TMP:2 m above ground:4 hour fcst:55% level
+2025-10-30 22:15:55,244 | INFO |   msg=158 off= 317198503 :: d=2025103018:TMP:2 m above ground:4 hour fcst:60% level
+2025-10-30 22:15:55,244 | INFO |   msg=159 off= 322458279 :: d=2025103018:TMP:2 m above ground:4 hour fcst:65% level
+2025-10-30 22:15:55,244 | INFO |   msg=160 off= 327689210 :: d=2025103018:TMP:2 m above ground:4 hour fcst:70% level
+2025-10-30 22:15:55,244 | INFO |   msg=161 off= 332918350 :: d=2025103018:TMP:2 m above ground:4 hour fcst:75% level
+2025-10-30 22:15:55,244 | INFO |   msg=162 off= 338142127 :: d=2025103018:TMP:2 m above ground:4 hour fcst:80% level
+2025-10-30 22:15:55,244 | INFO |   msg=163 off= 343364869 :: d=2025103018:TMP:2 m above ground:4 hour fcst:85% level
+2025-10-30 22:15:55,244 | INFO |   msg=164 off= 348585884 :: d=2025103018:TMP:2 m above ground:4 hour fcst:90% level
+2025-10-30 22:15:55,244 | INFO |   msg=165 off= 353823645 :: d=2025103018:TMP:2 m above ground:4 hour fcst:95% level
+2025-10-30 22:15:55,244 | INFO |   msg=166 off= 359026432 :: d=2025103018:TMP:2 m above ground:4 hour fcst:100% level
+2025-10-30 22:15:55,244 | INFO |   msg=167 off= 364229499 :: d=2025103018:TMP:2 m above ground:4 hour fcst:ens mean
+2025-10-30 22:15:55,244 | INFO |   msg=168 off= 369433518 :: d=2025103018:TMP:2 m above ground:4 hour fcst:ens std dev
+2025-10-30 22:15:55,245 | INFO | Writing -> C:\Users\chrsv\OneDrive\Desktop\Project\Cinder\nbm_download\nbm_t18z_f004_custom.grib2
+2025-10-30 22:15:55,245 | INFO |   GET bytes=249461714-249930068 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:55,254 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251030/18/qmd/blend.t18z.qmd.f006.co.grib2.idx
+2025-10-30 22:15:55,424 | INFO |   GET bytes=251422605-251960900 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:55,542 | INFO |   GET bytes=252727358-253382516 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:55,663 | INFO | Matched .idx lines:
+2025-10-30 22:15:55,663 | INFO |   msg=138 off= 247874267 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:55,663 | INFO |   msg=139 off= 248342622 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:55,663 | INFO |   msg=140 off= 248902814 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:55,663 | INFO |   msg=141 off= 249611530 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob >299.817:prob fcst 255/255
+2025-10-30 22:15:55,663 | INFO |   msg=142 off= 250291353 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob >305.372:prob fcst 255/255
+2025-10-30 22:15:55,664 | INFO |   msg=143 off= 250812108 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob >310.928:prob fcst 255/255
+2025-10-30 22:15:55,664 | INFO |   msg=144 off= 251280711 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob >316.483:prob fcst 255/255
+2025-10-30 22:15:55,664 | INFO |   msg=145 off= 251749066 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob >322.039:prob fcst 255/255
+2025-10-30 22:15:55,664 | INFO |   msg=146 off= 252217421 :: d=2025103018:TMP:2 m above ground:5 hour fcst:0% level
+2025-10-30 22:15:55,664 | INFO |   msg=147 off= 257594724 :: d=2025103018:TMP:2 m above ground:5 hour fcst:5% level
+2025-10-30 22:15:55,664 | INFO |   msg=148 off= 262940452 :: d=2025103018:TMP:2 m above ground:5 hour fcst:10% level
+2025-10-30 22:15:55,664 | INFO |   msg=149 off= 268250914 :: d=2025103018:TMP:2 m above ground:5 hour fcst:15% level
+2025-10-30 22:15:55,664 | INFO |   msg=150 off= 273554882 :: d=2025103018:TMP:2 m above ground:5 hour fcst:20% level
+2025-10-30 22:15:55,664 | INFO |   msg=151 off= 278844249 :: d=2025103018:TMP:2 m above ground:5 hour fcst:25% level
+2025-10-30 22:15:55,665 | INFO |   msg=152 off= 284122554 :: d=2025103018:TMP:2 m above ground:5 hour fcst:30% level
+2025-10-30 22:15:55,665 | INFO |   msg=153 off= 289396035 :: d=2025103018:TMP:2 m above ground:5 hour fcst:35% level
+2025-10-30 22:15:55,665 | INFO |   msg=154 off= 294632637 :: d=2025103018:TMP:2 m above ground:5 hour fcst:40% level
+2025-10-30 22:15:55,665 | INFO |   msg=155 off= 299894429 :: d=2025103018:TMP:2 m above ground:5 hour fcst:45% level
+2025-10-30 22:15:55,665 | INFO |   msg=156 off= 305120983 :: d=2025103018:TMP:2 m above ground:5 hour fcst:50% level
+2025-10-30 22:15:55,665 | INFO |   msg=157 off= 310350182 :: d=2025103018:TMP:2 m above ground:5 hour fcst:55% level
+2025-10-30 22:15:55,665 | INFO |   msg=158 off= 315573516 :: d=2025103018:TMP:2 m above ground:5 hour fcst:60% level
+2025-10-30 22:15:55,665 | INFO |   msg=159 off= 320826765 :: d=2025103018:TMP:2 m above ground:5 hour fcst:65% level
+2025-10-30 22:15:55,665 | INFO |   msg=160 off= 326050204 :: d=2025103018:TMP:2 m above ground:5 hour fcst:70% level
+2025-10-30 22:15:55,665 | INFO |   msg=161 off= 331272838 :: d=2025103018:TMP:2 m above ground:5 hour fcst:75% level
+2025-10-30 22:15:55,666 | INFO |   msg=162 off= 336522545 :: d=2025103018:TMP:2 m above ground:5 hour fcst:80% level
+2025-10-30 22:15:55,666 | INFO |   msg=163 off= 341741061 :: d=2025103018:TMP:2 m above ground:5 hour fcst:85% level
+2025-10-30 22:15:55,666 | INFO |   msg=164 off= 346958443 :: d=2025103018:TMP:2 m above ground:5 hour fcst:90% level
+2025-10-30 22:15:55,666 | INFO |   msg=165 off= 352162899 :: d=2025103018:TMP:2 m above ground:5 hour fcst:95% level
+2025-10-30 22:15:55,666 | INFO |   msg=166 off= 357366926 :: d=2025103018:TMP:2 m above ground:5 hour fcst:100% level
+2025-10-30 22:15:55,666 | INFO |   msg=167 off= 362573946 :: d=2025103018:TMP:2 m above ground:5 hour fcst:ens mean
+2025-10-30 22:15:55,666 | INFO |   msg=168 off= 367741560 :: d=2025103018:TMP:2 m above ground:5 hour fcst:ens std dev
+2025-10-30 22:15:55,666 | INFO | Writing -> C:\Users\chrsv\OneDrive\Desktop\Project\Cinder\nbm_download\nbm_t18z_f005_custom.grib2
+2025-10-30 22:15:55,667 | INFO |   GET bytes=247874267-248342621 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:55,697 | INFO | Using index -> https://noaa-nbm-para-pds.s3.amazonaws.com/blend.20251030/18/qmd/blend.t18z.qmd.f007.co.grib2.idx
+2025-10-30 22:15:55,970 | INFO |   GET bytes=249930069-250470697 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:55,978 | INFO |   GET bytes=251960901-252610746 :: d=2025103018:TMP:2 m above ground:3 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:56,043 | INFO |   GET bytes=253382517-254068244 :: d=2025103018:TMP:2 m above ground:2 hour fcst:prob >299.817:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO | Matched .idx lines:
+2025-10-30 22:15:56,143 | INFO |   msg=170 off= 291639121 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO |   msg=171 off= 292107497 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO |   msg=172 off= 292722393 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob <273.15:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO |   msg=173 off= 293535911 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob >299.817:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO |   msg=174 off= 294184681 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob >305.372:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO |   msg=175 off= 294683882 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob >310.928:prob fcst 255/255
+2025-10-30 22:15:56,143 | INFO |   msg=176 off= 295152237 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob >316.483:prob fcst 255/255
+2025-10-30 22:15:56,144 | INFO |   msg=177 off= 295620592 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob >322.039:prob fcst 255/255
+2025-10-30 22:15:56,144 | INFO |   msg=178 off= 296088947 :: d=2025103018:TMP:2 m above ground:6 hour fcst:0% level
+2025-10-30 22:15:56,144 | INFO |   msg=179 off= 301476995 :: d=2025103018:TMP:2 m above ground:6 hour fcst:5% level
+2025-10-30 22:15:56,144 | INFO |   msg=180 off= 306789796 :: d=2025103018:TMP:2 m above ground:6 hour fcst:10% level
+2025-10-30 22:15:56,144 | INFO |   msg=181 off= 312062041 :: d=2025103018:TMP:2 m above ground:6 hour fcst:15% level
+2025-10-30 22:15:56,144 | INFO |   msg=182 off= 317326696 :: d=2025103018:TMP:2 m above ground:6 hour fcst:20% level
+2025-10-30 22:15:56,144 | INFO |   msg=183 off= 322607625 :: d=2025103018:TMP:2 m above ground:6 hour fcst:25% level
+2025-10-30 22:15:56,144 | INFO |   msg=184 off= 327844741 :: d=2025103018:TMP:2 m above ground:6 hour fcst:30% level
+2025-10-30 22:15:56,144 | INFO |   msg=185 off= 333077341 :: d=2025103018:TMP:2 m above ground:6 hour fcst:35% level
+2025-10-30 22:15:56,144 | INFO |   msg=186 off= 338335418 :: d=2025103018:TMP:2 m above ground:6 hour fcst:40% level
+2025-10-30 22:15:56,145 | INFO |   msg=187 off= 343585161 :: d=2025103018:TMP:2 m above ground:6 hour fcst:45% level
+2025-10-30 22:15:56,145 | INFO |   msg=188 off= 348801497 :: d=2025103018:TMP:2 m above ground:6 hour fcst:50% level
+2025-10-30 22:15:56,145 | INFO |   msg=189 off= 354020235 :: d=2025103018:TMP:2 m above ground:6 hour fcst:55% level
+2025-10-30 22:15:56,145 | INFO |   msg=190 off= 359233399 :: d=2025103018:TMP:2 m above ground:6 hour fcst:60% level
+2025-10-30 22:15:56,145 | INFO |   msg=191 off= 364477443 :: d=2025103018:TMP:2 m above ground:6 hour fcst:65% level
+2025-10-30 22:15:56,145 | INFO |   msg=192 off= 369722961 :: d=2025103018:TMP:2 m above ground:6 hour fcst:70% level
+2025-10-30 22:15:56,145 | INFO |   msg=193 off= 374935421 :: d=2025103018:TMP:2 m above ground:6 hour fcst:75% level
+2025-10-30 22:15:56,145 | INFO |   msg=194 off= 380143041 :: d=2025103018:TMP:2 m above ground:6 hour fcst:80% level
+2025-10-30 22:15:56,145 | INFO |   msg=195 off= 385349923 :: d=2025103018:TMP:2 m above ground:6 hour fcst:85% level
+2025-10-30 22:15:56,146 | INFO |   msg=196 off= 390587432 :: d=2025103018:TMP:2 m above ground:6 hour fcst:90% level
+2025-10-30 22:15:56,146 | INFO |   msg=197 off= 395781065 :: d=2025103018:TMP:2 m above ground:6 hour fcst:95% level
+2025-10-30 22:15:56,146 | INFO |   msg=198 off= 400972511 :: d=2025103018:TMP:2 m above ground:6 hour fcst:100% level
+2025-10-30 22:15:56,146 | INFO |   msg=199 off= 406182178 :: d=2025103018:TMP:2 m above ground:6 hour fcst:ens mean
+2025-10-30 22:15:56,146 | INFO |   msg=200 off= 411359476 :: d=2025103018:TMP:2 m above ground:6 hour fcst:ens std dev
+2025-10-30 22:15:56,146 | INFO | Writing -> C:\Users\chrsv\OneDrive\Desktop\Project\Cinder\nbm_download\nbm_t18z_f006_custom.grib2
+2025-10-30 22:15:56,147 | INFO |   GET bytes=291639121-292107496 :: d=2025103018:TMP:2 m above ground:6 hour fcst:prob <255.372:prob fcst 255/255
+2025-10-30 22:15:56,261 | INFO |   GET bytes=248342622-248902813 :: d=2025103018:TMP:2 m above ground:5 hour fcst:prob <270.928:prob fcst 255/255
+2025-10-30 22:15:56,475 | INFO |   GET bytes=250470698-251129469 :: d=2025103018:TMP:2 m above ground:4 hour fcst:prob <273.15:prob fcst 255/255
