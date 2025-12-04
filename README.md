@@ -27,39 +27,27 @@ duyhuynh-dev: Duy Huynh
 ## System Requirements
 Have at least **15GB** of free storage
 
-## Start Up
-1. Clone Repository 
-> Instructions For VSCode IDE
-#### Create A Python Enviroment on mac
-1. Windows: Ctrl + Shift + P  
-   Mac: Cmd + Shift + P  
+## Start Up (mac)
+1. Open a new terminal window on your computer or in VSCode.
+    - Find the terminal application on your computer. If using VSCode, use the shortcut `` Control + Shift + ` `` to open a terminal window.
+1. Install brew if you do not have it. Follow instructions at https://brew.sh/.
+1. Clone our repository into your desired directory.
+    - Enter ```git clone https://github.com/Chvoong24/Cinder.git```.
+        - If you do not have git for command line, install it with ```brew install git```
+1. If you are not in the main Cinder directory, navigate to it using ```cd Cinder```
 
-0. Select: ``Python: Create Enviroment...``
-0. Select: ``Venv``
--   For **.venv** only
-1. Select: ``Python 3.13.x``
-<img src = "images/creating_env_environment_image.png" alt = "Creating environment python version" width="600px"></img>
-0. Select: requirements.txt
-<img src = "images/creating_requirements_image.png" alt = "Selecting dependencies to install" width="600px"></img>
-0. Open a new Terminal Window
-0. Terminal Line should say ``(.venv) (base)...``
 
-### Create a conda environment on Mac
-1. Install brew if you do not have it
 1. Download conda by running ```brew install --cask anaconda``` in your terminal. You should see the following messages after typing your password.
 <img src = "images/conda_installation.png" alt = "conda installation" width="600px"></img>
-1. Check conda is installed by typing ```conda --version```
+1. Check conda is installed by typing ```conda --version```. You should see the version of your conda. 
 1. Enter ```conda env create -f environment_mac.yml``` into your terminal. Ensure you are in the "Cinder" main folder.
 <img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
 1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
 
-## Import Required Python Libraries (OPTIONAL)
-1. Ensure you are in the main "Cinder" directory.
-2. In the terminal, run the command ``pip install -r requirements.txt``
-
 ## Starting Local Website 
-1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/?operating-system=macos&macos-installation-method=homebrew)
-    - Choose your OS and follow download instructions and install
+1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/)
+    - Choose your OS and follow download instructions and install.
+    <img src = images/mongo_db_download.png alt = "mongo db download" width="600px"></img>
     - Run MONGODB as a background process ```mongod --config /opt/homebrew/etc/mongod.conf --fork```
         - Remove  ```--fork``` if it does not work
 
