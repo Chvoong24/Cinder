@@ -30,12 +30,14 @@ Have at least **15GB** of free storage
 Must use Conda environment on Windows (Pygrib package does not work with pip).
 > Preferably use Conda on Mac as well to avoid issues. 
 
-## Start Up
-1. Clone Repository 
-> Instructions For VSCode IDE
-#### Create A Python Enviroment on mac
-1. Windows: Ctrl + Shift + P  
-   Mac: Cmd + Shift + P  
+## Start Up (mac)
+1. Open a new terminal window on your computer or in VSCode.
+    - Find the terminal application on your computer. If using VSCode, use the shortcut `` Control + Shift + ` `` to open a terminal window.
+1. Install brew if you do not have it. Follow instructions at https://brew.sh/.
+1. Clone our repository into your desired directory.
+    - Enter ```git clone https://github.com/Chvoong24/Cinder.git```.
+        - If you do not have git for command line, install it with ```brew install git```
+1. If you are not in the main Cinder directory, navigate to it using ```cd Cinder```
 
 
 1. Download conda by running ```brew install --cask anaconda``` in your terminal. You should see the following messages after typing your password.
