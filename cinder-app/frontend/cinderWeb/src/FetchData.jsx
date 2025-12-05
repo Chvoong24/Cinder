@@ -1,5 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FetchData.css";
+
+const API_URL = import.meta.env.VITE_API_URL || "";
+
+const sortWeatherData = (data) => {
+  return [...data].sort((a, b) => {
+    const cmp = (x, y) => (x ?? "").toLowerCase().localeCompare((y ?? "").toLowerCase());
+    return cmp(a.sitrep, b.sitrep) || cmp(a.name, b.name) || (a.forecast_time ?? 0) - (b.forecast_time ?? 0);
+  });
+};
 
 function FetchData() {
   const [lat, setLat] = useState("");
@@ -22,7 +31,7 @@ function FetchData() {
 
     try {
       const res = await fetch(
-        `/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
+        `${API_URL}/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
       );
 
       setProgress(60);
@@ -42,25 +51,16 @@ function FetchData() {
     }
   };
 
-  React.useEffect(() => {
-    const evtSource = new EventSource("http://localhost:5050/progress");
-
-    evtSource.onmessage = (event) => {
-      const p = Number(event.data);
-      if (!isNaN(p)) {
-        setIsLoading(true);
-        setProgress(p);
-
-        if (p >= 100) {
-          setTimeout(() => setIsLoading(false), 300);
-        }
-      }
+  useEffect(() => {
+    const evtSource = new EventSource(`${API_URL}/progress`);
+    evtSource.onmessage = (e) => {
+      const p = Number(e.data);
+      if (isNaN(p)) return;
+      setIsLoading(true);
+      setProgress(p);
+      if (p >= 100) setTimeout(() => setIsLoading(false), 300);
     };
-
-    evtSource.onerror = () => {
-      console.log("Progress stream error");
-    };
-
+    evtSource.onerror = () => console.log("Progress stream error");
     return () => evtSource.close();
   }, []);
 
@@ -145,35 +145,16 @@ function FetchData() {
               </thead>
 
               <tbody>
-                {[...data]
-                  .sort((a, b) => {
-                    // 1) Sort by sitrep (model) alphabetically, case-insensitive
-                    const sA = (a.sitrep ?? "").toLowerCase();
-                    const sB = (b.sitrep ?? "").toLowerCase();
-                    if (sA < sB) return -1;
-                    if (sA > sB) return 1;
-
-                    // 2) If same sitrep, sort by name alphabetically
-                    const nameA = (a.name ?? "").toLowerCase();
-                    const nameB = (b.name ?? "").toLowerCase();
-                    if (nameA < nameB) return -1;
-                    if (nameA > nameB) return 1;
-
-                    // 3) If same name, sort by forecast_time numerically
-                    const fA = Number(a.forecast_time ?? 0);
-                    const fB = Number(b.forecast_time ?? 0);
-                    return fA - fB;
-                  })
-                  .map((item, i) => (
-                    <tr key={i}>
-                      <td>{item.sitrep ?? "-"}</td>
-                      <td>{item.name ?? "—"}</td>
-                      <td>{item.threshold ?? "—"}</td>
-                      <td>{item.step_length ?? "—"}</td>
-                      <td>{item.forecast_time ?? "—"}</td>
-                      <td>{item.value ?? "—"}</td>
-                    </tr>
-                  ))}
+                {sortWeatherData(data).map((item, i) => (
+                  <tr key={i}>
+                    <td>{item.sitrep ?? "-"}</td>
+                    <td>{item.name ?? "—"}</td>
+                    <td>{item.threshold ?? "—"}</td>
+                    <td>{item.step_length ?? "—"}</td>
+                    <td>{item.forecast_time ?? "—"}</td>
+                    <td>{item.value ?? "—"}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
