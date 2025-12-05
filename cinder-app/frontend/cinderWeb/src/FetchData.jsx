@@ -1,11 +1,45 @@
 import React, { useState } from "react";
 import "./FetchData.css";
 
-export async function getUser() {
-  const API_URL = import.meta.env.VITE_API_URL;
+function convertThreshold(threshold) {
+  if (!threshold) return threshold;
 
-  const res = await fetch(`${API_URL}/api/user`);
-  return res.json();
+  let str = String(threshold).trim();
+  let prefix = "";
+  if (str.startsWith(">")) {
+    prefix = "> ";
+    str = str.slice(1).trim();
+  } else if (str.startsWith("<")) {
+    prefix = "< ";
+    str = str.slice(1).trim();
+  }
+
+  // WIND SPEED (m s**-1 -> mph)
+  if (/m\s*s\*\*-1/i.test(str)) {
+    const val = parseFloat(str);
+    if (!isNaN(val)) {
+      return `${prefix}${(val * 2.23694).toFixed(2)} mph`;
+    }
+  }
+
+  // PRECIP (kg m**-2 -> inches)
+  if (/kg\s*m\*\*-2/i.test(str)) {
+    const val = parseFloat(str);
+    if (!isNaN(val)) {
+      return `${prefix}${(val / 25.4).toFixed(2)} in`;
+    }
+  }
+
+  // TEMPERATURE (K → °F)
+  if (/k$/i.test(str)) {
+    const val = parseFloat(str);
+    if (!isNaN(val)) {
+      const f = ((val - 273.15) * 9/5 + 32).toFixed(2);
+      return `${prefix}${f} °F`;
+    }
+  }
+
+  return threshold;
 }
 
 function FetchData() {
@@ -175,7 +209,7 @@ function FetchData() {
                     <tr key={i}>
                       <td>{item.sitrep ?? "-"}</td>
                       <td>{item.name ?? "—"}</td>
-                      <td>{item.threshold ?? "—"}</td>
+                      <td>{item.threshold != null ? convertThreshold(item.threshold) : "—"}</td>
                       <td>{item.step_length ?? "—"}</td>
                       <td>{item.forecast_time ?? "—"}</td>
                       <td>{item.value ?? "—"}</td>
