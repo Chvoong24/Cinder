@@ -3,6 +3,7 @@ import "./FetchData.css";
 
 function convertThreshold(threshold) {
   if (!threshold) return threshold;
+  
 
   let str = String(threshold).trim();
   let prefix = "";
@@ -18,7 +19,8 @@ function convertThreshold(threshold) {
   if (/m\s*s\*\*-1/i.test(str)) {
     const val = parseFloat(str);
     if (!isNaN(val)) {
-      return `${prefix}${(val * 2.23694).toFixed(2)} mph`;
+      const fixedVal = (val * 2.23694).toFixed(2)
+      return `${prefix}${fixedVal} mph`;
     }
   }
 
@@ -26,15 +28,19 @@ function convertThreshold(threshold) {
   if (/kg\s*m\*\*-2/i.test(str)) {
     const val = parseFloat(str);
     if (!isNaN(val)) {
-      return `${prefix}${(val / 25.4).toFixed(2)} in`;
+      const converted = (val / 25.4).toFixed(2);
+      return `${prefix}${converted} in`;
     }
   }
 
-  // TEMPERATURE (K → °F)
+  // TEMPERATURE (K -> °F)
   if (/k$/i.test(str)) {
     const val = parseFloat(str);
     if (!isNaN(val)) {
       const f = ((val - 273.15) * 9/5 + 32).toFixed(2);
+      if (f == 0){
+        return `${prefix}0 °F`
+      }
       return `${prefix}${f} °F`;
     }
   }
