@@ -62,22 +62,28 @@ function FetchData() {
     evtSource.onmessage = (e) => {
       const p = Number(e.data);
       if (isNaN(p)) return;
-      setProgress(p);
-      if (p >= 100) {
-        setTimeout(() => {
-          setIsLoading(false);
-          setProgress(0);
-        }, 300);
-      } else if (p > 0) {
-        setIsLoading(true);
+      if (isLoading) {
+        setProgress(p);
+        if (p >= 100) {
+          setTimeout(() => {
+            setIsLoading(false);
+            setProgress(0);
+          }, 300);
+        }
       }
     };
     evtSource.onerror = () => {
       console.log("Progress stream error");
-      setIsLoading(false);
     };
     return () => evtSource.close();
-  }, []);
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
+      setIsLoading(false);
+      setProgress(0);
+    }
+  }, [data]);
 
   const hideFH = fh_min !== "" || fh_max !== "";
   const hideMinMax = fh !== "";
