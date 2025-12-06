@@ -5,8 +5,13 @@ const API_URL = import.meta.env.VITE_API_URL || "";
 
 const sortWeatherData = (data) => {
   return [...data].sort((a, b) => {
-    const cmp = (x, y) => (x ?? "").toLowerCase().localeCompare((y ?? "").toLowerCase());
-    return cmp(a.sitrep, b.sitrep) || cmp(a.name, b.name) || (a.forecast_time ?? 0) - (b.forecast_time ?? 0);
+    const cmp = (x, y) =>
+      (x ?? "").toLowerCase().localeCompare((y ?? "").toLowerCase());
+    return (
+      cmp(a.sitrep, b.sitrep) ||
+      cmp(a.name, b.name) ||
+      (a.forecast_time ?? 0) - (b.forecast_time ?? 0)
+    );
   });
 };
 
@@ -41,10 +46,11 @@ function FetchData() {
       const json = await res.json();
 
       setProgress(100);
-
-      setTimeout(() => setIsLoading(false), 400);
-
       setData(json);
+      setTimeout(() => {
+        setIsLoading(false);
+        setProgress(0);
+      }, 400);
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
@@ -56,11 +62,20 @@ function FetchData() {
     evtSource.onmessage = (e) => {
       const p = Number(e.data);
       if (isNaN(p)) return;
-      setIsLoading(true);
       setProgress(p);
-      if (p >= 100) setTimeout(() => setIsLoading(false), 300);
+      if (p >= 100) {
+        setTimeout(() => {
+          setIsLoading(false);
+          setProgress(0);
+        }, 300);
+      } else if (p > 0) {
+        setIsLoading(true);
+      }
     };
-    evtSource.onerror = () => console.log("Progress stream error");
+    evtSource.onerror = () => {
+      console.log("Progress stream error");
+      setIsLoading(false);
+    };
     return () => evtSource.close();
   }, []);
 
@@ -124,7 +139,10 @@ function FetchData() {
 
         {isLoading && (
           <div className="loading-bar-container">
-            <div className="loading-bar" style={{ width: `${progress}%` }}></div>
+            <div
+              className="loading-bar"
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         )}
 
