@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./FetchData.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -23,67 +23,28 @@ function FetchData() {
   const [fh_min, setMin] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
 
   const fetchData = async () => {
     setError("");
     setData(null);
-
     setIsLoading(true);
-    setProgress(15);
 
     try {
       const res = await fetch(
         `${API_URL}/api/data?lat=${lat}&lon=${lon}&fh=${fh}&fh_min=${fh_min}&fh_max=${fh_max}`
       );
 
-      setProgress(60);
-
       if (!res.ok) throw new Error(`Server error: ${res.status}`);
 
       const json = await res.json();
-
-      setProgress(100);
       setData(json);
-      setTimeout(() => {
-        setIsLoading(false);
-        setProgress(0);
-      }, 400);
+      setIsLoading(false);
     } catch (err) {
       setError(err.message);
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    const evtSource = new EventSource(`${API_URL}/progress`);
-    evtSource.onmessage = (e) => {
-      const p = Number(e.data);
-      if (isNaN(p)) return;
-      if (isLoading) {
-        setProgress(p);
-        if (p >= 100) {
-          setTimeout(() => {
-            setIsLoading(false);
-            setProgress(0);
-          }, 300);
-        }
-      }
-    };
-    evtSource.onerror = () => {
-      console.log("Progress stream error");
-    };
-    return () => evtSource.close();
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (data && data.length > 0) {
-      setIsLoading(false);
-      setProgress(0);
-    }
-  }, [data]);
 
   const hideFH = fh_min !== "" || fh_max !== "";
   const hideMinMax = fh !== "";
@@ -139,18 +100,9 @@ function FetchData() {
           </>
         )}
 
-        <button onClick={fetchData} className="button">
-          Fetch Data
+        <button onClick={fetchData} className="button" disabled={isLoading}>
+          {isLoading ? "Loading..." : "Fetch Data"}
         </button>
-
-        {isLoading && (
-          <div className="loading-bar-container">
-            <div
-              className="loading-bar"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-        )}
 
         {error && <p className="error">{error}</p>}
 
