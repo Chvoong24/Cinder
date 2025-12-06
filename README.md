@@ -7,6 +7,7 @@ Project for COMP333
 - [Start Up](#creating-environments)
     - [Create An Enviroment](#creating-environments)
         - [Mac](#environment-for-mac-using-conda)
+            - [Full Video Demo](#full-video-demo-for-mac)
         - [Windows](#environment-for-windows-using-conda)
     - [Run Local Website](#starting-local-website)
 - [How To Use](#how-to-fetch-data)
@@ -48,7 +49,9 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
 <img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
 1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
 
-## Environment For Windows using Conda
+#### Full Video Demo For Mac
+
+### Environment For Windows using Conda
 
 
 ## Starting Local Website 
