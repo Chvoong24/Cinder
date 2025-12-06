@@ -4,8 +4,9 @@ Project for COMP333
 # Table Of Contents
 - [Members](#members)
 - [System Requirements](#system-requirements)
-- [Start Up](#start-up)
-    - [Create An Enviroment](#create-a-python-enviroment)
+- [Start Up](#creating-environments)
+    - [Create An Enviroment](#creating-environments)
+        - [Mac](#start-up-mac)
     - [Necessary Imports](#imports)
     - [Run Local Website](#starting-local-website)
 - [How To Use](#how-to-fetch-data)
@@ -29,8 +30,8 @@ Have at least **15GB** of free storage
 
 Must use Conda environment on Windows (Pygrib package does not work with pip).
 > Preferably use Conda on Mac as well to avoid issues. 
-
-## Start Up (mac)
+## Creating Environments
+### Start Up (Mac)
 1. Open a new terminal window on your computer or in VSCode.
     - Find the terminal application on your computer. If using VSCode, use the shortcut `` Control + Shift + ` `` to open a terminal window.
 1. Install brew if you do not have it. Follow instructions at https://brew.sh/.
