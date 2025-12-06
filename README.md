@@ -6,8 +6,8 @@ Project for COMP333
 - [System Requirements](#system-requirements)
 - [Start Up](#creating-environments)
     - [Create An Enviroment](#creating-environments)
-        - [Mac](#start-up-mac)
-    - [Necessary Imports](#imports)
+        - [Mac](#environment-for-mac-using-conda)
+        - [Windows](#environment-for-windows-using-conda)
     - [Run Local Website](#starting-local-website)
 - [How To Use](#how-to-fetch-data)
     - [More Info On Functions](#documentation)
@@ -31,7 +31,7 @@ Have at least **15GB** of free storage
 Must use Conda environment on Windows (Pygrib package does not work with pip).
 > Preferably use Conda on Mac as well to avoid issues. 
 ## Creating Environments
-### Start Up (Mac)
+### Environment For Mac Using Conda
 1. Open a new terminal window on your computer or in VSCode.
     - Find the terminal application on your computer. If using VSCode, use the shortcut `` Control + Shift + ` `` to open a terminal window.
 1. Install brew if you do not have it. Follow instructions at https://brew.sh/.
@@ -47,6 +47,9 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
 1. Enter ```conda env create -f environment_mac.yml``` into your terminal. Ensure you are in the "Cinder" main folder.
 <img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
 1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
+
+## Environment For Windows using Conda
+
 
 ## Starting Local Website 
 1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/)
