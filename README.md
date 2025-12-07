@@ -49,7 +49,8 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
 <img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
 1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
 
-#### [Click here for a video demo for mac](https://github.com/Chvoong24/Cinder/blob/main/images/mac_conda_instructions.mp4)
+#### Video demo for mac   
+<video src="images/mac_conda_instructions.mp4" width="400px" controls></video>
 
 ### Environment For Windows using Conda
 1. Install the Anaconda via [link](https://www.anaconda.com/download)
@@ -92,6 +93,8 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
     <img src = "images/frontend_npm_run_dev_image.png" alt = "Terminal when 'npm run dev' is ran" width="600px"></img>
 0. Go to localhost that was printed in frontend terminal on a browser
 
+#### Video demo  
+<video src="images/starting_local_website_instructions.mp4" width="400px" controls></video>
 
 ## Navigating The Website
 - Once all the steps above are completed navigate to [localhost](http://localhost:5173])
