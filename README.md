@@ -49,7 +49,7 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
 <img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
 1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
 
-#### Video Demo For Mac
+#### [Click here for a video demo for mac](https://github.com/Chvoong24/Cinder/blob/main/images/mac_conda_instructions.mp4)
 
 ### Environment For Windows using Conda
 1. Install the Anaconda via [link](https://www.anaconda.com/download)
