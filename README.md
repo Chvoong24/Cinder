@@ -52,7 +52,17 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
 #### Video Demo For Mac
 
 ### Environment For Windows using Conda
-
+1. Install the Anaconda via [link](https://www.anaconda.com/download)
+    - There is no extra setup necessary in Anaconda's launcher or otherwise UI for this project.
+1. Open a new terminal window on your computer or in VSCode.
+    - Find the terminal application on your computer. If using VSCode, use the shortcut `` Control + Shift + ` `` to open a terminal window.
+1. Clone the repository into your desired directory
+    - Enter ```git clone https://github.com/Chvoong24/Cinder.git```.
+        - If you do not have git installed, you can type ```conda install git``` to install it.
+        - If this command fails, ensure that ```(base)``` appears next to your current command line. If not, type ```conda activate base``` to manually enable the base conda environment
+1. Open the primary repository folder by navigating to it using ```cd Cinder``` when in the folder you cloned the repository.
+1. Now create a new conda environment with the following line ```conda create --name env --file requirements.txt```
+    - You can follow instructions given in terminal to activate the environment. Or, just enter ```conda activate env```. You can disable this environment with ```conda deactivate env```. 
 
 ## Starting Local Website 
 1. [Download MongoDB Community](https://www.mongodb.com/docs/manual/administration/install-community/)
