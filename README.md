@@ -7,7 +7,7 @@ Project for COMP333
 - [Start Up](#creating-environments)
     - [Create An Enviroment](#creating-environments)
         - [Mac](#environment-for-mac-using-conda)
-            - [Video Demo](#full-video-demo-for-mac)
+            - [Video Demo](#video-demo-for-mac)
         - [Windows](#environment-for-windows-using-conda)
     - [Run Local Website](#starting-local-website)
 - [How To Use](#how-to-fetch-data)
