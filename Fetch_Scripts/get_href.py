@@ -164,7 +164,7 @@ def download_file(url, output_dir):
 				time.sleep(RETRY_DELAY)
 			else:
 				logger.error(f'All retries failed for {filename}')
-				print(f'❌ Failed: {filename} → check log!', flush = True)
+				print(f'❌ Failed: {filename} -> check log!', flush = True)
 			return False
 
 

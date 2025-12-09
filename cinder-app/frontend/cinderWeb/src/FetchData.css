@@ -16,7 +16,7 @@ html, body {
   box-sizing: border-box;
 
   display: flex;
-  align-items: flex-start;          /* Pull content to top */
+  align-items: flex-start;          
   justify-content: center;
 
   background: rgba(255, 255, 255, 0.45);
@@ -112,7 +112,7 @@ html, body {
 
 .table-container {
   width: 100%;
-  overflow-x: auto;                 /* Only tables scroll horizontally */
+  overflow-x: auto;                 
 }
 
 .result-table {
@@ -167,14 +167,13 @@ html, body {
   font-size: 14px;
   color: #333;
 
-  white-space: pre-wrap !important;     /* Wrap JSON lines */
+  white-space: pre-wrap !important;     
   word-break: break-word !important;
   overflow-wrap: break-word !important;
 
-  overflow-x: hidden !important;        /* No horizontal scrolling ever */
+  overflow-x: hidden !important;        
   overflow-y: auto;
-  max-height: 700px;                    /* Taller view since page is now wider */
-
+  max-height: 700px;                   
   border: 1px solid rgba(200, 200, 200, 0.35);
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
 
@@ -203,4 +202,66 @@ html, body {
   text-align: center;
   color: #888;
   font-size: 14px;
+}
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.toggle-switch-container {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* hide checkbox */
+.toggle-input {
+  display: none;
+}
+
+/* switch track */
+.toggle-switch {
+  width: 48px;
+  height: 28px;
+  background: #d2d2d7;
+  border-radius: 999px;
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+/* switch knob */
+.toggle-switch::after {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+
+.toggle-input:checked + .toggle-switch {
+  background: #007aff;
+}
+
+.toggle-input:checked + .toggle-switch::after {
+  transform: translateX(20px);
+}
+
+.toggle-label {
+  font-size: 15px;
+  color: #1c1c1e;
+  user-select: none;
+}
+
+.model-run {
+  color: #9a9a9a;   
+  font-size: 0.9em; 
+  margin-left: 4px;
 }

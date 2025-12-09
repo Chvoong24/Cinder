@@ -92,17 +92,20 @@ async function run() {
       }));
 
       if (docs.length > 0) {
-        try {
-          const res = await collection.insertMany(docs, { ordered: false });
-          console.log(`[IMPORT] Inserted ${res.insertedCount} docs from ${file}`);
-        } catch (err) {
-          
-          if (err.code === 11000) {
-            console.warn(`[IMPORT-WARN] Duplicate key error while inserting ${file}:`, err.message);
-          } else {
-            console.error(`[IMPORT-ERR] Error inserting docs from ${file}:`, err);
+          try {
+            const res = await collection.insertMany(docs, { ordered: false });
+            console.log(`[IMPORT] Inserted ${res.insertedCount} docs from ${file}`);
+          } catch (err) {
+
+            if (err.code === 11000) {
+              console.warn(
+                `[IMPORT-WARN] Duplicate entries detected & skipped in ${file}`
+              );
+            } else {
+              console.error(`[IMPORT-ERR] Error inserting docs from ${file}:`, err);
+            }
+
           }
-        }
       } else {
         console.log(`[IMPORT] SKIPPED — no data inside ${file}`);
       }

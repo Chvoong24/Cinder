@@ -8,6 +8,8 @@ const pointSchema = new mongoose.Schema({
   value: Number,
   name: String,
   threshold: String,
+  sitrep: String,
+  anal_date: String,
 });
 
 const Point = mongoose.model("Point", pointSchema);
