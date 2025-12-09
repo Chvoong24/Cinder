@@ -49,10 +49,7 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
 <img src = "images/conda_activation.png" alt = "conda activation" width="600px"></img>
 1. Follow instructions given in terminal to activate the environment. It should be ```conda activate environment_mac``` as seen above.
 
-#### Video demo for mac   
-<video width="400" controls>
-  <source src="https://raw.githubusercontent.com/Chvoong24/Cinder/main/images/mac_conda_instructions.mp4" type="video/mp4">
-</video>
+### [Click here to watch a video demo for mac conda instructions](https://www.youtube.com/watch?v=bJSTzOHGV9M)
 
 
 ### Environment For Windows using Conda
@@ -96,10 +93,7 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
     <img src = "images/frontend_npm_run_dev_image.png" alt = "Terminal when 'npm run dev' is ran" width="600px"></img>
 0. Go to localhost that was printed in frontend terminal on a browser
 
-#### Video demo  
-<video width="400" controls>
-  <source src="https://raw.githubusercontent.com/Chvoong24/Cinder/main/images/starting_local_website_instructions.mp4" type="video/mp4">
-</video>
+#### [Click here to watch a video demo for setting up local website](https://www.youtube.com/watch?v=y0AJAxpq710)  
 
 ## Navigating The Website
 - Once all the steps above are completed navigate to [localhost](http://localhost:5173])
