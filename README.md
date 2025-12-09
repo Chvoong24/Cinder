@@ -93,7 +93,7 @@ Must use Conda environment on Windows (Pygrib package does not work with pip).
     <img src = "images/frontend_npm_run_dev_image.png" alt = "Terminal when 'npm run dev' is ran" width="600px"></img>
 0. Go to localhost that was printed in frontend terminal on a browser
 
-#### [Click here to watch a video demo for setting up local website](https://www.youtube.com/watch?v=y0AJAxpq710)  
+### [Click here to watch a video demo for setting up local website](https://www.youtube.com/watch?v=y0AJAxpq710)  
 
 ## Navigating The Website
 - Once all the steps above are completed navigate to [localhost](http://localhost:5173])
