@@ -528,7 +528,7 @@ def process_forecast_hour(fhr: int):
         print(f"[INFO] No matching messages for f{fhr:03d}.")
         return
 
-    out_path = OUT_DIR / f"blend.t{CYCLE}z.qmd.f{fhr:03d}.{DOMAIN}.subset.grib2"
+    out_path = OUT_DIR / f"nbm_t{CYCLE}z_qmd_f{fhr:03d}_{DOMAIN}_subset_grib2"
     if out_path.exists():
         out_path.unlink()
 
