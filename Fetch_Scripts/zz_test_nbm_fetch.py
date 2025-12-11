@@ -185,8 +185,8 @@ def setup_run_paths(run_date: str, cycle: str, domain: str):
     CYCLE = cycle
     DOMAIN = domain
 
-    base_dir = Path(f"nbm_{cycle}z_qmd_subset_idx")
-    OUT_DIR = base_dir
+    base_dir = Path(f"nbm_data")
+    OUT_DIR = Path(f"{base_dir}/nbm_downloads")
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
