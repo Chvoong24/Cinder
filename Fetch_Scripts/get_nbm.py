@@ -3,6 +3,7 @@ import time
 import logging
 import pathlib
 import requests
+import utils
 from datetime import datetime, timezone, timedelta
 from logging.handlers import TimedRotatingFileHandler
 from concurrent.futures import ThreadPoolExecutor
@@ -41,10 +42,11 @@ PARENT_DIR = SCRIPT_DIR.parent
 NBM_DATA_DIR = PARENT_DIR / "nbm_data"
 
 OUTDIR = NBM_DATA_DIR / "nbm_download"
-LOGDIR = NBM_DATA_DIR / "./nbm_logs"
+if (utils.Logging):
+    LOGDIR = NBM_DATA_DIR / "./nbm_logs"
 
-OUTDIR.mkdir(parents=True, exist_ok=True)
-LOGDIR.mkdir(parents=True, exist_ok=True)
+    OUTDIR.mkdir(parents=True, exist_ok=True)
+    LOGDIR.mkdir(parents=True, exist_ok=True)
 
 # =========================
 # Determine Model Run
@@ -107,24 +109,24 @@ def rollback_cycle(date_str, cycle_str):
 # =========================
 # Logging
 # =========================
-LOGFILE = LOGDIR / "nbm_pull.log"
-LOG_LEVEL = logging.INFO
+if (utils.Logging):
+    LOGFILE = LOGDIR / "nbm_pull.log"
+    LOG_LEVEL = logging.INFO
 
-logger = logging.getLogger("nbm_manual")
-logger.setLevel(LOG_LEVEL)
-logger.handlers.clear()
+    logger = logging.getLogger("nbm_manual")
+    logger.setLevel(LOG_LEVEL)
+    logger.handlers.clear()
 
-ch = logging.StreamHandler()
-ch.setLevel(LOG_LEVEL)
-ch.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
-logger.addHandler(ch)
+    ch = logging.StreamHandler()
+    ch.setLevel(LOG_LEVEL)
+    ch.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+    logger.addHandler(ch)
 
-fh = TimedRotatingFileHandler(
-    filename=str(LOGFILE), when="midnight", backupCount=7, encoding="utf-8"
-)
-fh.setLevel(LOG_LEVEL)
-fh.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
-logger.addHandler(fh)
+    fh = TimedRotatingFileHandler(
+    filename=str(LOGFILE), when="midnight", backupCount=7, encoding="utf-8")
+    fh.setLevel(LOG_LEVEL)
+    fh.setFormatter(logging.Formatter("%(asctime)s | %(levelname)s | %(message)s"))
+    logger.addHandler(fh)
 
 # =========================
 # HTTP (retry) helpers
@@ -139,9 +141,11 @@ def http_get(url, headers=None, stream=False):
             r = requests.get(url, headers=headers or {}, stream=stream, timeout=TIMEOUT)
             if r.status_code in (200, 206):
                 return r
-            logger.warning(f"GET {url} -> HTTP {r.status_code}")
+            if (utils.Logging):
+                logger.warning(f"GET {url} -> HTTP {r.status_code}")
         except Exception as e:
-            logger.warning(f"GET {url} attempt {a} failed: {e}")
+            if (utils.Logging):
+                logger.warning(f"GET {url} attempt {a} failed: {e}")
         time.sleep(BACKOFF ** a)
     raise RuntimeError(f"Failed GET {url}")
 
@@ -151,9 +155,11 @@ def http_head(url):
             r = requests.head(url, headers={"Accept-Encoding": "identity"}, timeout=TIMEOUT)
             if r.status_code == 200:
                 return r
-            logger.warning(f"HEAD {url} -> HTTP {r.status_code}")
+            if (utils.Logging):
+                logger.warning(f"HEAD {url} -> HTTP {r.status_code}")
         except Exception as e:
-            logger.warning(f"HEAD {url} attempt {a} failed: {e}")
+            if(utils.Logging):
+                logger.warning(f"HEAD {url} attempt {a} failed: {e}")
         time.sleep(BACKOFF ** a)
     raise RuntimeError(f"Failed HEAD {url}")
 
@@ -169,12 +175,14 @@ def http_get_range(url, start: int, end: int):
             r = requests.get(url, headers=hdrs, stream=True, timeout=TIMEOUT)
             if r.status_code == 206 and r.headers.get("Content-Range"):
                 return r
-            logger.warning(
-                f"RANGE GET {url} [{start}-{end}] -> HTTP {r.status_code} "
-                f"(Content-Range={r.headers.get('Content-Range')!r}); retrying"
-            )
+            if (utils.Logging):
+                logger.warning(
+                    f"RANGE GET {url} [{start}-{end}] -> HTTP {r.status_code} "
+                    f"(Content-Range={r.headers.get('Content-Range')!r}); retrying"
+                )
         except Exception as e:
-            logger.warning(f"RANGE GET {url} attempt {a} failed: {e}")
+            if (utils.Logging):
+                logger.warning(f"RANGE GET {url} attempt {a} failed: {e}")
         time.sleep(BACKOFF ** a)
     raise RuntimeError(f"Failed RANGE GET {url} bytes={start}-{end}")
 
@@ -248,7 +256,8 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
     outdir.mkdir(parents=True, exist_ok=True)
     idx_url = grib_url + ".idx"
 
-    logger.info(f"Using index -> {idx_url}")
+    if(utils.Logging):
+        logger.info(f"Using index -> {idx_url}")
     idx_lines = http_get(idx_url).text.splitlines()
     entries = parse_idx(idx_lines)
     if not entries:
@@ -269,13 +278,15 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
             matched.append(e)
 
     if not matched:
-        logger.info("No index lines matched your MANUAL_PATTERNS. Nothing to do.")
+        if(utils.Logging):
+            logger.info("No index lines matched your MANUAL_PATTERNS. Nothing to do.")
         raise Exception("No index lines matched.")
 
     # Log which lines matched for transparency
-    logger.info("Matched .idx lines:")
-    for e in matched:
-        logger.info(f"  msg={e['msg']:>} off={e['offset']:>10} :: {e['desc']}")
+    if(utils.Logging):
+        logger.info("Matched .idx lines:")
+        for e in matched:
+            logger.info(f"  msg={e['msg']:>} off={e['offset']:>10} :: {e['desc']}")
 
     # Build byte ranges
     downloads = build_ranges(matched, entries, total_size)
@@ -294,27 +305,30 @@ def fetch_single_url(grib_url: str, outdir: pathlib.Path, idx_patterns: list[str
     tmp = outfile.with_suffix(outfile.suffix + ".part")
 
     # Fetch & write compact GRIB
-    logger.info(f"Writing -> {outfile}")
-    with open(tmp, "wb") as out:
-        for (start, end, desc) in downloads:
-            logger.info(f"  GET bytes={start}-{end} :: {desc}")
-            r = http_get_range(grib_url, start, end)
-            expected = end - start + 1
-            got = 0
-            for chunk in r.iter_content(chunk_size=1024 * 1024):
-                if chunk:
-                    out.write(chunk)
-                    got += len(chunk)
-            if got != expected:
-                raise RuntimeError(
-                    f"Range size mismatch [{start}-{end}] expected {expected}, got {got}"
+    if(utils.Logging):
+        logger.info(f"Writing -> {outfile}")
+        with open(tmp, "wb") as out:
+            for (start, end, desc) in downloads:
+                logger.info(f"  GET bytes={start}-{end} :: {desc}")
+                r = http_get_range(grib_url, start, end)
+                expected = end - start + 1
+                got = 0
+                for chunk in r.iter_content(chunk_size=1024 * 1024):
+                    if chunk:
+                        out.write(chunk)
+                        got += len(chunk)
+                if got != expected:
+                    raise RuntimeError(
+                        f"Range size mismatch [{start}-{end}] expected {expected}, got {got}"
                 )
 
+    
     if outfile.exists():
         outfile.unlink(missing_ok=True)
     tmp.replace(outfile)
     sz_mb = outfile.stat().st_size / (1024 * 1024)
-    logger.info(f"Done. Size = {sz_mb:.1f} MB")
+    if(utils.Logging):
+        logger.info(f"Done. Size = {sz_mb:.1f} MB")
     return outfile
 
 # =========================
@@ -334,9 +348,10 @@ def main():
                     for fxx in range(F_START + 1, F_END + 1):
                         grib_url, idx_url = pick_grib_url('qmd', pull_date, cycle_str, fxx)
                         if not grib_url:
-                            logger.info(
-                                f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)"
-                            )
+                            if(utils.Logging):
+                                logger.info(
+                                    f"No candidate GRIB URL for {pull_date} t{cycle_str}z f{fxx:03d} (Rolling-back Cycle)"
+                                )
                             pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
                             rollback_triggered = True
                             break  # stop this cycle completely
@@ -350,27 +365,30 @@ def main():
                         continue
 
                     # Otherwise, process results
-                    for f in futures:
-                        try:
-                            out = f.result()
-                            dt = time.time() - t0
-                            if out:
-                                logger.info(f"✅ Finished manual slice -> {out} in {dt:.1f}s")
-                            else:
-                                logger.info(f"ℹ️  Nothing matched; finished in {dt:.1f}s")
-                        except Exception as e:
-                            logger.exception(f"❌ Manual fetch failed in one thread: {e}")
+                    if(utils.Logging):
+                        for f in futures:
+                            try:
+                                out = f.result()
+                                dt = time.time() - t0
+                                if out:
+                                    logger.info(f"✅ Finished manual slice -> {out} in {dt:.1f}s")
+                                else:
+                                    logger.info(f"ℹ️  Nothing matched; finished in {dt:.1f}s")
+                            except Exception as e:
+                                logger.exception(f"❌ Manual fetch failed in one thread: {e}")
 
                 # If we finished successfully without rollback, break the outer loop
                 break
 
             except Exception as e:
-                logger.exception(f"❌ Cycle fetch failed: {e}")
+                if(utils.Logging):
+                    logger.exception(f"❌ Cycle fetch failed: {e}")
                 # optionally rollback and retry
                 pull_date, cycle_str = rollback_cycle(pull_date, cycle_str)
 
     except Exception as e:
-        logger.exception(f"❌ Main thread failed: {e}")
+        if(utils.Logging):
+            logger.exception(f"❌ Main thread failed: {e}")
 
 if __name__ == "__main__":
     main()

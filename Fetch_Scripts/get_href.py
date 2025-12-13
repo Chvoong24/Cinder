@@ -38,7 +38,7 @@ MIN_FILE_SIZE = 1 * 1024    # Min file size check
 # -----------------------------------------
 # ------- Logging Configuration -----------
 # -----------------------------------------
-if (utils.Logging == True):
+if ( == True):
 	LOGFILE = LOGDIR / "href_pull.log"
 	LOG_LEVEL = logging.INFO
 
@@ -138,7 +138,7 @@ def download_file(url, output_dir):
 	for attempt in range(1, MAX_RETRIES + 1):
 
 		try:
-			if(utils.Logging == True):
+			if(utils.Logging):
 				logger.info(f'[{attempt}/{MAX_RETRIES}] Downloading {filename}')
 				response = requests.get(url, stream = True, timeout = 20)
 				response.raise_for_status()
@@ -150,7 +150,7 @@ def download_file(url, output_dir):
 			size = os.path.getsize(filepath)
 			if size < MIN_FILE_SIZE:
 				raise ValueError(f'File too small ({size} bytes)')
-			if(utils.Logging == True):
+			if(utils.Logging):
 				logger.info(f'Downloaded {filename} successfully ({size} bytes)')
 				print(f'✅ Downloaded: {filename}', flush = True)
 			return True
@@ -160,14 +160,14 @@ def download_file(url, output_dir):
 
 			if " for url" in err_msg:
 				err_msg = err_msg.split(" for url")[0]
-				if(utils.Logging == True):
+				if(utils.Logging):
 					logger.warning(f'Attempt {attempt} failed for {filename}: {err_msg}')
 			if attempt < MAX_RETRIES:
-				if(utils.Logging == True):
+				if(utils.Logging):
 					logger.info(f'Retrying in {RETRY_DELAY} seconds...')
 				time.sleep(RETRY_DELAY)
 			else:
-				if(utils.Logging == True):
+				if(utils.Logging):
 					logger.error(f'All retries failed for {filename}')
 				print(f'❌ Failed: {filename} → check log!', flush = True)
 			return False
@@ -184,14 +184,14 @@ def main():
 	
 	print(f"\n📅 Fetching HREF Run: {pull_date} at {run_hour_str}Z")
 	print(f"\n🛠️  Forecast Hours: 1-48 (total {len(urls)} files)\n")
-	if(utils.Logging == True):
+	if(utils.Logging):
 		logger.info(f'Fetching HREF Run: {pull_date} at {run_hour_str}Z')
 		logger.info(f'Forecast Hours: 1-48 (total {len(urls)} files)')
 	
 	success_list, fail_list = [], []
 	
 	print(f"🚀 Starting parallel downloads with {MAX_THREADS} threads...\n")
-	if(utils.Logging == True):
+	if(utils.Logging):
 		logger.info(f'Starting downloads with {MAX_THREADS} threads...')
 	
 	with ThreadPoolExecutor(max_workers = MAX_THREADS) as executor:
@@ -202,19 +202,19 @@ def main():
 				success_list.append(url)
 			else:
 				fail_list.append(url)
-	if(utils.Logging == True):			
+	if(utils.Logging):			
 		logger.info(f'Downloads finished: {len(success_list)}/{len(urls)} succeeded.')
 	
 	if fail_list:
-		if(utils.Logging == True):
+		if(utils.Logging):
 			logger.warning('The following files failed after retries:')
 		for url in fail_list:
 			fn = url.split('file=')[1].split('&')[0]
-			if(utils.Logging == True):
+			if(utils.Logging):
 				logger.error(f' - {fn}')
 			
 	else:
-		if(utils.Logging == True):
+		if(utils.Logging):
 			logger.info('All files downloaded successfully!')
 		
 	print("\n✅ 📂 All downloads complete!\n")
